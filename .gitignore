@@ -14,3 +14,11 @@
 doc/html
 doc/latex
 doc/xml
+Makefile
+ui_*.h
+moc
+obj
+qrc_*.cpp
+backgammon.app
+bgserver/bgserver
+bgsrvstart.app
