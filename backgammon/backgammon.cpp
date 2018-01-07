@@ -1423,8 +1423,7 @@ WinHeight Backgammon::calc_win_height( void )
           if( m_points[ i ] * player_ind < 0 )
             return BACKGAMMON;
         }
-      if( !m_are_all_in_homeboard[ opponent ] )
-        return GAMMON;
+      return GAMMON;
     }
   return NORMAL;
 }
