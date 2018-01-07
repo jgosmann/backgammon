@@ -1,0 +1,16 @@
+.DS_Store
+.cproject
+.externalToolBuilders
+.*.swp
+.project
+.settings
+*.backup
+*.aux
+*.dvi
+*.log
+*.out
+*.ps
+*.toc
+doc/html
+doc/latex
+doc/xml

@@ -1,0 +1,32 @@
+\chapter{Projektorganisation}
+
+\section{Ordnerstruktur}
+Das Wurzelverzeichnis enthält diverse Dateien mit Projekteinstellungen. Darunter befindet sich mit \file{welfenlab\_comp06.kdevelop} auch eine Projetdatei für \name{KDevelop} (verwendete Version~3.3.1) und ein configure-Skript.
+
+Die Unterordner \file{ai-evolver} und \file{welfenlab\_comp06} enthalten den Sourcecode für die gleichnamigen, zum Projekt zugehörigen Programme. In diesen beiden Ordnern befinden sich jeweils die Unterordner \file{moc} mit den von \name{Qt} generierten Meta-Object-Code sowie \file{obj} mit den kompilierten Objektdateien. Der Ordner \file{welfenlab\_comp06/gui} enthält den Sourcecode für die grafische Benutzeroberfläche und die mit dem \name{Qt Designer} erstellten ui-Dateien. Die vom GUI verwendeten Grafiken befinden sich im Ordner \file{welfenlab\_comp06/gui/data}.
+
+Die von mir kompilierten Programmen befinden sich zusammen mit benötigten DLL- bzw. Shared-Object-Files im Ordner \file{bin}. Werden diese wie in Kapitel \ref{sec:compile} beschrieben erneut kompiliert, so werden die Programmdateien in den Ordnern mit dem Sourcecode erstellt. Unter Windows liegen diese dort in einem weiteren Unterordner \file{release} und/oder \file{debug}.
+
+Diese Ausarbeitung befindet sich in verschiedenen Formaten (\LaTeX-Source, DVI, PS, PDF) im Ordner \file{doc/ausarbeitung}. Eine mit \name{Doxygen} (siehe Kapitel \ref{sec:doxygen-doc}) erstellte Referenzdokumentation ist in den restlichen Unterverzeichnissen von \file{doc} nach Formaten sortiert abgelegt.
+
+Im Ordner \file{templates} liegen Vorlagen für Sourcecode-Dateien.
+
+\section{Kompilieren des Programmes} \label{sec:compile}
+\subsection{Voraussetzungen}
+Zum Kompilieren des Projektes muss ein C++-Compiler sowie eine Installation von \name{Qt}\footnote{Bezugsquelle: \url{http://www.trolltech.com}} vorhanden sein. Die minimale \name{Qt}-Version ist 4.2. Ich selbst habe das Programm unter \name{openSuse~10.1} mit \name{g++~4.1.0} kompiliert und getestet sowie unter \name{Windows~XP~SP2} mit \name{g++~3.4.2 (mingw-special)}. Bei beiden Systemen habe ich \name{Qt~4.2.2} verwendet.
+
+\subsection{Konfigurieren}
+Vor dem eigentlichen Kompilieren müssen die Umgebung konfiguriert und die Makefiles erstellt werden. Dies geschieht durch einen Aufruf von \command{qmake} oder unter Linux alternativ durch einen Aufruf des \command{configure}-Skriptes. Bei Verwendung des configure-Skriptes kann es nötig sein das \name{Qt}-Installationsverzeichnis mit dem Argument \progarg{"~"~qtdir=[PATH]} anzugeben.
+
+\subsection{Kompilieren}
+Durch einen Aufruf von \command{make} bzw. dem entsprechenden Kommando auf dem jeweiligen System (\command{gmake}, \command{mingw32-make}, \dots) im Wurzelverzeichnis des Projekts werden sowohl \name{ai-evolver} als auch \name{welfenlab\_comp06} kompiliert. Um nur eines der beiden Programme zu kompilieren, muss \command{make} im entsprechenden Unterverzeichnis ausgeführt werden.
+
+\section{Erstellen der Doxygen-Dokumentation} \label{sec:doxygen-doc}
+Die \name{Doxygen}-Referenzdokumentation wird durch den Aufruf von \command{doxygen} im Wurzelverzeichnis des Projektes erstellt. Die Ausgabe erfolgt im Ordner \file{doc} in nach den Formaten benannten Unterordner. Doxygen kann unter \url{http://www.doxygen.org} bezogen werden. Die Einsendung zur Welfenlab Competition 2006 enthält bereits eine aktuelle und fertig generierte \name{Doxygen}-Dokumentation in den Formaten HTML, \LaTeX, PDF (im Ordner \file{latex}) und XML.
+
+\section{Weitere Hinweise}
+Neben den Doxygen-Kommentaren, finden sich im Sourcecode Zeilen ähnlich zu dieser:
+\begin{lstlisting}
+/*< \label{...} >*/
+\end{lstlisting}
+Diese dienen dazu die entsprechenden Zeilen in dieser Ausarbeitung zu referenzieren. In der Regel habe ich diese Kommentare nur an den nötigen Stellen eingefügt.

@@ -1,0 +1,70 @@
+\lstset{basicstyle=\fontfamily{pcr}\selectfont\footnotesize, keywordstyle=\bfseries, language=bash}
+
+\chapter{Bekannte Bugs des Backgammon-Servers auf werefkin.gdv.uni-hannover.de} \label{sec:serverbugs}
+Im Folgenden dokumentiere ich die von mir gefundenen Bugs des Backgammon-Servers auf \url{werefkin.gdv.uni-hannover.de} und deren Auswirkungen auf mein Programm.
+\begin{itemize}
+
+\item \sspar{Beschreibung:} In folgendem Fall erkennt der Server nicht, dass der Spieler nach einem Zug zugunfähig ist:
+\begin{lstlisting}
+> BOARD:0 0 6 0 -1 0 2 0 3 0 0 0 0 0 0 0 0 0 -3 -2 -2 -3 -1 -3 2 2 0 0
+> DICE:6 1
+< TURN:1 25 24;
+> ERROR:TURN;not a valid Turn
+> DICE:6 1
+\end{lstlisting}
+Es sind zwei Steine auf der Bar, es kann allerdings nur einer mit der Augenzahl 1 zurück ins Spiel gebracht werden, weil das 6.\ Feld mit drei gegnerischen Steinen belegt ist.
+\sspar{Auswirkung:} Das Spiel kann nicht fortgesetzt werden.
+
+\item \sspar{Beschreibung:} In folgendem Fall erkennt der Server nicht, dass nur noch für einen Würfel gezogen werden kann, da nur noch ein Spielstein im Spiel ist:
+\begin{lstlisting}
+> BOARD:14 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2 0 -13 0
+< CONFIRM
+> DICE:4 6
+< TURN:6 1 0;
+> ERROR:TURN;not a valid Turn
+> DICE:4 6
+\end{lstlisting}
+\sspar{Auswirkung:} Es wird die normale Meldung angezeigt, dass das Spiel zu Ende wäre, da dies vom Programm selbstständig erkannt wird. Wenn der entsprechende Spieler allerdings durch die KI gesteuert wird, wird die Meldung wiederholt angezeigt, weil der Server immer wieder die Aufforderung sendet zu ziehen, somit mehrmals der letzte Zug ausgeführt wird und jedesmal die Meldung angezeigt wird, dass das Spiel beendet wurde.
+
+\item \sspar{Beschreibung:} In folgendem Fall erkennt der Server nicht, dass der Spieler nach dem einen Zug zugunfähig ist:
+\begin{lstlisting}
+> BOARD:0 2 9 0 0 0 2 0 0 -1 0 0 0 0 0 0 0 -3 -2 -2 -2 -2 0 -2 2 0 0 -1
+< CONFIRM
+> DICE:6 1
+< TURN:1 2 1;
+> ERROR:TURN;not a valid Turn
+> DICE:6 1
+\end{lstlisting}
+Es sind nicht alle Steine im Homeboard, daher kann keiner von diesen ausgewürfelt werden. Die beiden Steine ganz hinten können aber auch nicht gezogen werden. Daher kann nur die eins gesetzt werden.
+\sspar{Auswirkung:} Das Spiel kann nicht fortgesetzt werden.
+
+\item \sspar{Beschreibung:} In folgendem Fall erkennt das Spiel zwar die Zugunfähigkeit, geht aber erst nach einer längeren Wartezeit weiter:
+\begin{lstlisting}
+> BOARD:0 -2 2 2 2 2 2 3 0 0 0 0 0 0 0 0 0 0 -2 -3 0 -3 -3 -2 2 0 0 0
+> DICE:3 6
+< TURN:3 7 4;
+\end{lstlisting}
+Dieser Bug scheint immer dann aufzutreten, wenn nur für eine Augenzahl gesetzt werden kann, aber der Server noch erkennt, dass der Spieler nach Setzen des einen Zuges zugunfähig ist. Im Unterschied zum vorhergehenden Bug befinden sich keine Steine auf der Bar.
+\sspar{Auswirkung:} Das Spiel kann nach der Wartezeit normal weitergeführt werden.
+
+\item \sspar{Beschreibung:} Der letzte Zug in einem Spiel wird vom Server falsch codiert an den Client übertragen, der nicht am Zug ist:
+\begin{lstlisting}
+> BOARD:14 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2 0 -13 0
+< CONFIRM
+> INFO:DICE;6 4
+> INFO:TURN;6 1 0;4 1 0;
+> ENDGAME:LOSE;1;0 1
+> INFO:ENDGAME;1 gosmann2 1 1 0
+\end{lstlisting}
+Korrekt müsste der vom Server übermittelte Zug für das Beispiel in der Debug-Ausgabe \lstinline$INFO:TURN;6 24 26;4 24 26;$ sein.
+\sspar{Auswirkung:} Der letzte Zug in einem Spiel wird nicht korrekt in die Zugliste eingetragen und die Verteilung der Spielsteine auf dem Spielfeld wird nicht korrekt angezeigt.
+
+\end{itemize}
+
+\section{Anscheind bereits behobene Bugs}
+Hier liste ich die Bugs aus früheren Server-Versionen auf, die anscheinend bereits behoben wurden. Da es kein Changelog gab, kann ich mir dessen leider nicht ganz sicher sein. Dies ist auch der Grund für diesen Abschnitt.
+\begin{itemize}
+\item \sspar{Beschreibung:} Der Server sendet zu Beginn des Spieles ein Pasch als Würfelwurf. Dies ist bei einem normalen Backgammon-Spiel eigentlich nicht möglich, da durch den ersten Würfelwurf entschieden wird, wer das Spiel beginnt. Bei einem Pasch würde neu gewürfelt werden.
+\sspar{Auswirkung:} Das Spiel kann nicht gestartet werden und es muss ein neues erstellt werden.
+\end{itemize}
+

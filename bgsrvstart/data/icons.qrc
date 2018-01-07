@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="appIcons" >
+    <file>display.png</file>
+  </qresource>
+  <qresource prefix="btnIcons" >
+    <file>button_cancel.png</file>
+    <file>fileopen.png</file>
+    <file>filesave.png</file>
+    <file>shutdown.png</file>
+  </qresource>
+</RCC>

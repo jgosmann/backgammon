@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewGameDialog</class>
+ <widget class="QDialog" name="NewGameDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>680</width>
+    <height>452</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Neues Spiel</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="data/gui.qrc">
+    <normaloff>:/toolbar/filenew.png</normaloff>:/toolbar/filenew.png</iconset>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab_players">
+      <attribute name="title">
+       <string>&amp;Spieler</string>
+      </attribute>
+      <layout class="QVBoxLayout">
+       <item>
+        <widget class="QGroupBox" name="group_white">
+         <property name="title">
+          <string>Weiß</string>
+         </property>
+         <layout class="QVBoxLayout">
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QComboBox" name="combobox_type_white">
+              <item>
+               <property name="text">
+                <string>Menschlicher Spieler</string>
+               </property>
+               <property name="icon">
+                <iconset resource="data/gui.qrc">
+                 <normaloff>:/player_types/metacontact_online.png</normaloff>:/player_types/metacontact_online.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Computer</string>
+               </property>
+               <property name="icon">
+                <iconset resource="data/gui.qrc">
+                 <normaloff>:/player_types/system.png</normaloff>:/player_types/system.png</iconset>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_configure_white">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="data/gui.qrc">
+                <normaloff>:/toolbar/configure.png</normaloff>:/toolbar/configure.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkbox_blocking_msgs_white">
+            <property name="text">
+             <string>Blockierende Meldung anzeigen, wenn Spieler zugunfähig ist.</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkbox_auto_dice_roll_white">
+            <property name="text">
+             <string>Automatisch würfeln.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="group_black">
+         <property name="title">
+          <string>Schwarz</string>
+         </property>
+         <layout class="QVBoxLayout">
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QComboBox" name="combobox_type_black">
+              <item>
+               <property name="text">
+                <string>Menschlicher Spieler</string>
+               </property>
+               <property name="icon">
+                <iconset resource="data/gui.qrc">
+                 <normaloff>:/player_types/metacontact_online.png</normaloff>:/player_types/metacontact_online.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Computer</string>
+               </property>
+               <property name="icon">
+                <iconset resource="data/gui.qrc">
+                 <normaloff>:/player_types/system.png</normaloff>:/player_types/system.png</iconset>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_configure_black">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="data/gui.qrc">
+                <normaloff>:/toolbar/configure.png</normaloff>:/toolbar/configure.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkbox_blocking_msgs_black">
+            <property name="text">
+             <string>Blockierende Meldung anzeigen, wenn Spieler zugunfähig ist.</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkbox_auto_dice_roll_black">
+            <property name="text">
+             <string>Automatisch Würfeln.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_network">
+      <attribute name="title">
+       <string>&amp;Netzwerkverbindung</string>
+      </attribute>
+      <layout class="QVBoxLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="button_start_server">
+           <property name="text">
+            <string>&amp;Server starten …</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>(Für ein Netzwerkspiel muss auf einem Rechner der Server laufen.)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Se&amp;rver:</string>
+           </property>
+           <property name="buddy">
+            <cstring>server</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="server">
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+           <property name="insertPolicy">
+            <enum>QComboBox::InsertAtTop</enum>
+           </property>
+           <item>
+            <property name="text">
+             <string>localhost</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Ben&amp;utzername:</string>
+           </property>
+           <property name="buddy">
+            <cstring>username</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="username">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="editable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>&amp;Passwort:</string>
+           </property>
+           <property name="buddy">
+            <cstring>password</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="password">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_connect">
+           <property name="text">
+            <string>&amp;Verbinden</string>
+           </property>
+           <property name="icon">
+            <iconset resource="data/gui.qrc">
+             <normaloff>:/toolbar/connect_creating.png</normaloff>:/toolbar/connect_creating.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="group_game_list">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="title">
+          <string>Laufende Spiele</string>
+         </property>
+         <layout class="QVBoxLayout">
+          <item>
+           <widget class="QTableView" name="game_list">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QPushButton" name="button_refresh_game_list">
+              <property name="text">
+               <string>&amp;Aktualisieren</string>
+              </property>
+              <property name="icon">
+               <iconset resource="data/gui.qrc">
+                <normaloff>:/toolbar/reload.png</normaloff>:/toolbar/reload.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_create_game">
+              <property name="text">
+               <string>Spiel &amp;erstellen...</string>
+              </property>
+              <property name="icon">
+               <iconset resource="data/gui.qrc">
+                <normaloff>:/toolbar/filenew.png</normaloff>:/toolbar/filenew.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="button_join_game">
+              <property name="text">
+               <string>Spiel &amp;beitreten</string>
+              </property>
+              <property name="icon">
+               <iconset resource="data/gui.qrc">
+                <normaloff>:/toolbar/add.png</normaloff>:/toolbar/add.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="group_chat">
+         <property name="title">
+          <string>Chat/Server-Log</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>server</tabstop>
+  <tabstop>username</tabstop>
+  <tabstop>password</tabstop>
+  <tabstop>button_connect</tabstop>
+  <tabstop>game_list</tabstop>
+  <tabstop>button_create_game</tabstop>
+  <tabstop>button_join_game</tabstop>
+  <tabstop>combobox_type_white</tabstop>
+  <tabstop>button_configure_white</tabstop>
+  <tabstop>checkbox_blocking_msgs_white</tabstop>
+  <tabstop>checkbox_auto_dice_roll_white</tabstop>
+  <tabstop>combobox_type_black</tabstop>
+  <tabstop>button_configure_black</tabstop>
+  <tabstop>checkbox_blocking_msgs_black</tabstop>
+  <tabstop>checkbox_auto_dice_roll_black</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
+ <resources>
+  <include location="data/gui.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>NewGameDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>NewGameDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

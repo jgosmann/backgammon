@@ -1,0 +1,466 @@
+<ui version="4.0" >
+ <class>AISettingsDialog</class>
+ <widget class="QDialog" name="AISettingsDialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>335</width>
+    <height>378</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle" >
+   <string>KI-Einstellungen</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="data/gui.qrc" >:/player_types/system.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_6" >
+       <property name="text" >
+        <string>&amp;Timeout: </string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy" >
+        <cstring>timeout</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="timeout" >
+       <property name="suffix" >
+        <string>ms</string>
+       </property>
+       <property name="maximum" >
+        <number>999999999</number>
+       </property>
+       <property name="singleStep" >
+        <number>1000</number>
+       </property>
+       <property name="value" >
+        <number>3000</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="group_factors" >
+     <property name="title" >
+      <string>KI-Parameter</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="label_4" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Zahl der ausgewürfelten Spielsteine.</string>
+        </property>
+        <property name="text" >
+         <string>BEARED_OFF: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>beared_off</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QDoubleSpinBox" name="prob_cannot_move" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass die KI im nächsten Zug zugunfähig ist.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-10000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1" >
+       <widget class="QDoubleSpinBox" name="op_distance_from_off_game" >
+        <property name="toolTip" >
+         <string>Einflussstärke der durschnittlichen Entfernung der Spielsteine des Gegners bis diese ausgewürfelt sind.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-10000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" >
+       <widget class="QLabel" name="label_5" >
+        <property name="toolTip" >
+         <string>Einflussstärke der durschnittlichen Entfernung der Spielsteine des Gegners bis diese ausgewürfelt sind.</string>
+        </property>
+        <property name="text" >
+         <string>OP_DISTANCE_FROM_OFF_GAME: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>op_distance_from_off_game</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QDoubleSpinBox" name="prob_op_cannot_move" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass der Gegner im nächsten Zug zugunfähig ist.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>9999.999900000000707</double>
+        </property>
+        <property name="minimum" >
+         <double>-9999.999900000000707</double>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" >
+       <widget class="QDoubleSpinBox" name="beared_off" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Zahl der ausgewürfelten Spielsteine.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>9999.999900000000707</double>
+        </property>
+        <property name="minimum" >
+         <double>-9999.999900000000707</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_2" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass der Gegner im nächsten Zug zugunfähig ist.</string>
+        </property>
+        <property name="text" >
+         <string>PROB_OP_CANNOT_MOVE: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>prob_op_cannot_move</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_7" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass die KI im nächsten Zug zugunfähig ist.</string>
+        </property>
+        <property name="text" >
+         <string>PROB_CANNOT_MOVE: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>prob_cannot_move</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1" >
+       <widget class="QDoubleSpinBox" name="checkers_in_op_homeboard" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Anzahl der eigenen Spielsteine im gegnerischen Homeboard und auf der Bar.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="value" >
+         <double>0.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" >
+       <widget class="QLabel" name="label_8" >
+        <property name="toolTip" >
+         <string>Einflussstärke der durchschnittlichen Entfernung vom Homeboard.</string>
+        </property>
+        <property name="text" >
+         <string>DISTANCE_FROM_HOMEBOARD: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>distance_from_homeboard</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" >
+       <widget class="QLabel" name="label_9" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Anzahl der eigenen Spielsteine im gegnerischen Homeboard und auf der Bar.</string>
+        </property>
+        <property name="text" >
+         <string>CHECKERS_IN_OP_HOMEBOARD: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>checkers_in_op_homeboard</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" >
+       <widget class="QDoubleSpinBox" name="distance_from_homeboard" >
+        <property name="toolTip" >
+         <string>Einflussstärke der durchschnittlichen Entfernung vom Homeboard.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-10000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass ein eigener Spielstein geschlagen wird.</string>
+        </property>
+        <property name="text" >
+         <string>PROB_CHECKTER_IS_HIT: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>prob_checker_is_hit</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QDoubleSpinBox" name="n_points_with_checkers" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Zahl der "Zungen" mit mindestens zwei eigenen Spielsteinen.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>9999.989999999999782</double>
+        </property>
+        <property name="minimum" >
+         <double>-9999.989999999999782</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QDoubleSpinBox" name="prob_checker_is_hit" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass ein eigener Spielstein geschlagen wird.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-9999.998999999999796</double>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Zahl der "Zungen" mit mindestens zwei eigenen Spielsteinen.</string>
+        </property>
+        <property name="text" >
+         <string>N_POINTS_WITH_CHECKERS: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>n_points_with_checkers</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label_10" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass der gegnerische Spieler zugunfähig ist, weil er noch Steine auf der Bar hat.</string>
+        </property>
+        <property name="text" >
+         <string>PROB_OP_CANNOT_MOVE_BAR: </string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>prob_op_cannot_move_bar</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QDoubleSpinBox" name="prob_op_cannot_move_bar" >
+        <property name="toolTip" >
+         <string>Einflussstärke der Wahrscheinlichkeit, dass der gegnerische Spieler zugunfähig ist, weil er noch Steine auf der Bar hat.</string>
+        </property>
+        <property name="decimals" >
+         <number>4</number>
+        </property>
+        <property name="maximum" >
+         <double>10000.000000000000000</double>
+        </property>
+        <property name="minimum" >
+         <double>-10000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons" >
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok|QDialogButtonBox::RestoreDefaults</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>timeout</tabstop>
+  <tabstop>prob_checker_is_hit</tabstop>
+  <tabstop>prob_cannot_move</tabstop>
+  <tabstop>prob_op_cannot_move</tabstop>
+  <tabstop>prob_op_cannot_move_bar</tabstop>
+  <tabstop>n_points_with_checkers</tabstop>
+  <tabstop>beared_off</tabstop>
+  <tabstop>distance_from_homeboard</tabstop>
+  <tabstop>checkers_in_op_homeboard</tabstop>
+  <tabstop>op_distance_from_off_game</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
+ <resources>
+  <include location="data/gui.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AISettingsDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>254</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>157</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AISettingsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>322</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>286</x>
+     <y>218</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

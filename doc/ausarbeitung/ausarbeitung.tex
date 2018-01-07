@@ -1,0 +1,114 @@
+\documentclass[11pt,a4paper]{scrreprt}
+
+%%%%%% Packages %%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{scrpage2}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{color}
+\usepackage[flushmargin,ragged]{footmisc}
+% \usepackage{graphicx}
+\usepackage{ifthen}
+% \usepackage{lastpage}
+% \usepackage{makeidx}
+\usepackage{ngerman}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\usepackage[active]{srcltx}
+\usepackage{url}
+
+%%%%% Eigene Format-Kommandos %%%%%
+\newcommand{\btn}[1]{\textsl{#1}} % Format für Button-Beschriftungen der GUI
+\newcommand{\command}[1]{\mbox{\fontfamily{pcr}\selectfont #1}} % Format für Shell-Kommandos/Programme
+\newcommand{\file}[1]{\mbox{\textsf{#1}}} % Format für Dateinnamen
+\newcommand{\key}[1]{\mbox{#1}}
+\newcommand{\menu}[1]{\textsl{#1}} % Format für Menüpunkte der GUI
+\newcommand{\name}[1]{#1} % Format für Eigennamen
+\newcommand{\progarg}[1]{\mbox{\fontfamily{pcr}\selectfont #1}} % Format für Programmargumente
+\newcommand{\sspar}[1]{\par\textsf{\textbf{#1}}} % Format für einen normalen Absatz mit Titel.
+\newcommand{\srvcmd}[1]{\mbox{\fontfamily{pcr}\selectfont #1}} % Format für Servernachrichten
+
+%%%%% Eigene Befehle %%%%%
+% Fügt eine Referenz auf eine Funktion oder Klasse aus dem Sourccode ein.
+% \srcref[Suffix im Text]{Prefix in der Fußnote}{Funktions- oder Klassenname}{Suffix in der Fußnote}{Datei}{label}
+\newcommand{\srcref}[6][()]{%
+\provideboolean{src:#6-\thesection}%
+\ifthenelse{\boolean{src:#6-\thesection}}%
+{\lstinline$#3#1$}%
+{\lstinline$#3#1$\footnote{\lstinline$#2#3#4$ \file{#5:\ref*{src:#6}}}\setboolean{src:#6-\thesection}{true}}%
+}
+% Verhindert, dass weitere Fußnoten für eine Referenz zum Sourcecode in der Sektion eingefügt werden.
+\newcommand{\invsrcref}[1]{\provideboolean{src:#1-\thesection}\setboolean{src:#1-\thesection}{true}}
+
+%%%%% Kurzbefehle %%%%
+\newcommand{\base}{../../} % Base-Directory
+\newcommand{\wdir}{welfenlab\_comp06/} % welfenlab_comp06-Directory, relativ zum Base-Directory
+\newcommand{\basene}{../../} % Base-Directory, ohne Escape-Zeichen vor Steuerzeichen
+\newcommand{\wdirne}{welfenlab_comp06/} % welfenlab_comp06-Directory, relativ zum Base-Directory, ohne Escape-Zeichen vor Steuerzeichen
+
+%%%%% Format %%%%%
+\typearea{11}
+\ihead[Welfenlab Competition 2006]{Welfenlab Competition 2006}
+\chead[]{}
+\ohead[Jan Gosmann]{Jan Gosmann}
+\pagestyle{scrheadings}
+
+\lstset{basicstyle=\fontfamily{pcr}\selectfont, numberfirstline=true, stepnumber=5, keywordstyle=\bfseries, language=C++}
+
+\urlstyle{same}
+
+%%%%% Externe Referenz-Dokumente %%%%%
+\externaldocument[src:]{src-files}
+
+%%%%% Dokument %%%%%
+\begin{document}
+
+\begin{titlepage} \begin{center}
+  \vspace*{\fill}
+  \textsf{\textbf{\huge Welfenlab Competition 2006}} \\[1cm]
+  \begin{tabular}{rl}
+  \textbf{Teilnehmer:}         & Jan Gosmann \\
+  \textbf{Anschriftt:}         & Am Bokemahle 13c \\
+                               & 30171 Hannover \\
+  \textbf{E-Mail:}             & blubb@hyper-world.de \\
+  \textbf{Homepage:}           & \url{http://www.hyper-world.de} \\
+  \textbf{Schule:}             & Bismarckschule Hannover \\
+                               & An der Bismarckschule 5 \\
+                               & 30173 Hannover \\
+  \textbf{Klassenstufe:}       & 13 \\
+  \textbf{Programmiersprache:} & C++ \\
+  \end{tabular}
+  \vspace{\fill}
+\end{center} \end{titlepage}
+
+\chapter*{Einleitung}
+Bei der Welfenlab Competition 2006 ging es um die Entwicklung einer künstlichen Intelligenz für das Brettspiel Backgammon sowie der Möglichkeit ein Backgammon-Spiel über eine Netzwerkverbindung austragen zu lassen.
+
+Diese Ausarbeitung geht auf die Organisation des Projektes, die Bedienung des Programmes und die verwendeten Algorithmen ein. Dabei kann ich leider nicht auf jede Funktion ausführlich eingehen, da dies den Rahmen der Ausarbeitung sprengen würde. Behandeln werde ich nur die Algorithmen, die direkt mit der Aufgabenstellung zusammen hängen oder von besonderer Wichtigkeit für das Programm sind. Nicht ganz so komplexe Funktionen, die keiner Erläuterung benötigen sollten, werden teilweise auch nur erwähnt.
+
+Zusätzlich zu dieser Ausarbeitung kann mit \name{Doxygen} eine Referenz-Dokumentation aus den Kommentaren im Sourcecode generiert werden (siehe Kapitel \ref{sec:doxygen-doc}). Diese enthält dann zu den meisten Klassen, Member-Variablen und Funktionen eine kurze Beschreibung.
+
+\tableofcontents
+
+\part{Allgemeines}
+\include{projektorganisation}
+\include{bedienung}
+
+\part{Arbeitsweise und Implementation der Algorithmen}
+\include{class_backgammon}
+\include{netzwerk}
+\include{gui}
+\include{ki}
+
+\begin{appendix}
+\part{Anhang}
+\include{schlusswort}
+\include{apdx_server_bugs}
+\end{appendix}
+
+
+\end{document}

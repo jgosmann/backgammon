@@ -1,0 +1,56 @@
+\chapter{Die grafische Benutzeroberfläche}
+Sämtliche Klassen, die die verschiedenen Elemente des grafischen Userinterface implementieren, liegen im Ordner \file{\wdir gui}. Die Dateien \file{\wdir gui/flowlayout.h} und \file{\wdir gui/flowlayout.cpp} wurden nicht von mir geschrieben, sondern aus der \name{Qt}-Dokumentation kopiert. Sie sind allerdings auch nur von untergeordneter Bedeutung. Die Grundstruktur des Hauptfensters und der Dialogfenster wurde mit dem \name{Qt}-Designer erstellt. Sofern dies nötig war, wurden die so generierten Klassen nochmals abgeleitet. Auf den Großteil der Klassen für das GUI dürfte nicht näher eingegangen werden müssen, denn diese verwenden keine komplexen Algorithmen. Trotzdem folgt hier eine kurze Aufzählung der Klassen mit einer kurzen Beschreibung. Die Implementation findet sich jeweils in den Dateien mit gleichen Namen, allerdings komplett in Kleinschreibung, und den Endungen \file{.h} und \file{.cpp}.
+\begin{itemize}
+  \item \lstinline$AISettingsDialog$: Stellt ein Dialogfenster zum Konfigurieren der KI bereit.
+  \item \lstinline$BackgammonWidget$: Stellt ein Backgammon-Spielfeld dar und bietet dem User die Möglichkeit per Drag~\&~Drop Züge einzugeben.
+  \item \lstinline$ChatWidget$: Stellt ein Widget bereit, welches Chat- und Servernachrichten anzeigt, sowie in der Lage ist Chat-Nachrichten zu versenden.
+  \item \lstinline$DiceWidget$: Hierbei handelt es sich um ein Widget, das einen Würfel darstellt und auf diesem verschiedene Augenzahlen anzeigen kann.
+  \item \lstinline$MainWindow$: Dies ist die Klasse für das Hauptfenster des Programmes.
+  \item \lstinline$NewGameDialog$: Stellt den Dialog bereit, in dem die Einstellungen für ein neues Spiel gesetzt werden können.
+\end{itemize}
+Weiterhin kommen folgende vom \name{Qt}-Designer generierte Klassen zum Einsatz, die nicht weiter abgeleitet werden:
+\begin{itemize}
+  \item \lstinline$Ui::InfoDialog$: Stellt die Elemente für ein Dialogfenster mit Informationen zum Programm bereit. Bestimmte Strings des Textes müssen vor der Anzeige allerdings noch ersetzt werden.
+  \item \lstinline$Ui::LicenseDialog$: Stellt die Elemente für ein Dialogfenster bereit, welches die Lizenz des Programmes -- die GNU General Public License -- anzeigt.
+  \item \lstinline$Ui::NewNetGameDialog$: Stellt die Elemente für ein Dialogfenster bereit, in dem die Einstellungen für ein neues Netzwerkspiel vorgenommen werden können.
+\end{itemize}
+
+\section{Klasse BackgammonWidget}
+Wie oben bereits erwähnt, dient die Klasse \srcref[]{class }{BackgammonWidget}{ : public QWidget;}{\wdir gui/backgammonwidget.h}{BackgammonWidget} dazu ein Backgammon-Spielfeld darzustellen. Dieses wird von der Funktion \srcref{void BackgammonWidget::}{paintEvent}{( QPaintEvent *event );}{\wdir gui/backgammonwidget.cpp}{void:BackgammonWidget::paintEvent(QPaintEvent*)} gezeichnet. Nachdem Füllen mit der Hintergrundfarbe wird die Zeichenebene gegebenenfalls verschoben und rotiert. Anschließend werden die Abgrezungen des Spielfeldes und der Bar gezeichnet. Danach folgen die obere und untere Hälfte des Spielbrettes, wobei zuerst die jeweilige "`Zunge"' und dann die Spielsteine auf dieser gezeichnet werden. Für letzteres wird die Funktion \srcref{QPicture BackgammonWidget::}{draw_checkers}{( unsigned short int n, double size,$ \lstinline$QColor fg, QColor bg, bool invert );}{\wdir gui/backgammonwidget.cpp}{QPicture:BackgammonWidget::draw_checkers(unsigned:short:int,double,QColor,QColor,bool)} verwendet, welche eine Grafik mit einer bestimmten Anzahl an Spielsteinen erstellt, welche dann auf der entsprechenden "`Zunge"' ausgegeben wird. Zum Schluss wird die Drehung und Verschiebung der Zeichenfläche wieder rückgängig gemacht, um die Nummerierung der "`Zungen"' auszugeben.
+
+Beim Drücken einer Maustaste wird die Funktion \srcref{void BackgammonWidget::}{mousePressEvent}{( QMouseEvent *event );}{\wdir gui/backgammonwidget.cpp}{void:BackgammonWidget::mousePressEvent(QMouseEvent)} aufgerufen. Diese wiederrum startet gegebenenfalls eine Drag~\&~Drop-Aktion. Sobald der Drag~\&~Drop-Vorgang abgeschlossen ist wird \srcref{void BackgammonWidget::}{dropEvent}{( QDropEvent *event );}{\wdir gui/backgammonwidget.cpp}{void:BackgammonWidget::dropEvent(QDropEvent)} aufgerufen. Diese Funktion muss darauf achten, dass, wenn ein Spielstein ausgewürfelt wird, für den Zug die kleinere Augenzahl verwendet wird, falls der Spieler anschließend die höhere Augenzahl noch setzen will. Beide Funktionen verwenden \srcref{BG::Position BackgammonWidget::}{conv_mouse_pos}{( int x, int y );}{\wdir gui/backgammonwidget.cpp}{BG::Position:BackgammonWidget::conv_mouse_pos(int,int)} zur Konvertierung der Mauskoordinaten in eine programminterne Positionsangabe.
+
+\section{Klasse MainWindow}
+Ich möchte weitgehend die wichtigsten Funktionen dieser Klasse einfach nur kurz erwähnen, denn auch sie verwenden keine komplexeren Algorithmen, die einer genaueren Erläuterung bedürften:
+\begin{itemize}
+  \item \srcref{void MainWindow::}{init_new_game}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::init_new_game(void)}: Zeigt den Dialog zum Starten eines neuen Spiels an und startet dieses anschließend.
+  \item \srcref{void MainWindow::}{start_next_round}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::start_next_round(void)}: Startet die nächste Runde eines Matches.
+  \item \srcref{void MainWindow::}{next_player}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::next_player(void)}: Wird aufgerufen, wenn der nächste Spieler an die Reihe kommt. Setzt die Einstellungen des Interface entsprechend.
+  \item \srcref{void MainWindow::}{refresh_turn_list}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::refresh_turn_list(void)}: Aktualisiert die Anzeige der Zugliste im Hauptfenster (s.\,u.).
+  \item \srcref{void MainWindow::}{show_winner}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::show_winner(void)}: Zeigt den Gewinner des Backgammon-Spiels an.
+\end{itemize}
+\invsrcref{void:MainWindow::refresh_turn_list(void)}
+Nur zu der Funktion \srcref{void MainWindow::}{refresh_turn_list}{( void );}{\wdir gui/mainwindow.cpp}{void:MainWindow::refresh_turn_list(void)} möchte ich noch ein paar Worte sagen. Sie wird nach jeder Änderung an der Zugliste aufgerufen. Für die jeweils letzten beiden Elemente der Zugliste (\srcref[]{std::vector< BG::BackgammonTurn > }{MainWindow::m_game::m_turn_list}{;}{\wdir backgammon.h}{BG::Backgammon::m_turn_list}) wird ein String erzeugt, der in die Anzeige der Zugliste eingefügt wird oder gegebenenfalls einen älteren ersetzt. Dieser String wird folgendermaßen erzeugt:
+\begin{enumerate}
+  \item Kopiere die Liste mit den zu konvertierenden Zügen nach \lstinline$move_list$.
+  \item Gehe \lstinline$move_list$ mit dem Iterator \lstinline$move_list_iter[ 0 ]$ durch~\dots
+    \begin{enumerate}[\theenumi.1.]
+      \item Den Zug \lstinline$move_list_iter[ 0 ]$ in das Ausgabeformat konvertieren und dem String \lstinline$str$ zuweisen.
+      \item Züge in der Liste \lstinline$move_list$, die \lstinline$move_list_iter[ 0 ]$ in der Liste folgen, mit dem Iterator \lstinline$move_list_iter[ 1 ]$ durchgehen\dots
+        \begin{enumerate}[\theenumi.\theenumii.1.]
+          \item Schließt der Zug des Iterators \lstinline$move_list_iter[ 1 ]$ direkt an den Zug \lstinline$move_list_iter[ 0 ]$ an, konvertiere \lstinline$move_list_iter[ 1 ]$ in das Ausgabeformat, hänge den konvertierten String an \lstinline$str$ an und lösche \lstinline$move_list_iter[ 1 ]$ aus der Liste.
+        \end{enumerate}
+      \item Hänge \lstinline$str$ als neues Element an die Liste \lstinline$moves$ an.
+    \end{enumerate}
+    \item Initialisieren den Ausgabestring für die Ausgabe mit dem Würfelergebnis.
+    \item Setze den Zähler \lstinline$j$ auf 1.
+    \item Gehe die Elemente der Liste \lstinline$moves$ mit dem Iterator \lstinline$moves_iter[ 0 ]$ durch\dots
+      \begin{enumerate}[\theenumi.\theenumii.1.]
+        \item Gehe die \lstinline$moves_iter[ 0 ]$ nachfolgenden Elemente in der Liste \lstinline$moves$ mit dme Iterator \lstinline$moves_iter[1]$ durch\dots
+          \begin{enumerate}[\theenumi.\theenumii.\theenumiii.1.]
+            \item Sind die Strings \lstinline$moves_iter[ 0 ]$ und \lstinline$moves_iter[ 1 ]$ gleich, dann erhöhe \lstinline$j$ um eins und lösche \lstinline$moves_iter[ 1 ]$ aus der Liste \lstinline$moves$.
+          \end{enumerate}
+        \item Füge den String \lstinline$moves_iter[ 0 ]$ mit Angabe der Häufigkeit \lstinline$j$ an den Ausgabestring an.
+      \end{enumerate}
+\end{enumerate}
+Zur Konvertierung einer programminternen Positionsangabe zu der auszugebenden Positionsangabe wird die Funktion \srcref{QString MainWindow::}{conv_pos}{( short int pos, BG::Player player );}{\wdir gui/mainwindow.cpp}{QString:MainWindow::conv_pos(short:int,BG::Player)} verwendet. 

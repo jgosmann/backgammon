@@ -1,0 +1,49 @@
+\chapter{Bedienung}
+Dieses Kapitel geht lediglich auf die Bedienung von \name{welfenlab\_comp06} ein. Auf die Verwendung von \name{ai-evolver} wird im Kapitel \ref{sec:ai-evolver:usage} eingegangen.
+
+\section{Allgemein}
+Das Hauptfenster des Programmes ist mit sogenannten Dock-Widgets in mehrere Bereiche aufgeteilt, welches eine Anpassung an die eigenen Bedürfnisse und Vorlieben ermöglicht. Per Drag~\&~Drop können die Dock-Widgets neu angeordnet und auch aus dem Hauptfenster ausgeklinkt werden. Letzteres kann alternativ auch über das Fenster-Symbol jeweils oben rechts geschehen. Über entsprechende Menüeinträge, Toolbar-Buttons und jeweils das X oben rechts können die Dock-Widgets ein- und ausgeblendet werden.
+
+\paragraph*{Spielfeld:} Der zentrale Bereich des Programmfensters wird immer von dem Backgammon-Spielfeld eingenommen. Mit dem Menüeintrag \menu{Ansicht/Spielbrett drehen} oder dem entsprechenden Button auf der Toolbar lässt sich das Spielfeld um $180^\circ$ drehen. Züge werden per Drag~\&~Drop eingegeben. Um einen Spielstein auszuwürfeln, ist dieser auf den linken oder rechten Bereich ohne "`Zungen"' zu ziehen. Die Farben des Spielfeldes können über das Menü \menu{Einstellungen} festgelegt werden.
+
+\paragraph*{Würfel:} In diesem Dock-Widget wird das jeweils letzte Würfelergebnis angezeigt. Sofern kein automatisches Würfeln aktiviert ist, wird mit einem Klick auf die Würfel, den entsprechenden Button in der Toolbar oder durch Drücken von \key{Ctrl\,+\,W} gewürfelt. Auf die gleiche Weise wird ein lokales Spiel gestartet. Netzwerkspiele werden automatisch gestartet.
+
+\paragraph*{Zugliste:} Die Zugliste listet alle Züge eines Spiels auf. Wird ein Spielstein geschlagen, so wird dies mit einem Sternchen (*) gekennzeichnet. Wird ein Zug mehrmals ausgeführt, so werden alle diese Züge zusammengefasst und die Anzahl in Klammern dahinter angezeigt.
+
+\paragraph*{Statistiken:} In den Statistiken wird angezeigt, die wievielte Runde gerade gespielt wird und wie viele Punkte der weiße und schwarze Spieler jeweils erhalten haben.
+
+\paragraph*{Chat-Fenster:} Wurde eine Verbindung zu einem Backgammon-Server aufgebaut, kann über das Chat-Fenster mit anderen angemeldeten Benutzer gechattet werden. Dazu wird der Benutzer, an den die Nachricht gehen soll, in der Combo-Box ausgewählt und die Nachricht in das Eingabefeld eingegeben. Mit einem Klick auf \btn{Senden} oder durch Drücken von \key{Enter} wird die Nachricht gesendet. (Im Chat-Bereich des Dialogfensters für ein neues Spiel ist es nicht möglich die Enter-Taste zum Senden zu verwenden, da mit dieser das Fenster geschlossen und ein neues Spiel gestartet wird.)
+
+Ein- und ausgehende Chat-Nachrichten werden im Chat-Fenster schwarz angezeigt. Servermeldungen sind blau, Fehlermeldungen rot und Änderungen des Verbindungsstatus werden grau dargestellt.
+
+\paragraph*{Statuszeile:} In der Statuszeile werden verschiedene Informationen angezeigt. Im linken Teil erscheint der Grund, warum ein Zug nicht gültig ist, wenn versucht wird einen ungültigen Zug zu setzen. Weiterhin wird hier auch eine kurze Hilfe zu den Menüpunkten angezeigt oder dass ein Spieler zugunfähig ist, wenn blockierende Meldungen für diesen Spieler deaktiviert sind.
+
+Der rechte Teil der Statusleiste zeigt den aktuellen Spieler und ob die KI gerade nach einem Zug sucht.
+
+\section{Neues Spiel oder neue Runde starten}
+Mit \menu{Datei/Neues Spiel\dots} oder dem entsprechenden Toolbar-Button kann ein neues Spiel gestartet werden. Wenn gerade ein Netzwerkspiel läuft, wird dieses (nach Bestätigung einer entsprechenden Frage) abgebrochen. Somit kann dieses im Gegensatz zu einem lokalen Spiel nach einem Klick auf \btn{Abbrechen} nicht fortgesetzt werden.
+
+In dem Dialogfenster für ein neues Spiel kann festgelegt werden, welche Farbe von wem kontrolliert wird (\btn{menschlicher Spieler}, \btn{Computer}, \btn{Netzwerkspieler}). \btn{Netzwerkspieler} kann dabei nur ausgewählt werden, wenn einem Netzwerkspiel beigetreten wurde und dieser Wert kann nur für genau einen Spieler ausgewählt werden. Die KI kann mit einem Klick auf den Schraubenschlüssel konfiguriert werden. Der Timeoutwert der KI sollte bei Netzwerkspielen etwas niedriger als der Timeoutwert des entsprechenden Netzwerkspiels liegen, da das Verarbeiten und Senden eines Zuges der KI noch einen kurzen Moment nach Ablauf des Timeouts benötigen kann. Auf die Bedeutung der einzelnen Parameter für die KI wird in Kapitel \ref{sec:ai:rating_function} eingegangen.
+
+Ist die Option \btn{Blockierende Meldung anzeigen, wenn dieser Spieler zugunfähig ist}\ aktiv, so wird das Spiel pausiert, wenn der entsprechende Spieler zugunfähig ist, und eine Dialogbox angezeigt, die erst bestätigt werden muss. Andernfalls wird dies nur in der Statusleiste eingeblendet und das Spiel läuft sofort weiter. Normalerweise muss jeder Spieler erst durch einen Klick auf die Würfel oder den entsprechenden Toolbar-Button würfeln. Mit der Option \btn{Automatisch Würfeln} wird für den entsprechenden Spieler automatisch gewürfelt. Für einen Netzwerkspieler wird immer automatisch gewürfelt.
+
+Wird ein neues Spiel gestartet, werden die Statistiken zurückgesetzt. Stattdessen kann mit \menu{Datei/Nächste Runde starten} oder durch den entsprechenden Toolbar-Button ein Spiel mit den gleichen Einstellungen gestartet werden, wobei die Statistiken nicht gelöscht werden. Mit dem Menüpunkt \menu{Datei/Runden automatisch starten} wird nach Beendigung einer Runde direkt die nächste gestartet, ohne dass der Gewinner angezeigt wird. Bei einem Offline-Spiel wird dies so lange fortgesetzt, bis diese Option wieder deaktiviert wird. Bei einem Netzwerkspiel werden dagegen nur so lange neue Runden gestartet, bis die bei der Erstellung des Spiels angegebene Anzahl an Runden gespielt wurde.
+
+\section{Verbindung zu Netzwerkspiel herstellen}
+Um die Verbindung zu einem Netzwerkspiel herzustellen, muss zuerst die Verbindung zu einem Backgammon-Server hergestellt werden. Dies geschieht im Dialogfenster für ein neues Spiel unter dem Reiter \btn{Netzwerkverbindung}. Für den Server kann entweder ein Hostname oder eine IP angegeben werden. Ist der Server nicht unter dem Standard-Port 30167 erreichbar, so kann ein alternativer Port mit einem Doppelpunkt (:) getrennt hinter dem Servernamen bzw. der IP angegeben werden. Die letzten zehn Server und Benutzernamen, die verwendet wurden, werden gespeichert und lassen sich direkt in den Combo-Boxes auswählen.
+
+Nach dem Herstellen der Verbindung zu einem Backgammon-Server kann ein neues Spiel mit dem einem Klick auf den Button \btn{Spiel erstellen\dots} angelegt werden. Um einem bestehenden Spiel beizutreten, muss dies in der Liste ausgewählt und dann auf \btn{Spiel beitreten} geklickt werden. Tritt man einem Spiel bei, so ändert sich der Button \btn{Spiel beitreten} in \btn{Spiel verlassen}. Nach einem Klick auf \btn{OK} startet ein Netzwerkspiel sofort im Gegensatz zu einem lokalen Spiel, welches erst durch einen Klick auf die Würfel gestartet werden muss.
+
+Im unteren Teil des Reiters \btn{Netzwerkverbindungen} befindet sich auch ein Chat-Fenster, welches sich von dem des Hauptfensters nicht unterscheidet. Allerdings sollte hier nicht die \key{Enter}-Taste zum Senden von Nachrichten verwendet werden, da diese das Dialogfenster bestätigen und schließen würde.
+
+Es ist übrigens auch möglich eine Netzwerkverbindung herzustellen ohne anschließend einem Netzwerkspiel beizutreten. So kann man z.\,B. auch während eines lokalen Spiels mit anderen angemeldeten Benutzern auf dem Backgammon-Server chatten.
+
+\paragraph*{Hinweis:} Leider hat der Backgammon-Server auf \url{werefkin.gdv.uni-hannover.de} zur Zeit (Stand: 24.~Februar~2007) noch einige Bugs. Daher sollten bei Verwendung dieses Servers der Welfenlab Competition vorher die Informationen im Anhang \ref{sec:serverbugs} gelesen werden.
+
+\section{Programmargumente}
+Da das Programm \name{Qt} basiert ist, kennt es auch die durch \name{Qt} bereitgestellten Argumente (z.\,B.~\progarg{"~style}). Nähere Informationen dazu sind der \name{Qt}-Dokumentation zu entnehmen.
+
+Das einzige weitere Programmargument, dass das Programm kennt ist \progarg{"~"~netdbg}. Es sorgt dafür, dass sämtliche ein- und ausgehenden Netzwerknachrichten in die Standardfehler-Ausgabe geschrieben werden. Eingehende Nachrichten beginnen mit einem \glq\lstinline$>$\grq, ausgehende mit einem \glq\lstinline$<$\grq.
+
+Dem Programm nicht bekannte Argumente werden ignoriert.
+

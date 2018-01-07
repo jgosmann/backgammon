@@ -1,0 +1,22 @@
+<RCC>
+  <qresource prefix="/player_types" >
+    <file>metacontact_online.png</file>
+    <file>system.png</file>
+  </qresource>
+  <qresource prefix="/toolbar" >
+    <file>undo.png</file>
+    <file>add.png</file>
+    <file>configure.png</file>
+    <file>connect_creating.png</file>
+    <file>edu_languages.png</file>
+    <file>exit.png</file>
+    <file>filenew.png</file>
+    <file>forward.png</file>
+    <file>kpercentage.png</file>
+    <file>package_games_board.png</file>
+    <file>reload.png</file>
+    <file>remove.png</file>
+    <file>rotate_cw.png</file>
+    <file>view_remove.png</file>
+  </qresource>
+</RCC>

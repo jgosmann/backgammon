@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>srvRunWin</class>
+ <widget class="QMainWindow" name="srvRunWin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>271</width>
+    <height>158</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Backgammon Server</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="data/icons.qrc">
+    <normaloff>:/appIcons/display.png</normaloff>:/appIcons/display.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Server-Adresse:</string>
+        </property>
+        <property name="buddy">
+         <cstring>srvAddr</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="srvAddr">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Server-Port:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="srvPort">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="exitSrv">
+      <property name="text">
+       <string>Server &amp;beenden</string>
+      </property>
+      <property name="icon">
+       <iconset resource="data/icons.qrc">
+        <normaloff>:/btnIcons/shutdown.png</normaloff>:/btnIcons/shutdown.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>271</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="data/icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>exitSrv</sender>
+   <signal>clicked()</signal>
+   <receiver>srvRunWin</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

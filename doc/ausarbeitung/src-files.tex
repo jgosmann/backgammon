@@ -1,0 +1,31 @@
+\documentclass{scrreprt}
+\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\lstset{basicstyle=\tiny, escapeinside={*<}{>*}} % Die Angabe der Schriftgröße dient nur dazu Warnungen wegen "overfull \hboxes" zu vermeiden.
+
+\newcommand{\base}{../../}
+\newcommand{\wdir}{welfenlab_comp06/}
+
+\newcommand{\wsrcinc}[1]{\lstinputlisting{\base \wdir #1.h}\lstinputlisting{\base \wdir #1.cpp}}
+
+\begin{document}
+\wsrcinc{ai}
+\lstinputlisting{\base \wdir ai_std_config.h}
+\wsrcinc{aithread}
+\wsrcinc{backgammon}
+\lstinputlisting{\base \wdir config.h}
+\lstinputlisting{\base \wdir main.cpp}
+\wsrcinc{netbackgammon}
+\wsrcinc{gui/aisettingsdialog}
+\wsrcinc{gui/backgammonwidget}
+\wsrcinc{gui/chatwidget}
+\wsrcinc{gui/dicewidget}
+\wsrcinc{gui/mainwindow}
+\wsrcinc{gui/newgamedialog}
+
+\lstinputlisting{\base ai-evolver/aievolver.h}
+\lstinputlisting{\base ai-evolver/aievolver.cpp}
+\lstinputlisting{\base ai-evolver/main.cpp}
+\end{document}

@@ -1,0 +1,102 @@
+<ui version="4.0" >
+ <class>ChatWidget</class>
+ <widget class="QWidget" name="ChatWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>469</width>
+    <height>128</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QTextEdit" name="chat_log" >
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label" >
+       <property name="text" >
+        <string>Senden &amp;an:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>send_to</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="send_to" >
+       <property name="minimumSize" >
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Hier kann der Empfänger der Chat-Nachricht ausgewählt werden.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="text" >
+       <property name="toolTip" >
+        <string>Hier kann eine Nachricht eingegeben werden, die an einen anderen Benutzer auf dem Backgammon-Server geschickt werden soll.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_send" >
+       <property name="text" >
+        <string>&amp;Senden</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>text</tabstop>
+  <tabstop>button_send</tabstop>
+  <tabstop>send_to</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>text</sender>
+   <signal>returnPressed()</signal>
+   <receiver>button_send</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>214</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>410</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

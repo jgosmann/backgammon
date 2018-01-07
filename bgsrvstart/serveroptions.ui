@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ServerOptions</class>
+ <widget class="QDialog" name="ServerOptions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>596</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Server-Einstellungen</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="data/icons.qrc">
+    <normaloff>:/appIcons/display.png</normaloff>:/appIcons/display.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Server-&amp;Port:</string>
+       </property>
+       <property name="buddy">
+        <cstring>serverPort</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="serverPort">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>65536</number>
+       </property>
+       <property name="value">
+        <number>30167</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Maximale Anzahl an &amp;Verbindungen:</string>
+       </property>
+       <property name="buddy">
+        <cstring>nMaxConnections</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSpinBox" name="nMaxConnections">
+       <property name="maximum">
+        <number>256</number>
+       </property>
+       <property name="value">
+        <number>16</number>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Begrüßungs&amp;nachricht:</string>
+       </property>
+       <property name="buddy">
+        <cstring>motd</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="motd">
+       <property name="text">
+        <string>Welcome to the server!</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="needsLogin">
+     <property name="text">
+      <string>&amp;Benutername und Passwort wird für die Anmeldung benötigt.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="users">
+     <property name="rowCount">
+      <number>1</number>
+     </property>
+     <property name="columnCount">
+      <number>2</number>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>175</number>
+     </attribute>
+     <row/>
+     <column>
+      <property name="text">
+       <string>Benutzername</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Passwort</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="save">
+       <property name="text">
+        <string>Sp&amp;eichern …</string>
+       </property>
+       <property name="icon">
+        <iconset resource="data/icons.qrc">
+         <normaloff>:/btnIcons/filesave.png</normaloff>:/btnIcons/filesave.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="load">
+       <property name="text">
+        <string>&amp;Laden …</string>
+       </property>
+       <property name="icon">
+        <iconset resource="data/icons.qrc">
+         <normaloff>:/btnIcons/fileopen.png</normaloff>:/btnIcons/fileopen.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>&amp;Abbrechen</string>
+       </property>
+       <property name="icon">
+        <iconset resource="data/icons.qrc">
+         <normaloff>:/btnIcons/button_cancel.png</normaloff>:/btnIcons/button_cancel.png</iconset>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Server &amp;starten</string>
+       </property>
+       <property name="icon">
+        <iconset resource="data/icons.qrc">
+         <normaloff>:/appIcons/display.png</normaloff>:/appIcons/display.png</iconset>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>serverPort</tabstop>
+  <tabstop>nMaxConnections</tabstop>
+  <tabstop>motd</tabstop>
+  <tabstop>cancel</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="data/icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>ServerOptions</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>415</x>
+     <y>396</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>413</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ServerOptions</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>527</x>
+     <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
