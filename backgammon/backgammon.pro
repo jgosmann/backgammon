@@ -36,7 +36,8 @@ HEADERS += gui/mainwindow.h \
            aithread.h \
            gui/aisettingsdialog.h \
            netbackgammon.h \
-           gui/chatwidget.h
+           gui/chatwidget.h \
+           gui/settings.h
 SOURCES += main.cpp \
            gui/mainwindow.cpp \
            backgammon.cpp \
@@ -48,7 +49,8 @@ SOURCES += main.cpp \
            aithread.cpp \
            gui/aisettingsdialog.cpp \
            netbackgammon.cpp \
-           gui/chatwidget.cpp 
+           gui/chatwidget.cpp \
+           gui/settings.cpp
 
 TARGET = backgammon
 

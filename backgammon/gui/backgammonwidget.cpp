@@ -36,6 +36,7 @@
 #include <QWidget>
 
 #include "backgammon.h"
+#include "settings.h"
 
 #include "backgammonwidget.h"
 
@@ -50,16 +51,16 @@ BackgammonWidget::BackgammonWidget( BG::Backgammon *game, QWidget *parent )
 
   setAcceptDrops( true );
 
-  m_col_white = settings.value( "BackgammonWidget/m_col_white",
-                                QColor( 255, 255, 255 ) ).value< QColor >();
-  m_col_black = settings.value( "BackgammonWidget/m_col_black",
-                                QColor( 0, 0, 0 ) ).value< QColor >();
-  m_col_pen = settings.value( "BackgammonWidget/m_col_pen",
-                              QColor( 0, 0, 0 ) ).value< QColor >();
-  m_col_bar = settings.value( "BackgammonWidget/m_col_bar",
-                              QColor( 240, 240, 184 ) ).value< QColor >();
-  m_col_bg = settings.value( "BackgammonWidget/m_col_bg",
-                              QColor( 255, 255, 204 ) ).value< QColor >();
+  m_col_white = load_color( "BackgammonWidget/m_col_white",
+                            QColor( 255, 255, 255 ) );
+  m_col_black = load_color( "BackgammonWidget/m_col_black",
+                            QColor( 0, 0, 0 ) );
+  m_col_pen = load_color( "BackgammonWidget/m_col_pen",
+                          QColor( 0, 0, 0 ) );
+  m_col_bar = load_color( "BackgammonWidget/m_col_bar",
+                          QColor( 240, 240, 184 ) );
+  m_col_bg = load_color( "BackgammonWidget/m_col_bg",
+                         QColor( 255, 255, 204 ) );
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -72,11 +73,11 @@ BackgammonWidget::~BackgammonWidget( void )
   if( m_drag_icon )
     delete m_drag_icon;
 
-  settings.setValue( "BackgammonWidget/m_col_white", m_col_white );
-  settings.setValue( "BackgammonWidget/m_col_black", m_col_black );
-  settings.setValue( "BackgammonWidget/m_col_pen", m_col_pen );
-  settings.setValue( "BackgammonWidget/m_col_bar", m_col_bar );
-  settings.setValue( "BackgammonWidget/m_col_bg", m_col_bg );
+  save_color( "BackgammonWidget/m_col_white", m_col_white );
+  save_color( "BackgammonWidget/m_col_black", m_col_black );
+  save_color( "BackgammonWidget/m_col_pen", m_col_pen );
+  save_color( "BackgammonWidget/m_col_bar", m_col_bar );
+  save_color( "BackgammonWidget/m_col_bg", m_col_bg );
 }
 
 /*< \label{BG::Position:BackgammonWidget::conv_mouse_pos(int,int)} >*/
