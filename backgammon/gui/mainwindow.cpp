@@ -100,9 +100,9 @@ MainWindow::MainWindow( QWidget *parent, Qt::WindowFlags flags )
   menu_Ansicht->addSeparator();
 
   m_turn_list_model = new QStandardItemModel( 1, 2, turn_list_view );
-  m_turn_list_model->setHeaderData( 0, Qt::Horizontal, QVariant( "Weiß" ) );
+  m_turn_list_model->setHeaderData( 0, Qt::Horizontal, tr( "Weiß" ) );
   m_turn_list_model->setHeaderData( 1, Qt::Horizontal,
-                                    QVariant( "Schwarz" ) );
+                                    tr( "Schwarz" ) );
   turn_list_view->setModel( m_turn_list_model );
   QAction *show_turn_list = dock_turn_list->toggleViewAction();
   show_turn_list->setIcon( QIcon( ":/toolbar/view_remove.png" ) );
