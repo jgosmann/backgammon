@@ -3,7 +3,7 @@
 # Unterordner relativ zum Projektordner: ./welfenlab_comp06
 # Das Target ist eine Anwendung:  welfenlab_comp06
 
-RESOURCES = data/icons.qrc 
+RESOURCES = data/icons.qrc translations.qrc
 QT = core gui xml network widgets
 MOC_DIR = moc
 OBJECTS_DIR = obj
@@ -35,8 +35,5 @@ SOURCES += main.cpp \
 TARGET = bgsrvstart
 
 TRANSLATIONS += bgsrvstart_en.ts
-CODECFORTR = UTF-8
-CODECFORSRC = UTF-8
 ICON = "resources/MacOS/bgsrvstart.icns"
-QMAKE_BUNDLE_DATA = "resources/Windows/bgsrvstart.ico"
 RC_FILE = bgsrvstart.rc

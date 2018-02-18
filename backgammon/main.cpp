@@ -67,11 +67,14 @@ int main( int argc, char *argv[] )
   QTranslator translator;
   if( settings.value( "language", "en" ).toString() != "de" )
     {
-      if( translator.load( "backgammon_"
-                     + settings.value( "language", "en" ).toString() ) )
+      if( translator.load( ":backgammon_"
+                     + settings.value( "language", "en" ).toString() + ".qm" ) )
         { }
       else if( translator.load( "backgammon_"
-                          + settings.value( "language", "en" ).toString(),
+                     + settings.value( "language", "en" ).toString() + ".qm" ) )
+        { }
+      else if( translator.load( "backgammon_"
+                          + settings.value( "language", "en" ).toString() + ".qm",
                           QCoreApplication::applicationDirPath() ) )
         { }
       else
@@ -87,7 +90,7 @@ int main( int argc, char *argv[] )
           #endif
           #endif
           if( !translator.load( "backgammon_"
-                          + settings.value( "language", "en" ).toString(),
+                          + settings.value( "language", "en" ).toString() + ".qm",
                           tr_dir ) )
             QMessageBox::warning( NULL, "Language",
                                   "Language file could not be loaded." );

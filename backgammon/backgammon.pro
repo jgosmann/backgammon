@@ -3,7 +3,7 @@
 # Unterordner relativ zum Projektordner: ./welfenlab_comp06
 # Das Target ist eine Anwendung:  welfenlab_comp06
 
-RESOURCES = gui/data/gui.qrc 
+RESOURCES = gui/data/gui.qrc translations.qrc
 QT = core gui network widgets
 MOC_DIR = moc 
 UI_DIR = gui 
@@ -56,5 +56,4 @@ TARGET = backgammon
 
 TRANSLATIONS += backgammon_en.ts
 ICON = "resources/MacOS/backgammon.icns"
-QMAKE_BUNDLE_DATA = "resources/Windows/backgammon.ico"
 RC_FILE = backgammon.rc

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/" >
+    <file>backgammon_en.qm</file>
+  </qresource>
+</RCC>

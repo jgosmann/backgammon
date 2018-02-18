@@ -63,12 +63,16 @@ int main( int argc, char *argv[] )
     QTranslator translator;
     if( settings.value( "language", "en" ).toString() != "de" )
     {
-        if( translator.load( "bgsrvstart_"
-                + settings.value( "language", "en" ).toString() ) )
+        if( translator.load( ":bgsrvstart_"
+                + settings.value( "language", "en" ).toString() + ".qm" ) )
         {
         }
         else if( translator.load( "bgsrvstart_"
-                + settings.value( "language", "en" ).toString(),
+                + settings.value( "language", "en" ).toString() + ".qm" ) )
+        {
+        }
+        else if( translator.load( "bgsrvstart_"
+                + settings.value( "language", "en" ).toString() + ".qm",
                                   QCoreApplication::applicationDirPath() ) )
         {
         }
@@ -85,7 +89,8 @@ int main( int argc, char *argv[] )
 #endif
 #endif
             if( !translator.load( "bgsrvstart_"
-                    + settings.value( "language", "en" ).toString(), tr_dir ) )
+                    + settings.value( "language", "en" ).toString() + ".qm",
+                    tr_dir ) )
                 QMessageBox::warning( NULL, "Language",
                                       "Language file could not be loaded." );
 
