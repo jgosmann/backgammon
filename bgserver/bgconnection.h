@@ -54,7 +54,7 @@ class BGConnection : public QObject
     inline void write( QString msg, bool only_logged_in = true )
       {
         if( !only_logged_in || i_logged_in )
-          my_socket->write( msg.toAscii() );
+          my_socket->write( msg.toLatin1() );
       };
 
     inline QTcpSocket * get_socket( void ) { return my_socket; };

@@ -4,7 +4,7 @@
 # Das Target ist eine Anwendung:  welfenlab_comp06
 
 RESOURCES = gui/data/gui.qrc 
-QT = core gui network 
+QT = core gui network widgets
 MOC_DIR = moc 
 UI_DIR = gui 
 OBJECTS_DIR = obj

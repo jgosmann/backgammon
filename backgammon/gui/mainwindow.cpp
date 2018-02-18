@@ -63,7 +63,7 @@
 /////////////////////////////////////////////////////////////////////////////
 /// Konstruktor. Für die Argumente siehe die Qt4-Dokumentation (QMainWindow).
 /////////////////////////////////////////////////////////////////////////////
-MainWindow::MainWindow( QWidget *parent, Qt::WFlags flags )
+MainWindow::MainWindow( QWidget *parent, Qt::WindowFlags flags )
     : QMainWindow( parent, flags ), m_game( &m_net_connection, BG::WHITE,
                                             false ),
       m_dice_rolled( true ), m_round( 0 )

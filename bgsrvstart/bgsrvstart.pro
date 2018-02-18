@@ -4,7 +4,7 @@
 # Das Target ist eine Anwendung:  welfenlab_comp06
 
 RESOURCES = data/icons.qrc 
-QT = core gui xml network
+QT = core gui xml network widgets
 MOC_DIR = moc
 OBJECTS_DIR = obj
 INCLUDEPATH += ../bgserver ../backgammon .

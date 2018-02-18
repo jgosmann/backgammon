@@ -338,7 +338,7 @@ void NetBackgammonConnection::send( QString msg )
 {
   if( m_dbg )
     cerr << "< " << msg.toStdString() << std::flush;
-  write( msg.Ascii() );
+  write( msg.toLatin1() );
 }
 
 /////////////////////////////////////////////////////////////////////////////

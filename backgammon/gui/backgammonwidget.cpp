@@ -28,6 +28,7 @@
 #include <cmath>
 
 #include <QDrag>
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPicture>
@@ -390,7 +391,7 @@ void BackgammonWidget::mousePressEvent( QMouseEvent *event )
   alpha_channel_painter.drawEllipse( 0, 0, width() / 15 - 1,
   width() / 15 - 1 );
   alpha_channel_painter.end();
-  m_drag_icon->setAlphaChannel( alpha_channel );
+  // FIXME m_drag_icon->setAlphaChannel( alpha_channel );
 
   drag->setPixmap( *m_drag_icon );
   drag->setHotSpot( QPoint( width() / 30, width() / 30 ) );
