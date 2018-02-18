@@ -27,6 +27,7 @@
 
 #include <cmath>
 
+#include <QBitmap>
 #include <QDrag>
 #include <QMimeData>
 #include <QMouseEvent>
@@ -327,7 +328,7 @@ void BackgammonWidget::dropEvent( QDropEvent *event )
 /////////////////////////////////////////////////////////////////////////////
 void BackgammonWidget::mousePressEvent( QMouseEvent *event )
 {
-  QPixmap alpha_channel( width() / 15, width() / 15 ); // Alpha-Channel für
+  QBitmap alpha_channel( width() / 15, width() / 15 ); // Alpha-Channel für
                                                        // das Drag-Icon.
   QPainter alpha_channel_painter( &alpha_channel );
 
@@ -384,14 +385,14 @@ void BackgammonWidget::mousePressEvent( QMouseEvent *event )
   painter.end();
 
   alpha_channel_painter.fillRect( 0, 0, width() / 15, width() / 15,
-                                  QBrush( QColor( 0, 0, 0 ) ) );
+                                  QBrush( Qt::color0 ) );
   alpha_channel_painter.setRenderHint( QPainter::Antialiasing );
-  alpha_channel_painter.setPen( QColor ( 255, 255, 255 ) );
-  alpha_channel_painter.setBrush( QColor ( 255, 255, 255 ) );
+  alpha_channel_painter.setPen( Qt::color1 ) ;
+  alpha_channel_painter.setBrush( Qt::color1 );
   alpha_channel_painter.drawEllipse( 0, 0, width() / 15 - 1,
   width() / 15 - 1 );
   alpha_channel_painter.end();
-  // FIXME m_drag_icon->setAlphaChannel( alpha_channel );
+  m_drag_icon->setMask( alpha_channel );
 
   drag->setPixmap( *m_drag_icon );
   drag->setHotSpot( QPoint( width() / 30, width() / 30 ) );
