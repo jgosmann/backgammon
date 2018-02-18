@@ -1,6 +1,6 @@
 /*!
  * \file aithread.h
- * \brief Deklaration der Klasse für die KI.
+ * \brief Deklaration der Klasse fÃ¼r die KI.
  * \date Sa Dec 23 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -38,8 +38,8 @@
 
 /*< \label{AIThread} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Diese Klasse implementiert eine KI für Backgammon. Sie startet einen
-/// extra Thread, um das Programm nicht zu blockieren und wird über spezielle
+/// Diese Klasse implementiert eine KI fÃ¼r Backgammon. Sie startet einen
+/// extra Thread, um das Programm nicht zu blockieren und wird Ã¼ber spezielle
 /// Steuerfunktionen bedient.
 /////////////////////////////////////////////////////////////////////////////
 class AIThread : public QThread
@@ -47,68 +47,68 @@ class AIThread : public QThread
   Q_OBJECT
 
   public:
-    /// \brief Enumeration zur Beschreibung der Zustände eines AIThreads.
+    /// \brief Enumeration zur Beschreibung der ZustÃ¤nde eines AIThreads.
     ///
-    /// Diese Enumeration dient zur Beschreibung der Zustände eines AIThreads
+    /// Diese Enumeration dient zur Beschreibung der ZustÃ¤nde eines AIThreads
     enum StatusFlag
       {
-        SLEEPING,       ///< Führt gerade keine Aktion aus.
-        SEARCHING_MOVE, ///< Sucht beste Zugmöglichkeit.
+        SLEEPING,       ///< FÃ¼hrt gerade keine Aktion aus.
+        SEARCHING_MOVE, ///< Sucht beste ZugmÃ¶glichkeit.
         TERMINATING,    ///< AIThread wird beendet.
         TERMINATED      ///< AIThread wurde beendet.
       };
 
     /// \brief Enumeration zur Codierung von Aufforderungen in einen anderen
-    /// Zustand überzugehen.
+    /// Zustand Ã¼berzugehen.
     ///
     /// Enumeration zur Codierung von Aufforderungen an einen AI-Thread in
-    /// einen anderen Zustand überzugehen.
+    /// einen anderen Zustand Ã¼berzugehen.
     enum RequestFlag
       {
-        SLEEP,     ///< Ausführung pausieren.
+        SLEEP,     ///< AusfÃ¼hrung pausieren.
         FIND_MOVE, ///< Zug suchen.
-        TERMINATE  ///< Ausführung terminieren.
+        TERMINATE  ///< AusfÃ¼hrung terminieren.
       };
 
     /*< \label{AIThread::RatingFactors} >*/
-    /// \brief Enumration mit Indizes für \ref m_rating_factors.
+    /// \brief Enumration mit Indizes fÃ¼r \ref m_rating_factors.
     ///
-    /// Enumration mit Indizes für \ref m_rating_factors.
+    /// Enumration mit Indizes fÃ¼r \ref m_rating_factors.
     enum RatingFactors
       {
-        PROB_CHECKER_IS_HIT = 0,      ///< Faktor für die Wahrscheinlichkeit,
+        PROB_CHECKER_IS_HIT = 0,      ///< Faktor fÃ¼r die Wahrscheinlichkeit,
                                       ///< dass ein eigener Spielstein
                                       ///< geschlagen wird.
-        PROB_CANNOT_MOVE = 1,         ///< Faktor für die Wahrscheinlichkeit,
-                                      ///< dass die KI im nächsten Zug
-                                      ///< zugunfähig ist.
-        PROB_OP_CANNOT_MOVE = 2,      ///< Faktor für die Wahrscheinlichkeit,
-                                      ///< dass der Gegner zugunfähig ist.
-        PROB_OP_CANNOT_MOVE_BAR = 3,  ///< Faktor für die Wahrscheinlichkeit,
+        PROB_CANNOT_MOVE = 1,         ///< Faktor fÃ¼r die Wahrscheinlichkeit,
+                                      ///< dass die KI im nÃ¤chsten Zug
+                                      ///< zugunfÃ¤hig ist.
+        PROB_OP_CANNOT_MOVE = 2,      ///< Faktor fÃ¼r die Wahrscheinlichkeit,
+                                      ///< dass der Gegner zugunfÃ¤hig ist.
+        PROB_OP_CANNOT_MOVE_BAR = 3,  ///< Faktor fÃ¼r die Wahrscheinlichkeit,
                                       ///< dass der Gegner nicht von der Bar
                                       ///< ziehen kann.
         N_POINTS_WITH_CHECKERS = 4,   ///< Zahl der "Zungen" mit mindestens
                                       ///< zwei eigenen Spielsteinen.
-        BEARED_OFF = 5,               ///< Faktor für die Zahl der
-                                      ///< ausgewürfelten Spielsteine.
+        BEARED_OFF = 5,               ///< Faktor fÃ¼r die Zahl der
+                                      ///< ausgewÃ¼rfelten Spielsteine.
         DISTANCE_FROM_HOMEBOARD = 6,  ///< Durchschnittliche Entfernung vom
                                       ///< Homeboard.
         CHECKERS_IN_OP_HOMEBOARD = 7, ///< Zahl der Spielsteine, die sich
                                       ///< im gegnerischen Homeboard oder auf
                                       ///< der Bar befinden.
-        OP_DISTANCE_FROM_OFF_GAME = 8 ///< Faktor für die durchschnittliche
-                                      ///< Entfernung zum Auswürfeln eines
+        OP_DISTANCE_FROM_OFF_GAME = 8 ///< Faktor fÃ¼r die durchschnittliche
+                                      ///< Entfernung zum AuswÃ¼rfeln eines
                                       ///< Spielsteines.
       };
     static const unsigned int NUM_RATING_FACTORS = 9;
-        ///< Größe von \ref m_rating_factors.
+        ///< GrÃ¶ÃŸe von \ref m_rating_factors.
 
     AIThread( BG::Backgammon *game, QObject *parent = 0 );
 
     /*< \label{inline:void:AIThread::request(RequestFlag)} >*/
     inline void request( RequestFlag request_flag )
         { QMutexLocker lock( &m_request_mutex ); m_request = request_flag; }
-        ///< \brief Sendet eine Aufforderung zur Statusänderung an einen
+        ///< \brief Sendet eine Aufforderung zur StatusÃ¤nderung an einen
         ///< AI-Thread.
     inline void set_rating_factor( RatingFactors factor, double value )
         { QMutexLocker lock( &m_rating_factors_mutex );
@@ -120,9 +120,9 @@ class AIThread : public QThread
 
     inline std::vector< BG::BackgammonMove > & get_best_move( void )
         { return m_best_move; }
-        ///< \brief Gibt den besten gefunden Zug zurück.
+        ///< \brief Gibt den besten gefunden Zug zurÃ¼ck.
         ///<
-        ///< Gibt den besten gefundenen Zug zurück.
+        ///< Gibt den besten gefundenen Zug zurÃ¼ck.
         ///< \attention Vor Verwendung der Funktion muss lock_best_move()
         ///< aufgerufen werden. Nach Verwendung unlock_best_move().
     inline void lock_best_move( void ) {  m_best_move_mutex.lock(); }
@@ -146,7 +146,7 @@ class AIThread : public QThread
     void best_move_found( void );
 
   protected:
-    void run( void ); ///< \brief Startet die Ausführung der KI.
+    void run( void ); ///< \brief Startet die AusfÃ¼hrung der KI.
 
     void find_move( short int rec_depth = 0 );
         ///< \brief Hauptfunktion der KI, die den besten Zug sucht.
@@ -159,7 +159,7 @@ class AIThread : public QThread
         ///< \brief Durchschnittliche Entfernung zum Homeboard.
     double distance_from_off_game( const BG::Backgammon *game,
                                    BG::Player player ) const;
-        ///< \brief Durchschnittliche Entfernung zum Auswüfeln.
+        ///< \brief Durchschnittliche Entfernung zum AuswÃ¼feln.
     unsigned short int n_checkers_in_op_homeboard(
         const BG::Backgammon *game, BG::Player player ) const;
         ///< \brief Anzahl eigner Steine im gegnerischen Homeboard.
@@ -168,7 +168,7 @@ class AIThread : public QThread
         ///< \brief Anzahl an "Zungen" mit eigenen Spielsteinen.
     double prob_get_checker_back_into_game( const BG::Backgammon *game,
                                             BG::Player player ) const;
-        ///< \brief Wahrscheinlichkeit einen Spielstein wieder einzuwürfeln.
+        ///< \brief Wahrscheinlichkeit einen Spielstein wieder einzuwÃ¼rfeln.
     double prob_player_cannot_move_at_pos( BG::Position pos,
                                            const BG::Backgammon *game,
                                            BG::Player player ) const;
@@ -183,33 +183,33 @@ class AIThread : public QThread
         { QMutexLocker lock( &m_status_mutex ); m_status = status_flag; }
 
   private:
-    BG::Backgammon *m_game; ///< \brief Zeiger auf das Backgammon-Spiel für
+    BG::Backgammon *m_game; ///< \brief Zeiger auf das Backgammon-Spiel fÃ¼r
                             ///< das die KI verwendet wird.
 
     mutable QMutex m_best_move_mutex;
     /*< \label{AIThread::m_best_move} >*/
     std::vector< BG::BackgammonMove > m_best_move;
-        ///< \brief Beste gefundene Zugmölichkeit.
+        ///< \brief Beste gefundene ZugmÃ¶lichkeit.
     double m_best_move_rating; ///< Bewertung der besten gefundenen
-                               ///< Zugmöglichkeit.
+                               ///< ZugmÃ¶glichkeit.
 
     mutable QMutex m_status_mutex;
     StatusFlag m_status; ///< \brief Aktueller Status des AI-Threads
     mutable QMutex m_request_mutex;
-    RequestFlag m_request; ///< \brief Anforderung für Statuswechsel.
+    RequestFlag m_request; ///< \brief Anforderung fÃ¼r Statuswechsel.
 
     mutable QMutex m_rating_factors_mutex;
     /*< \label{AIThread::m_rating_factors} >*/
     double m_rating_factors[ NUM_RATING_FACTORS ];
-        ///< \brief Faktoren für die Bewertungsfunktion.
+        ///< \brief Faktoren fÃ¼r die Bewertungsfunktion.
 
     mutable QMutex m_moves_set_mutex;
     bool m_moves_set; ///< \brief Wurde bereits eine Zugkombination in
                       ///< \ref m_moves gespeichert? Diese Variable muss
                       ///< mit set_moves_set() auf false gesetzt werden,
                       ///< bevor m_request auf FIND_MOVE gesetzt wird. Denn
-                      ///< die Klasse tut dies nicht. Würde diese Variable
-                      ///< nur von der Klasse auf false gesetzt könnte es
+                      ///< die Klasse tut dies nicht. WÃ¼rde diese Variable
+                      ///< nur von der Klasse auf false gesetzt kÃ¶nnte es
                       ///< zu einer race condition kommen.
 
     /* Folgende Variablen werden von find_move() verwendet. */
@@ -218,19 +218,19 @@ class AIThread : public QThread
                                 ///< von find_move().
     /*< \label{AIThread::m_dice} >*/
     short int m_dice[ 4 ]; ///< \brief Von find_move() verwendete Variable
-                           ///< mit den Augenzahlen für die noch gesetzt
+                           ///< mit den Augenzahlen fÃ¼r die noch gesetzt
                            ///< werden muss
     /*< \label{AIThread::m_changes} >*/
     short int m_changes[ 25 ];
-        ///< \brief Temporäre Änderungen an den Positionen der Spielsteine
+        ///< \brief TemporÃ¤re Ã„nderungen an den Positionen der Spielsteine
         ///< in find_move().
         ///<
-        ///< Diese Variable speichert temporäre Änderungen der Positionen an
+        ///< Diese Variable speichert temporÃ¤re Ã„nderungen der Positionen an
         ///< den Spielsteinen des Backgammon-Spiels in \ref m_game anstatt
-        ///< tatsächlich in diesem. \ref m_changes[24] steht für die Bar.
+        ///< tatsÃ¤chlich in diesem. \ref m_changes[24] steht fÃ¼r die Bar.
     /*< \label{AIThread::m_moves} >*/
     std::vector< BG::BackgammonMove > m_moves;
-        ///< \brief Aktuelle in find_move() geprüfte Zugkombination.
+        ///< \brief Aktuelle in find_move() geprÃ¼fte Zugkombination.
 };
 
 #endif

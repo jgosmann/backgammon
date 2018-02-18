@@ -1,7 +1,7 @@
 /*!
  * \file newgamedialog.cpp
- * \brief Enthält die Implementation der Klasse NewGameDialog, welche das
- *        Interface zum Setzen der Einstellungen für ein neues Spiel
+ * \brief EnthÃ¤lt die Implementation der Klasse NewGameDialog, welche das
+ *        Interface zum Setzen der Einstellungen fÃ¼r ein neues Spiel
  *        bereitstellt.
  * \date Fr Jan 26 2007
  * \author Jan Gosmann (jan@hyper-world.de)
@@ -223,7 +223,7 @@ NewGameDialog::~NewGameDialog( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Aktualisiert die GUI-Elemente des Dialogs gemäß den aktuellen
+/// Aktualisiert die GUI-Elemente des Dialogs gemÃ¤ÃŸ den aktuellen
 /// Einstellungen.
 /////////////////////////////////////////////////////////////////////////////
 void NewGameDialog::update( void )
@@ -369,7 +369,7 @@ void NewGameDialog::update( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Zeigt das Einstellungsfenster für einen Spieler vom Typ \a type an.
+/// Zeigt das Einstellungsfenster fÃ¼r einen Spieler vom Typ \a type an.
 /// \a player gibt die Farbe des Spielers an.
 /////////////////////////////////////////////////////////////////////////////
 void NewGameDialog::configure_player( int player, int type )
@@ -483,8 +483,8 @@ void NewGameDialog::on_button_create_game_clicked( void )
       if( dlg_contents.password->text() != dlg_contents.password2->text() )
         QMessageBox::information( &new_net_game_dlg,
                                   QString( tr("Passwortschutz") ),
-                                  QString( tr("Die eingegebenen Passwörter "
-                                              "stimmen nicht überein.") ) );
+                                  QString( tr("Die eingegebenen PasswÃ¶rter "
+                                              "stimmen nicht Ã¼berein.") ) );
       if( new_net_game_dlg.exec() != QDialog::Accepted )
         return;
     }
@@ -497,11 +497,11 @@ void NewGameDialog::on_button_create_game_clicked( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Tritt einem Spiel auf dem Server bei bzw. verlässt es.
+/// Tritt einem Spiel auf dem Server bei bzw. verlÃ¤sst es.
 /////////////////////////////////////////////////////////////////////////////
 void NewGameDialog::on_button_join_game_clicked( void )
 {
-  QString password = ""; // Passwort, dass zum Beitreten benötigt wird.
+  QString password = ""; // Passwort, dass zum Beitreten benÃ¶tigt wird.
 
   if( !m_connection->get_joined_game() )
     {

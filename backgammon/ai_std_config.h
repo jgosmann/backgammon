@@ -1,6 +1,6 @@
 /*!
  * \file ai_std_config.h
- * \brief Diese Datei enthält Deklaration für die Standard-Parameter der KI.
+ * \brief Diese Datei enthÃ¤lt Deklaration fÃ¼r die Standard-Parameter der KI.
  * \date Fr Jan 26 2007
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -32,7 +32,7 @@
 /// Standard-Timeout in Millisekunden
 #define AI_STD_TIMEOUT 3000
 
-/// Standardwerte für die Bewertungsfaktoren.
+/// Standardwerte fÃ¼r die Bewertungsfaktoren.
 const double AI_STD_RATING_FACTORS[ AIThread::NUM_RATING_FACTORS ] =
   {
     -400.0, // PROB_CHECKER_IS_HIT

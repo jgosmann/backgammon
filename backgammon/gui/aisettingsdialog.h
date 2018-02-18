@@ -1,6 +1,6 @@
 /*!
  * \file aisettingsdialog.h
- * \brief Deklaration einer Klasse für einen Dialog, um KI-Einstellungen
+ * \brief Deklaration einer Klasse fÃ¼r einen Dialog, um KI-Einstellungen
  *        vorzunehmen.
  * \date Su Jan 28 2007
  * \author Jan Gosmann (jan@hyper-world.de)

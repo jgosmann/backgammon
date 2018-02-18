@@ -44,8 +44,8 @@ using namespace BG;
 /////////////////////////////////////////////////////////////////////////////
 /// Konstruktor. \a from gibt den Zacken an, von dem der Spielstein gezogen
 /// wird, \a distance gibt an, um wie viele Felder der Spielstein gezogen
-/// wird. Für \a distance kann in vielen Fällen auch die zusammengerechnete
-/// Augenzahl von beiden Würfeln verwendet werden.
+/// wird. FÃ¼r \a distance kann in vielen FÃ¤llen auch die zusammengerechnete
+/// Augenzahl von beiden WÃ¼rfeln verwendet werden.
 /////////////////////////////////////////////////////////////////////////////
 BackgammonMove::BackgammonMove( short int from, short int distance ) :
   m_from( from ), m_distance( distance )
@@ -68,7 +68,7 @@ BackgammonTurn::BackgammonTurn( Player player, short int d1, short int d2 ) :
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Fügt den Zug \a move zu den in der Runde ausgeführten Zügen hinzu. Dabei
+/// FÃ¼gt den Zug \a move zu den in der Runde ausgefÃ¼hrten ZÃ¼gen hinzu. Dabei
 /// gibt \a hit_checker an, ob mit \a move ein gegnerischer Spielstein
 /// geschlagen wurde.
 /////////////////////////////////////////////////////////////////////////////
@@ -82,10 +82,10 @@ void BackgammonTurn::add_move( BackgammonMove move, bool hit_checker )
 // Backgammon
 //===========================================================================
 /////////////////////////////////////////////////////////////////////////////
-/// Konstruktor. Wenn \a is_auto_dice_roll_enabled = true, dann würfelt die
+/// Konstruktor. Wenn \a is_auto_dice_roll_enabled = true, dann wÃ¼rfelt die
 /// Klasse automatisch, wenn der ziehende Spieler wechselt. Das
-/// Würfelergebnis kann mit get_dice() abgerufen werden. Ansonsten muss das
-/// Würfelergebnis manuell mit set_dice() gesetzt werden.
+/// WÃ¼rfelergebnis kann mit get_dice() abgerufen werden. Ansonsten muss das
+/// WÃ¼rfelergebnis manuell mit set_dice() gesetzt werden.
 /////////////////////////////////////////////////////////////////////////////
 Backgammon::Backgammon( bool is_auto_dice_roll_enabled, QObject *parent ) :
   QObject( parent ), m_var_mutex( QMutex::Recursive ), m_array_mutex(
@@ -97,16 +97,16 @@ Backgammon::Backgammon( bool is_auto_dice_roll_enabled, QObject *parent ) :
 
 /*< \label{bool:BG::Backgammon::is_valid_move(const:BackgammonMove&,IllegalMove*,bool*,bool)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob der in \a move übergebene Zug gültig ist. Wenn \a reason nicht
-/// NULL ist, wird in der übergebenen Variable gespeichert, wieso der Zug
-/// nicht möglich ist, falls dies der Fall ist. Wenn eine Variable für
-/// \a dice_used (welche ein Array mit vier Elementen sein muss) übergeben
+/// PrÃ¼ft, ob der in \a move Ã¼bergebene Zug gÃ¼ltig ist. Wenn \a reason nicht
+/// NULL ist, wird in der Ã¼bergebenen Variable gespeichert, wieso der Zug
+/// nicht mÃ¶glich ist, falls dies der Fall ist. Wenn eine Variable fÃ¼r
+/// \a dice_used (welche ein Array mit vier Elementen sein muss) Ã¼bergeben
 /// wird, wird in diesem Array gespeichert, welche der geworfenen Augenzahlen
-/// für diesen Zug verwendet werden müssten. Siehe dazu auch \ref m_dice.
-/// \a check_bar gibt an, ob geprüft werden soll, ob noch Spielsteine auf der
-/// Bar sind, die erst wieder zurück ins Spiel gebracht werden müssen.
-/// \retval true  Der Zug ist gültig.
-/// \retval false Der Zug ist ungültig.
+/// fÃ¼r diesen Zug verwendet werden mÃ¼ssten. Siehe dazu auch \ref m_dice.
+/// \a check_bar gibt an, ob geprÃ¼ft werden soll, ob noch Spielsteine auf der
+/// Bar sind, die erst wieder zurÃ¼ck ins Spiel gebracht werden mÃ¼ssen.
+/// \retval true  Der Zug ist gÃ¼ltig.
+/// \retval false Der Zug ist ungÃ¼ltig.
 /// \sa are_valid_moves(), is_able_to_move(), move()
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::is_valid_move( const BackgammonMove &move,
@@ -115,18 +115,18 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
   QMutexLocker var_lock( &m_var_mutex ), array_lock( &m_array_mutex );
 
   const short int PLAYER_IND = (m_act_player == WHITE) ? 1 : -1;
-  // Um if-Abfragen etc. übersichtlicher zu gestalten.
+  // Um if-Abfragen etc. Ã¼bersichtlicher zu gestalten.
   short int distance_left; // Zahl der Felder, die noch gesetzt werden muss.
   const short int START_POSITION = (move.get_from() != BAR) ? move.get_from()
       : (m_act_player == WHITE) ? -1 : 24;
-  // Feld, von dem gezogen wird, für Berechnungszwecke.
+  // Feld, von dem gezogen wird, fÃ¼r Berechnungszwecke.
   const short int END_POSITION = PLAYER_IND * move.get_distance()
       + START_POSITION;
   // Feld zu dem gezogen werden soll.
-  unsigned int n_dice_usable; // Gibt an für wie viele Würfel noch nicht
+  unsigned int n_dice_usable; // Gibt an fÃ¼r wie viele WÃ¼rfel noch nicht
   // gesetzt wurde.
-  short int tmp_position[ 2 ]; // Zum temporären Speichern von Positionen.
-  BackgammonMove tmp_move; // Zum temporären Speichern von Zügen.
+  short int tmp_position[ 2 ]; // Zum temporÃ¤ren Speichern von Positionen.
+  BackgammonMove tmp_move; // Zum temporÃ¤ren Speichern von ZÃ¼gen.
   unsigned int i;
 
   for( i = 0, n_dice_usable = 0; i < 4; i++ )
@@ -143,7 +143,7 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return false;
     }
 
-  /* Müssen noch Spielsteine zurück ins Spiel gebracht werden? */
+  /* MÃ¼ssen noch Spielsteine zurÃ¼ck ins Spiel gebracht werden? */
   if( m_on_bar[ m_act_player ] > 0 && move.get_from() != BAR && check_bar )
     {
       if( reason )
@@ -161,8 +161,8 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return false;
     }
 
-  /***** Eigentliche Überprüfung auf Gültigkeit des Zuges. *****/
-  /* Falls versucht wird einen Spielstein auszuwürfeln... */
+  /***** Eigentliche ÃœberprÃ¼fung auf GÃ¼ltigkeit des Zuges. *****/
+  /* Falls versucht wird einen Spielstein auszuwÃ¼rfeln... */
   if( (m_act_player == WHITE && END_POSITION > 23) || (m_act_player == BLACK
       && END_POSITION < 0) )
     {
@@ -173,12 +173,12 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
           return false;
         }
 
-      /* Wenn die Augenzahl nicht passend ist... (Weiß am Zug) */
+      /* Wenn die Augenzahl nicht passend ist... (WeiÃŸ am Zug) */
       if( m_act_player == WHITE && END_POSITION > 24 )
         {
-          /* Bei folgender for-Schleife ist es nicht nötig zu prüfen, ob
+          /* Bei folgender for-Schleife ist es nicht nÃ¶tig zu prÃ¼fen, ob
            * move.get_from() == BAR, da in diesem Fall END_POSITION
-           * höchstens 23 sein könnte, end_position aber größer ist. */
+           * hÃ¶chstens 23 sein kÃ¶nnte, end_position aber grÃ¶ÃŸer ist. */
           for( i = move.get_from() - 1; i >= 18; i-- )
             {
               if( m_points[ i ] > 0 )
@@ -213,7 +213,7 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return false;
     }
 
-  /* Prüfen, ob die entsprechende Entfernung mit dem Würfelergebnis gesetzt
+  /* PrÃ¼fen, ob die entsprechende Entfernung mit dem WÃ¼rfelergebnis gesetzt
    * werden kann.
    */
   if( dice_used )
@@ -222,7 +222,7 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
         dice_used[ i ] = false;
     }
 
-  /* Würfel 1 */
+  /* WÃ¼rfel 1 */
   if( m_dice[ 0 ] == move.get_distance() )
     {
       if( (m_dice[ 0 ] > m_dice[ 1 ] && !m_dice_result_has_to_be_used[ 0 ])
@@ -233,9 +233,9 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
           return false;
         }
 
-      /* Mit Würfel 1 wäre der Zug möglich, kann danach aber noch für den
-       * anderen Würfel gesetzt werden, wenn dies aufgrund von Zugzwang
-       * nötig ist? */
+      /* Mit WÃ¼rfel 1 wÃ¤re der Zug mÃ¶glich, kann danach aber noch fÃ¼r den
+       * anderen WÃ¼rfel gesetzt werden, wenn dies aufgrund von Zugzwang
+       * nÃ¶tig ist? */
       if( (m_dice[ 0 ] > m_dice[ 1 ] && m_dice_result_has_to_be_used[ 1 ])
           || (m_dice[ 0 ] < m_dice[ 1 ] && m_dice_result_has_to_be_used[ 0 ]) )
         {
@@ -268,7 +268,7 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return true;
     }
 
-  /* Würfel 2 */
+  /* WÃ¼rfel 2 */
   if( m_dice[ 1 ] == move.get_distance() && m_dice[ 0 ] != m_dice[ 1 ] )
     {
       if( (m_dice[ 1 ] > m_dice[ 0 ] && !m_dice_result_has_to_be_used[ 0 ])
@@ -279,9 +279,9 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
           return false;
         }
 
-      /* Mit Würfel 2 wäre der Zug möglich, kann danach aber noch für den
-       * anderen Würfel gesetzt werden, wenn dies aufgrund von Zugzwang
-       * nötig ist? */
+      /* Mit WÃ¼rfel 2 wÃ¤re der Zug mÃ¶glich, kann danach aber noch fÃ¼r den
+       * anderen WÃ¼rfel gesetzt werden, wenn dies aufgrund von Zugzwang
+       * nÃ¶tig ist? */
       if( (m_dice[ 1 ] > m_dice[ 0 ] && m_dice_result_has_to_be_used[ 1 ])
           || (m_dice[ 1 ] < m_dice[ 0 ] && m_dice_result_has_to_be_used[ 0 ]) )
         {
@@ -314,7 +314,7 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return true;
     }
 
-  /* Falls nach dem Zug noch Spielsteine auf der Bar sind, darf nur für eine
+  /* Falls nach dem Zug noch Spielsteine auf der Bar sind, darf nur fÃ¼r eine
    * Augenzahl gesetzt werden. */
   if( m_on_bar[ m_act_player ] > 1 )
     {
@@ -323,8 +323,8 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return false;
     }
 
-  /* Da der Zug mit der Augenzahl eines einzelnen Würfels nicht möglich ist,
-   * wird nun die Kombination beider Augenzahlen geprüft. */
+  /* Da der Zug mit der Augenzahl eines einzelnen WÃ¼rfels nicht mÃ¶glich ist,
+   * wird nun die Kombination beider Augenzahlen geprÃ¼ft. */
   tmp_position[ 0 ] = PLAYER_IND * m_dice[ 0 ] + START_POSITION;
   if( tmp_position[ 0 ] < 0 || tmp_position[ 0 ] > 23 )
     tmp_position[ 0 ] = OUT_OF_GAME;
@@ -349,8 +349,8 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
       return true;
     }
 
-  /* Wenn auch die Kombination beider Augenzahlen den Zug nicht ermöglicht,
-   * wird im folgenden geprüft, ob eine Augenzahl mehr als zweimal verwendet
+  /* Wenn auch die Kombination beider Augenzahlen den Zug nicht ermÃ¶glicht,
+   * wird im folgenden geprÃ¼ft, ob eine Augenzahl mehr als zweimal verwendet
    * werden muss, wie dies bei einem Pasch der Fall sein kann. */
   distance_left = move.get_distance();
   for( i = 0; i < 4; i++ )
@@ -387,31 +387,31 @@ bool Backgammon::is_valid_move( const BackgammonMove &move,
 
 /*< \label{bool:BG::Backgammon::are_valid_moves(const:std::vector:BackgammonMove&,IllegalMove*,bool**)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob die in \a moves übergebenen Züge gültig sind und sich alle in
-/// zusammen in dieser Runde ausführen lassen. Dabei muss move.player bei
-/// jedem übergebenen Zug dem Spieler entsprechen, der gerade am Zug ist.
-/// Wenn \a reason nicht NULL ist, wird in der übergebenen Variable
-/// gespeichert, wieso der Zug nicht möglich ist, falls dies der Fall ist.
-/// Wenn eine Variable für \a dice_used (welche ein zweidimensionales Array
+/// PrÃ¼ft, ob die in \a moves Ã¼bergebenen ZÃ¼ge gÃ¼ltig sind und sich alle in
+/// zusammen in dieser Runde ausfÃ¼hren lassen. Dabei muss move.player bei
+/// jedem Ã¼bergebenen Zug dem Spieler entsprechen, der gerade am Zug ist.
+/// Wenn \a reason nicht NULL ist, wird in der Ã¼bergebenen Variable
+/// gespeichert, wieso der Zug nicht mÃ¶glich ist, falls dies der Fall ist.
+/// Wenn eine Variable fÃ¼r \a dice_used (welche ein zweidimensionales Array
 /// mit n mal vier Elementen sein muss, wobei n die \a moves.size() sein
-/// muss) übergeben wird, wird in diesem Array gespeichert, welche der
-/// geworfenen Augenzahlen für diesen Zug verwendet werden müssen. Siehe dazu
+/// muss) Ã¼bergeben wird, wird in diesem Array gespeichert, welche der
+/// geworfenen Augenzahlen fÃ¼r diesen Zug verwendet werden mÃ¼ssen. Siehe dazu
 /// auch \ref m_dice.
-/// \retval true  Der Züge sind gültig und zusammen möglich.
-/// \retval false Mindestens einer der Züge ist ungültig oder sie sind nicht
-///               in dieser Kombination möglich.
+/// \retval true  Der ZÃ¼ge sind gÃ¼ltig und zusammen mÃ¶glich.
+/// \retval false Mindestens einer der ZÃ¼ge ist ungÃ¼ltig oder sie sind nicht
+///               in dieser Kombination mÃ¶glich.
 /// \sa is_valid_move(), is_able_to_move(), move()
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::are_valid_moves( const std::vector< BackgammonMove > &moves,
     IllegalMove *reason, bool **dice_used ) const
 {
-  Backgammon game_copy; // Kopie des Spiels, um Züge durchzuprobieren
+  Backgammon game_copy; // Kopie des Spiels, um ZÃ¼ge durchzuprobieren
   bool move_applied_in_cycle; // Konnte ein Zug im letzten Schleifendurchlauf
-  // ausgeführt werden?
+  // ausgefÃ¼hrt werden?
   bool *moved = new bool[ moves.size() ]; // Wurde der entsprechende Zug in
-  // moves bereits ausgeführt?
-  short int dice_before_move[ 4 ]; // Noch zu verwendende Würfel vor ziehen
-  // des nächsten Zuges in moves.
+  // moves bereits ausgefÃ¼hrt?
+  short int dice_before_move[ 4 ]; // Noch zu verwendende WÃ¼rfel vor ziehen
+  // des nÃ¤chsten Zuges in moves.
   bool dice_used_tmp[ 4 ];
   unsigned int i, j, k, l;
 
@@ -426,7 +426,7 @@ bool Backgammon::are_valid_moves( const std::vector< BackgammonMove > &moves,
     dice_used_tmp[ i ] = false;
   game_copy.copy_without_turn_list( *this );
 
-  /* Züge durchprobieren */
+  /* ZÃ¼ge durchprobieren */
   do
     {
       move_applied_in_cycle = false;
@@ -441,7 +441,7 @@ bool Backgammon::are_valid_moves( const std::vector< BackgammonMove > &moves,
           if( game_copy.move( moves[ i ], reason, dice_used_tmp ) )
             {
               /* Falls moves[i] gesetzt werden konnte, sicherstellen, dass
-               * keine Augenzahl eines Würfels mehrfach verwendet wird. */
+               * keine Augenzahl eines WÃ¼rfels mehrfach verwendet wird. */
               for( j = 0; dice_used && j < 4; j++ )
                 {
                   if( !dice_used_tmp[ j ] )
@@ -471,7 +471,7 @@ bool Backgammon::are_valid_moves( const std::vector< BackgammonMove > &moves,
         }
     } while( move_applied_in_cycle );
 
-  /* Aufräumen */
+  /* AufrÃ¤umen */
   for( i = 0; i < moves.size(); i++ )
     {
       if( !moved[ i ] )
@@ -487,15 +487,15 @@ bool Backgammon::are_valid_moves( const std::vector< BackgammonMove > &moves,
 
 /*< \label{bool:BG::Backgammon::is_valid_move_possible(BG::BackgammonMove*)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob es einen gültigen Zug gibt, der ausgeführt werden kann. Wenn
+/// PrÃ¼ft, ob es einen gÃ¼ltigen Zug gibt, der ausgefÃ¼hrt werden kann. Wenn
 /// \a move nicht NULL ist, wird in \a move der erste gefundene Zug, der
-/// möglich ist gespeichert
+/// mÃ¶glich ist gespeichert
 ///
 /// Diese Funktion sollte, so fern sie nicht von dieser Klasse selber
-/// aufgerufen wird immer true zurückgeben, da andernfalls automatisch zum
-/// nächsten Spieler übergegangen werden sollte.
-/// \retval true Es gibt einen gültigen Zug.
-/// \retval false Es gibt keinen gültigen Zug.
+/// aufgerufen wird immer true zurÃ¼ckgeben, da andernfalls automatisch zum
+/// nÃ¤chsten Spieler Ã¼bergegangen werden sollte.
+/// \retval true Es gibt einen gÃ¼ltigen Zug.
+/// \retval false Es gibt keinen gÃ¼ltigen Zug.
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::is_valid_move_possible( BackgammonMove *move )
 {
@@ -503,23 +503,23 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
 
   const short int DICE[ 2 ] = { (m_dice[ 0 ] > m_dice[ 1 ]) ? m_dice[ 0 ]
       : m_dice[ 1 ], (m_dice[ 0 ] > m_dice[ 1 ]) ? m_dice[ 1 ] : m_dice[ 0 ] };
-  // Die beiden gewürfelten Zahlen, nach Größe sortiert.
-  short int can_be_set_at_pos[ 2 ]; // Gibt jeweils eine mögliche Position an
+  // Die beiden gewÃ¼rfelten Zahlen, nach GrÃ¶ÃŸe sortiert.
+  short int can_be_set_at_pos[ 2 ]; // Gibt jeweils eine mÃ¶gliche Position an
   // von der DICE[0] bzw. DICE[1] gezogen
   // werden kann. Die Bar wird nicht be-
   // achtet.
   bool is_move_set = false; // Wurde bereits ein Zug in move gespeichert?
-  BackgammonMove tmp_move[ 2 ]; // Temporäre Speicherung von Zügen.
+  BackgammonMove tmp_move[ 2 ]; // TemporÃ¤re Speicherung von ZÃ¼gen.
   int i, j;
 
   m_dice_result_has_to_be_used[ 0 ] = false;
   m_dice_result_has_to_be_used[ 1 ] = false;
 
-  /***** Bereits für alle Augenzahlen gesetzt? *****/
+  /***** Bereits fÃ¼r alle Augenzahlen gesetzt? *****/
   if( DICE[ 0 ] <= 0 )
     return false;
 
-  /***** Muss nur noch für genau eine Augenzahl gesetzt werden? *****/
+  /***** Muss nur noch fÃ¼r genau eine Augenzahl gesetzt werden? *****/
   if( DICE[ 1 ] <= 0 )
     {
       /* Noch Steine auf der Bar? */
@@ -557,7 +557,7 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
       return false;
     }
 
-  /***** Es muss noch für beide Würfel gesetzt werden. *****/
+  /***** Es muss noch fÃ¼r beide WÃ¼rfel gesetzt werden. *****/
   /* Falls noch min. 2 Steine auf der Bar... */
   if( m_on_bar[ m_act_player ] >= 2 )
     {
@@ -578,8 +578,8 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
           | m_dice_result_has_to_be_used[ 1 ];
     }
 
-  /* Mögliche "Zungen" finden, von denen die Augenzahlen gesetzt werden
-   * könnten. */
+  /* MÃ¶gliche "Zungen" finden, von denen die Augenzahlen gesetzt werden
+   * kÃ¶nnten. */
   can_be_set_at_pos[ 0 ] = can_be_set_at_pos[ 1 ] = -1;
   for( i = 0; i <= 23 && (can_be_set_at_pos[ 0 ] < 0 || can_be_set_at_pos[ 1 ]
       < 0); i++ )
@@ -622,7 +622,7 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
   /* Falls noch genau ein Stein auf der Bar ist... */
   if( m_on_bar[ m_act_player ] == 1 )
     {
-      /* ...und dieser mit der größeren gewürfelten Augenzahl zurück ins
+      /* ...und dieser mit der grÃ¶ÃŸeren gewÃ¼rfelten Augenzahl zurÃ¼ck ins
        * Spiel gebracht werden kann. */
       if( (m_act_player == WHITE && m_points[ DICE[ 0 ] - 1 ] >= -1)
           || (m_act_player == BLACK && m_points[ 24 - DICE[ 0 ] ] <= 1) )
@@ -635,7 +635,7 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
           is_move_set = true;
           m_dice_result_has_to_be_used[ 0 ] = true;
 
-          /* Kann anschließend auch noch die kleinere gewürfelte Augenzahl
+          /* Kann anschlieÃŸend auch noch die kleinere gewÃ¼rfelte Augenzahl
            * gesetzt werden? */
           tmp_move[ 0 ] = BackgammonMove( (m_act_player == WHITE) ? DICE[ 0 ]
               - 1 : 24 - DICE[ 0 ], DICE[ 1 ] );
@@ -647,12 +647,12 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
               return true;
             }
         }
-      /* ...und dieser mit der kleineren gewürfelten Augenzahl zurück ins
+      /* ...und dieser mit der kleineren gewÃ¼rfelten Augenzahl zurÃ¼ck ins
        * Spiel gebracht werden kann. */
       if( (m_act_player == WHITE && m_points[ DICE[ 1 ] - 1 ] >= -1)
           || (m_act_player == BLACK && m_points[ 24 - DICE[ 1 ] ] <= 1) )
         {
-          /* Falls anschließend noch die größere Augenzahl gesetzt werden
+          /* Falls anschlieÃŸend noch die grÃ¶ÃŸere Augenzahl gesetzt werden
            * kann... */
           tmp_move[ 0 ] = BackgammonMove( (m_act_player == WHITE) ? DICE[ 1 ]
               - 1 : 24 - DICE[ 1 ], DICE[ 0 ] );
@@ -670,8 +670,8 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
               return true;
             }
 
-          /* Wenn die größere Augenzahl nicht mehr gesetzt werden kann und
-           * es damit auch nicht möglich ist den Spielstein zurück ins
+          /* Wenn die grÃ¶ÃŸere Augenzahl nicht mehr gesetzt werden kann und
+           * es damit auch nicht mÃ¶glich ist den Spielstein zurÃ¼ck ins
            * Spiel zu bringen... */
           if( move && !is_move_set )
             {
@@ -723,10 +723,10 @@ bool Backgammon::is_valid_move_possible( BackgammonMove *move )
 
 /*< \label{bool:BG::Backgammon::move(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Führt keinen Zug aus, wechselt aber zum nächsten Spieler, wenn der
-/// aktuelle Zugunfähig ist.
-/// \retval true  Der aktuelle Spieler ist zugunfähig.
-/// \retval false Der aktuelle Spieler ist nicht zugunfähig.
+/// FÃ¼hrt keinen Zug aus, wechselt aber zum nÃ¤chsten Spieler, wenn der
+/// aktuelle ZugunfÃ¤hig ist.
+/// \retval true  Der aktuelle Spieler ist zugunfÃ¤hig.
+/// \retval false Der aktuelle Spieler ist nicht zugunfÃ¤hig.
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::move( void )
 {
@@ -740,16 +740,16 @@ bool Backgammon::move( void )
 
 /*< \label{bool:BG::Backgammon::move(const:BackgammonMove&,IllegalMove*,bool*)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob der in \a move übergebene Zug gültig ist und führt ihn aus
-/// (wenn er gültig ist). Dabei muss \a move.m_player dem Spieler
+/// PrÃ¼ft, ob der in \a move Ã¼bergebene Zug gÃ¼ltig ist und fÃ¼hrt ihn aus
+/// (wenn er gÃ¼ltig ist). Dabei muss \a move.m_player dem Spieler
 /// entsprechen, der gerade am Zug ist. Wenn \a reason nicht NULL ist, wird
-/// in der übergebenen Variable gespeichert, wieso der Zug nicht möglich ist,
-/// falls dies der Fall ist. Wenn eine Variable für \a dice_used (welche ein
-/// Array mit vier Elementen sein muss) übergeben wird, wird in diesem Array
-/// gespeichert, welche der geworfenen Augenzahlen für diesen Zug verwendet
+/// in der Ã¼bergebenen Variable gespeichert, wieso der Zug nicht mÃ¶glich ist,
+/// falls dies der Fall ist. Wenn eine Variable fÃ¼r \a dice_used (welche ein
+/// Array mit vier Elementen sein muss) Ã¼bergeben wird, wird in diesem Array
+/// gespeichert, welche der geworfenen Augenzahlen fÃ¼r diesen Zug verwendet
 /// wurden. Siehe dazu auch \ref m_dice.
-/// \retval true  Der Zug wurde ausgeführt.
-/// \retval false Der Zug ist ungültig und wurde nicht ausgeführt.
+/// \retval true  Der Zug wurde ausgefÃ¼hrt.
+/// \retval false Der Zug ist ungÃ¼ltig und wurde nicht ausgefÃ¼hrt.
 /// \sa apply_move(), is_valid_move(), are_valid_moves()
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::move( const BackgammonMove &move, IllegalMove *reason,
@@ -791,16 +791,16 @@ bool Backgammon::move( const BackgammonMove &move, IllegalMove *reason,
 
 /*< \label{bool:BG::Backgammon::move(const:std::vector:BackgammonMove&,IllegalMove*,bool*)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob die in \a moves übergebenen Züge gültig sind und führt sie aus
-/// (wenn sie gültig sind). Dabei muss \a move[i].m_player dem Spieler
+/// PrÃ¼ft, ob die in \a moves Ã¼bergebenen ZÃ¼ge gÃ¼ltig sind und fÃ¼hrt sie aus
+/// (wenn sie gÃ¼ltig sind). Dabei muss \a move[i].m_player dem Spieler
 /// entsprechen, der gerade am Zug ist. Wenn \a reason nicht NULL ist, wird
-/// in der übergebenen Variable gespeichert, wieso dier Züge nicht möglich
-/// sind, falls dies der Fall ist. Wenn eine Variable für \a dice_used
-/// (welche ein Array mit vier Elementen sein muss) übergeben wird, wird in
-/// diesem Array gespeichert, welche der geworfenen Augenzahlen für diesen
+/// in der Ã¼bergebenen Variable gespeichert, wieso dier ZÃ¼ge nicht mÃ¶glich
+/// sind, falls dies der Fall ist. Wenn eine Variable fÃ¼r \a dice_used
+/// (welche ein Array mit vier Elementen sein muss) Ã¼bergeben wird, wird in
+/// diesem Array gespeichert, welche der geworfenen Augenzahlen fÃ¼r diesen
 /// Zug verwendet wurden. Siehe dazu auch \ref m_dice.
-/// \retval true  Der Züge wurden ausgeführt.
-/// \retval false Deie Züge sind ungültig und wurden nicht ausgeführt.
+/// \retval true  Der ZÃ¼ge wurden ausgefÃ¼hrt.
+/// \retval false Deie ZÃ¼ge sind ungÃ¼ltig und wurden nicht ausgefÃ¼hrt.
 /// \sa apply_move(), is_valid_move(), are_valid_moves()
 /////////////////////////////////////////////////////////////////////////////
 bool Backgammon::move( const std::vector< BackgammonMove > &moves,
@@ -858,8 +858,8 @@ bool Backgammon::move( const std::vector< BackgammonMove > &moves,
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Kopiert \a source in die aufrufende Klasse und gibt diese zurück. Die
-/// Zugliste (\ref m_turn_list ) wird dabei ausgelassen und zurückgesetzt.
+/// Kopiert \a source in die aufrufende Klasse und gibt diese zurÃ¼ck. Die
+/// Zugliste (\ref m_turn_list ) wird dabei ausgelassen und zurÃ¼ckgesetzt.
 /// Auch wird \ref m_is_auto_dice_roll_enabled nicht kopiert.
 /////////////////////////////////////////////////////////////////////////////
 Backgammon & Backgammon::copy_without_turn_list( const Backgammon &source )
@@ -913,7 +913,7 @@ Backgammon & Backgammon::copy_without_turn_list( const Backgammon &source )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Nimmt den letzten Zug im Backgammon-Spiel zurück.
+/// Nimmt den letzten Zug im Backgammon-Spiel zurÃ¼ck.
 /////////////////////////////////////////////////////////////////////////////
 void Backgammon::undo_last_turn( void )
 {
@@ -976,7 +976,7 @@ void Backgammon::undo_last_turn( void )
         }
     }
 
-  /* Würfelwurf */
+  /* WÃ¼rfelwurf */
   if( last_turn.get_dice()[ 0 ] == last_turn.get_dice()[ 1 ] )
     m_dice[ 0 ] = m_dice[ 1 ] = m_dice[ 2 ] = m_dice[ 3 ]
         = last_turn.get_dice()[ 0 ];
@@ -988,7 +988,7 @@ void Backgammon::undo_last_turn( void )
     }
   emit dice_changed( m_dice[ 0 ], m_dice[ 1 ] );
 
-  /* Zugliste verkürzen */
+  /* Zugliste verkÃ¼rzen */
   m_turn_list.erase( --m_turn_list.end() );
 
   /* m_game_status setzen */
@@ -1011,7 +1011,7 @@ void Backgammon::undo_last_turn( void )
 /*< \label{void:BG::Backgammon::reset(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
 /// Startet ein neues Backgammon-Spiel, indem alle Werte auf die Startwerte
-/// zurückgesetzt werden.
+/// zurÃ¼ckgesetzt werden.
 ///
 /// \attention Dieser Slot darf nicht mit den Signalen turn_number_changed(),
 /// game_status_changed() oder turn_list_changed() verbunden werden.
@@ -1039,11 +1039,11 @@ void Backgammon::reset( void )
   m_on_bar[ WHITE ] = m_on_bar[ BLACK ] = 0;
   m_are_all_in_homeboard[ WHITE ] = m_are_all_in_homeboard[ BLACK ] = false;
 
-  /* Würfel */
+  /* WÃ¼rfel */
   for( i = 0; i < 4; i++ )
     m_dice[ i ] = 0;
 
-  m_act_player = WHITE; // Damit m_act_player in jedem Fall einen gültigen
+  m_act_player = WHITE; // Damit m_act_player in jedem Fall einen gÃ¼ltigen
   // Wert hat.
   if( m_is_auto_dice_roll_enabled )
     {
@@ -1083,11 +1083,11 @@ void Backgammon::reset( void )
 
 /////////////////////////////////////////////////////////////////////////////
 /// Setzt \ref m_dice. \a d1 gibt die Augenzahl des ersten, \a d2 die des
-/// zweiten Würfels an. Ist \a d1 = \a d2, dann wird das gesamte Array
+/// zweiten WÃ¼rfels an. Ist \a d1 = \a d2, dann wird das gesamte Array
 /// \ref m_dice auf den gleichen Wert gesetzt, ansonsten werden
 /// \ref m_dice[2] und \ref m_dice[3] gleich 0 gesetzt. Ist der Spieler nach
-/// setzten der Augenzahlen zugunfähig, wird direkt zum nächsten Spieler
-/// übergegangen.
+/// setzten der Augenzahlen zugunfÃ¤hig, wird direkt zum nÃ¤chsten Spieler
+/// Ã¼bergegangen.
 /////////////////////////////////////////////////////////////////////////////
 void Backgammon::set_dice( short int d1, short int d2 )
 {
@@ -1153,27 +1153,27 @@ void Backgammon::set_is_auto_dice_roll_enabled( bool value )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Fügt \a move als letzten Zug in \ref m_turn_list ein. Es wird davon
-/// ausgegangen, dass der aktuelle Spieler diesen Zug ausführt.
+/// FÃ¼gt \a move als letzten Zug in \ref m_turn_list ein. Es wird davon
+/// ausgegangen, dass der aktuelle Spieler diesen Zug ausfÃ¼hrt.
 /////////////////////////////////////////////////////////////////////////////
 void Backgammon::add_move_to_turn_list( BackgammonMove move )
 {
   QMutexLocker var_lock( &m_var_mutex );
   const short int PLAYER_IND = (m_act_player == WHITE) ? 1 : -1;
-  // Ermöglicht es die Zahl der if-Abfragen zu reduzieren.
+  // ErmÃ¶glicht es die Zahl der if-Abfragen zu reduzieren.
   const short int END_POSITION = move.get_from() + PLAYER_IND
       * move.get_distance();
   // Endposition des Zuges.
   bool hit_checker = false; // Wird ein gegnerischer Spielstein geschlagen?
   unsigned int i;
 
-  /* Prüfen, ob ein Spielstein geschlagen wird... */
+  /* PrÃ¼fen, ob ein Spielstein geschlagen wird... */
   if( END_POSITION >= 0 && END_POSITION <= 23 && m_points[ END_POSITION ]
       * PLAYER_IND == -1 )
     {
       hit_checker = true;
       /* Sicherstellen, dass der Spielstein nicht bereits geschlagen worden
-       * wäre. */
+       * wÃ¤re. */
       for( i = 0; i < m_turn_list.back().get_move_list().size(); i++ )
         {
           if( m_turn_list.back().get_move_list()[ i ].get_from()
@@ -1191,20 +1191,20 @@ void Backgammon::add_move_to_turn_list( BackgammonMove move )
 
 /*< \label{void:BG::Backgammon::apply_move(BackgammonMove,bool[4])} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Führt \a move aus und aktualisiert auch \ref m_turn_list. Dabei wird
-/// \a move gegebenenfalls in mehrere einzelne Züge aufgeteilt, falls mehrere
-/// Würfel für den Zug verwendet wurden. Welche Würfel verwendet wurden, muss
-/// in \a dice_used übergeben werden. Es wird nicht geprüft, ob es sich um
-/// einen gültigen Zug handelt.
+/// FÃ¼hrt \a move aus und aktualisiert auch \ref m_turn_list. Dabei wird
+/// \a move gegebenenfalls in mehrere einzelne ZÃ¼ge aufgeteilt, falls mehrere
+/// WÃ¼rfel fÃ¼r den Zug verwendet wurden. Welche WÃ¼rfel verwendet wurden, muss
+/// in \a dice_used Ã¼bergeben werden. Es wird nicht geprÃ¼ft, ob es sich um
+/// einen gÃ¼ltigen Zug handelt.
 /// \sa move(), is_valid_move(), are_valid_moves()
 /////////////////////////////////////////////////////////////////////////////
 void Backgammon::apply_move( BackgammonMove move, bool dice_used[ 4 ] )
 {
   QMutexLocker var_lock( &m_var_mutex ), array_lock( &m_array_mutex );
-  short unsigned int number_of_dice_used = 0; // Zahl der benutzten Würfel.
+  short unsigned int number_of_dice_used = 0; // Zahl der benutzten WÃ¼rfel.
   const short int PLAYER_IND = (m_act_player == WHITE) ? 1 : -1;
   // Um die Zahl der if-Abragen zu reduzieren.
-  short int start_position; // Feld von dem gezogen wird, für
+  short int start_position; // Feld von dem gezogen wird, fÃ¼r
   // Berechnungszwecke.
   short int end_position; // Feld zu dem gezogen werden soll.
   bool hit_checker; // Spielstein geschlagen?
@@ -1237,7 +1237,7 @@ void Backgammon::apply_move( BackgammonMove move, bool dice_used[ 4 ] )
           if( end_position == OUT_OF_GAME || PLAYER_IND
               * m_points[ end_position ] >= -1 )
             {
-              /* Wert des Startfeldes entsprechend ändern. */
+              /* Wert des Startfeldes entsprechend Ã¤ndern. */
               if( move.get_from() != BAR )
                 m_points[ move.get_from() ] -= PLAYER_IND;
               else
@@ -1245,7 +1245,7 @@ void Backgammon::apply_move( BackgammonMove move, bool dice_used[ 4 ] )
                   --m_on_bar[ m_act_player ];
                 }
 
-              /* Wert des Zielfeldes entsprechedn ändern. */
+              /* Wert des Zielfeldes entsprechedn Ã¤ndern. */
               if( end_position != OUT_OF_GAME )
                 {
                   if( PLAYER_IND * m_points[ end_position ] == -1 )
@@ -1266,7 +1266,7 @@ void Backgammon::apply_move( BackgammonMove move, bool dice_used[ 4 ] )
               m_turn_list.back().add_move( BackgammonMove( move.get_from(),
                   m_dice[ i ] ), hit_checker );
 
-              /* Bereits zurückgelegte und noch zurückzulegenede Strecke
+              /* Bereits zurÃ¼ckgelegte und noch zurÃ¼ckzulegenede Strecke
                * in move setzen. */
               move.set_from( PLAYER_IND * m_dice[ i ] + start_position );
               move.set_distance( move.get_distance() - m_dice[ i ] );
@@ -1286,15 +1286,15 @@ void Backgammon::apply_move( BackgammonMove move, bool dice_used[ 4 ] )
 
 /*< \label{bool:BG::Backgammon::is_able_to_move(const:BackgammonMove*,const:BackgammonMove*)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Prüft, ob \a move gesetzt werden kann und gibt entsprechend true oder
-/// false zurück. Wird mit \a before ein weiterer Zug übergeben, wird dies
-/// für den Fall geprüft, dass vorher der in \a before übergebene Zug gesetzt
+/// PrÃ¼ft, ob \a move gesetzt werden kann und gibt entsprechend true oder
+/// false zurÃ¼ck. Wird mit \a before ein weiterer Zug Ã¼bergeben, wird dies
+/// fÃ¼r den Fall geprÃ¼ft, dass vorher der in \a before Ã¼bergebene Zug gesetzt
 /// wurde. Es wird vorrausgesetzt, dass \a before kein regelwidriger Zug ist.
 ///
-/// Diese Funktion achtet nicht auf das Würfelergebnis, sondern nur auf
+/// Diese Funktion achtet nicht auf das WÃ¼rfelergebnis, sondern nur auf
 /// den Spieler, ob die "Zungen" frei sind, ob evtl. andere Spielsteine
-/// gesetzt werden müssen (beim Auswürfeln, aber nicht ob von der Bar gezogen
-/// werden muss) und ob überhaupt ein eigener Spielstein zum Setzen vorhanden
+/// gesetzt werden mÃ¼ssen (beim AuswÃ¼rfeln, aber nicht ob von der Bar gezogen
+/// werden muss) und ob Ã¼berhaupt ein eigener Spielstein zum Setzen vorhanden
 /// ist.
 ///
 /// \attention Diese Funktion sperrt keine Mutexes.
@@ -1304,14 +1304,14 @@ bool Backgammon::is_able_to_move( const BackgammonMove *move,
 {
   const short int PLAYER_IND = (m_act_player == WHITE) ? 1 : -1;
   // Um if-Abfragen etc. zu erleichtern.
-  short int end_position; // Endposition des in move übergebenen Zuges.
-  short int end_position_before; // Endposition des in before übergebenen
+  short int end_position; // Endposition des in move Ã¼bergebenen Zuges.
+  short int end_position_before; // Endposition des in before Ã¼bergebenen
   // Zuges.
   bool are_all_in_homeboard = m_are_all_in_homeboard[ m_act_player ];
-  // Durch before kann sich dies ändern, daher extra Variable nötig.
+  // Durch before kann sich dies Ã¤ndern, daher extra Variable nÃ¶tig.
   unsigned short int checkers_in_homeboard; // Anzahl der Spielsteine im
   // Homeboard und der
-  // ausgewürfleten.
+  // ausgewÃ¼rfleten.
   int i;
 
   assert( move->get_from() == BAR
@@ -1363,7 +1363,7 @@ bool Backgammon::is_able_to_move( const BackgammonMove *move,
         are_all_in_homeboard = true;
     }
 
-  /* Zug zu Zielfeld möglich? */
+  /* Zug zu Zielfeld mÃ¶glich? */
   if( end_position >= 0 && end_position <= 23 )
     {
       if( PLAYER_IND * m_points[ end_position ] >= -1 )
@@ -1394,13 +1394,13 @@ bool Backgammon::is_able_to_move( const BackgammonMove *move,
 
 /*< \label{WinHeight:BG::Backgammon::calc_win_height(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Berechnet die Gewinnhöhe und gibt diese zurück. Sollte das Spiel noch
-/// nicht beendet sein, wird \ref NOWIN zurückgegeben.
+/// Berechnet die GewinnhÃ¶he und gibt diese zurÃ¼ck. Sollte das Spiel noch
+/// nicht beendet sein, wird \ref NOWIN zurÃ¼ckgegeben.
 /////////////////////////////////////////////////////////////////////////////
 WinHeight Backgammon::calc_win_height( void )
 {
   QMutexLocker var_lock( &m_var_mutex ), array_lock( &m_array_mutex );
-  short int player_ind; // Um if-Abfragen etc. übersichtlicher zu gestalten.
+  short int player_ind; // Um if-Abfragen etc. Ã¼bersichtlicher zu gestalten.
   Player opponent; // Gegnerischer Spieler
   int i;
 
@@ -1442,14 +1442,14 @@ void Backgammon::clear_dice_silent()
 
 /*< \label{void:BG::Backgammon::end_turn(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Beendet den aktuellen Zug und der nächste Spieler kommt an die Reihe.
+/// Beendet den aktuellen Zug und der nÃ¤chste Spieler kommt an die Reihe.
 /////////////////////////////////////////////////////////////////////////////
 void Backgammon::end_turn( void )
 {
   if( get_game_status() == GAME_FINISHED )
     return;
 
-  /* Gegebenenfalls automatisch würfeln... */
+  /* Gegebenenfalls automatisch wÃ¼rfeln... */
   m_var_mutex.lock();
   if( m_is_auto_dice_roll_enabled )
     {
@@ -1507,7 +1507,7 @@ void Backgammon::end_turn( void )
 void Backgammon::refresh( void )
 {
   short int lowest_pos_white = 23, highest_pos_black = 0;
-  // Niedrigste bzw. höchste Position an der ein weißer bzw. schwarzer
+  // Niedrigste bzw. hÃ¶chste Position an der ein weiÃŸer bzw. schwarzer
   // Spielstein ist.
   int i;
 

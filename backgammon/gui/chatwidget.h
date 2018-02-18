@@ -40,7 +40,7 @@
 /// \brief Widget, dass einen einfachen Chat bereitstellt.
 ///
 /// Stellt ein Widget bereit, dass Meldungen eines Backgammon-Server anzeigt
-/// und mit dem Chat-Nachrichten versendet werden können.
+/// und mit dem Chat-Nachrichten versendet werden kÃ¶nnen.
 /////////////////////////////////////////////////////////////////////////////
 class ChatWidget : public QWidget, public Ui::ChatWidget
 {
@@ -61,7 +61,7 @@ class ChatWidget : public QWidget, public Ui::ChatWidget
     void output_chat_msg( QString msg ); ///< \brief Gibt eine ausgehende
                                          ///< Chat-Nachricht aus.
     void output_net_connection_state( QAbstractSocket::SocketState state );
-        ///< \brief Gibt den übergebenen Verbindungsstatus aus.
+        ///< \brief Gibt den Ã¼bergebenen Verbindungsstatus aus.
     void output_net_error( QAbstractSocket::SocketError error );
         ///< \brief Gibt einen Fehler aus.
     void process_srv_msg( NetBackgammonMsg msg );
@@ -74,7 +74,7 @@ class ChatWidget : public QWidget, public Ui::ChatWidget
   signals:
     void chat( QString msg ); ///< \brief Wird gesendet, wenn eine
                               ///< Chat-Nachricht versendet wird. Diese wird
-                              ///< mit \a msg übergeben.
+                              ///< mit \a msg Ã¼bergeben.
 
   private:
     NetBackgammonConnection *m_connection; ///< \brief Verbindung zum

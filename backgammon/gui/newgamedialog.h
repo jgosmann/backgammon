@@ -1,7 +1,7 @@
 /*!
  * \file newgamedialog.h
- * \brief Enthält die Deklaration der Klasse NewGameDialog, welche das
- *        Interface zum Setzen der Einstellungen für ein neues Spiel
+ * \brief EnthÃ¤lt die Deklaration der Klasse NewGameDialog, welche das
+ *        Interface zum Setzen der Einstellungen fÃ¼r ein neues Spiel
  *        bereitstellt.
  * \date Fr Jan 26 2007
  * \author Jan Gosmann (jan@hyper-world.de)
@@ -45,8 +45,8 @@
 ///        eines neuen Spieles angezeigt.
 ///
 /// Diese Klasse stellt ein Dialog-Fenster bereit, welches bei Beginn eines
-/// neuen Spieles angezeigt wird. In diesem können alle wichtigen
-/// Einstellungen für das neue Spiel vorgenommen werden.
+/// neuen Spieles angezeigt wird. In diesem kÃ¶nnen alle wichtigen
+/// Einstellungen fÃ¼r das neue Spiel vorgenommen werden.
 /////////////////////////////////////////////////////////////////////////////
 class NewGameDialog : public QDialog, public Ui::NewGameDialog
 {
@@ -66,7 +66,7 @@ class NewGameDialog : public QDialog, public Ui::NewGameDialog
     ChatWidget *chat_widget; ///< \brief Chat-Fenster
 
   public slots:
-    void update( void ); ///< \brief Aktualisiert die GUI-Elemente gemäß den
+    void update( void ); ///< \brief Aktualisiert die GUI-Elemente gemÃ¤ÃŸ den
                          ///< aktuellen Einstellungen.
 
     void on_button_configure_white_clicked( void )
@@ -91,19 +91,19 @@ class NewGameDialog : public QDialog, public Ui::NewGameDialog
   private:
     NetBackgammonConnection *m_connection; ///< \brief Netzwerkverbindung
 
-    unsigned int m_ai_timeout[ 2 ]; ///< \brief Timeout-Einstellungen für die
+    unsigned int m_ai_timeout[ 2 ]; ///< \brief Timeout-Einstellungen fÃ¼r die
                                     ///< KI.
     double m_ai_factors[ 2 ][ AIThread::NUM_RATING_FACTORS ];
-        ///< \brief Einstellungen für die Bewertungsfaktoren der KI.
+        ///< \brief Einstellungen fÃ¼r die Bewertungsfaktoren der KI.
 
-    QStandardItemModel *m_game_list_data; ///< \brief Spiel-Liste für den
+    QStandardItemModel *m_game_list_data; ///< \brief Spiel-Liste fÃ¼r den
                                           ///< Netzwerkmodus.
     bool m_joined_game; ///< \brief Gibt an, ob einem Netzwerkspiel
                         ///< beigetreten wurde. Wird in der update()-Funktion
                         ///< dazu benutzt, zu erkennen, ob diese Funtion
                         ///< bereits seit dem letzten Beitretn zu einem Spiel
                         ///< oder Verlassen aufgerufen wurde.
-    BG::Player m_net_player; ///< \brief Welcher Spieler wird über das
+    BG::Player m_net_player; ///< \brief Welcher Spieler wird Ã¼ber das
                              ///< Netzwerk gesteuert?
 };
 

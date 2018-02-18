@@ -42,13 +42,13 @@ namespace BG
 
 /*< \label{BG::Player} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// \brief Enumeration für die Spielerfarben.
+/// \brief Enumeration fÃ¼r die Spielerfarben.
 ///
-/// Enumeration für die Spielerfarben.
+/// Enumeration fÃ¼r die Spielerfarben.
 /////////////////////////////////////////////////////////////////////////////
 enum Player
 {
-  WHITE = 0,  ///< Weißer Spieler. *< \label{BG::WHITE} >*
+  WHITE = 0,  ///< WeiÃŸer Spieler. *< \label{BG::WHITE} >*
   BLACK = 1,  ///< Schwarzer Spieler. *< \label{BG::BLACK} >*
   NOT_DEFINED ///< Nicht festgelegt.
 };
@@ -66,15 +66,15 @@ enum GameStatus
                    ///< aneinander vorbei (d.h. es kann keiner mehr
                    ///< geschlagen werden), sind aber evtl. noch nicht
                    ///< alle im Homeboard. Trotzdem geht es in dieser
-                   ///< Situation nur noch darum, möglichst schnell
-                   ///< alle Spielsteine auszuwürfeln.
+                   ///< Situation nur noch darum, mÃ¶glichst schnell
+                   ///< alle Spielsteine auszuwÃ¼rfeln.
   GAME_FINISHED    ///< Spiel wurde beendet.
 };
 
 /////////////////////////////////////////////////////////////////////////////
-/// \brief Enumeration für die Gewinnhöhe.
+/// \brief Enumeration fÃ¼r die GewinnhÃ¶he.
 ///
-/// Enumeration für die Gewinnhöhe.
+/// Enumeration fÃ¼r die GewinnhÃ¶he.
 /////////////////////////////////////////////////////////////////////////////
 enum WinHeight
 {
@@ -93,34 +93,34 @@ enum WinHeight
 enum Position
 {
   BAR = 24,         ///< Bar *< \label{BG::BAR} >*
-  OUT_OF_GAME = 25, ///< Ausgewürfelt *< \label{BG::OUT_OF_GAME} >*
+  OUT_OF_GAME = 25, ///< AusgewÃ¼rfelt *< \label{BG::OUT_OF_GAME} >*
 };
 
 /////////////////////////////////////////////////////////////////////////////
-/// \brief Enumeration zur Bezeichnung von illegalen Zügen.
+/// \brief Enumeration zur Bezeichnung von illegalen ZÃ¼gen.
 ///
-/// Enumeration zur Bezeichnung von illegalen Zügen.
+/// Enumeration zur Bezeichnung von illegalen ZÃ¼gen.
 /////////////////////////////////////////////////////////////////////////////
 enum IllegalMove
 {
   WRONG_PLAYER,                    ///< Der andere Spieler ist gerade am Zug.
   WRONG_DIRECTION,                 ///< Falsche Zugrichtung.
-  CHECKER_LEFT_ON_BAR,             ///< Es müssen noch Spielsteine zurück ins
+  CHECKER_LEFT_ON_BAR,             ///< Es mÃ¼ssen noch Spielsteine zurÃ¼ck ins
                                    ///< Spiel gebracht werden.
   NO_CHECKER_TO_MOVE,              ///< Auf dem angegebenen Feld ist kein
                                    ///< eigener Spielstein, der gesetzt
-                                   ///< werden könnte.
+                                   ///< werden kÃ¶nnte.
   NOT_ALL_IN_HOMEBOARD,            ///< Es sind noch nicht alle Spielsteine
                                    ///< im Homeboard. Daher ist ein
-                                   ///< Auswürfeln noch nicht möglich.
+                                   ///< AuswÃ¼rfeln noch nicht mÃ¶glich.
   ANOTHER_CHECKER_HAS_TO_BE_MOVED, ///< Es muss ein anderer Checker bewegt
                                    ///< werden, welcher Vorrang hat.
   BLOCKED,                         ///< Zielfeld ist bereits belegt (von mehr
                                    ///< als einem gegnerischem Stein).
-  DICE_VALUE,                      ///< Position ist mit dem Würfelergebnis
+  DICE_VALUE,                      ///< Position ist mit dem WÃ¼rfelergebnis
                                    ///< nicht erreichbar oder es muss ein
                                    ///< anderer Stein gesetzt werden, damit
-                                   ///< beide oder zumindestens die höhere
+                                   ///< beide oder zumindestens die hÃ¶here
                                    ///< Augenzahl gesetzt wird.
   OTHER                            ///< Sonstiges.
 };
@@ -129,10 +129,10 @@ enum IllegalMove
 /////////////////////////////////////////////////////////////////////////////
 /// \brief Klasse zur Angabe eines Zuges in einem Backgammon-Spiel.
 ///
-/// Diese Klasse ermöglicht die Angabe eines Zuges mit einem Spielstein in
-/// einem Backgammon-Spielstein. Dabei kann die Augenzahl beider Würfel
+/// Diese Klasse ermÃ¶glicht die Angabe eines Zuges mit einem Spielstein in
+/// einem Backgammon-Spielstein. Dabei kann die Augenzahl beider WÃ¼rfel
 /// bereits zusammengerechnet sein. Werden mehrere Spielsteine in einem
-/// Zug gesetzt, sind mehrere Instanzen dieser Struktur nötig.
+/// Zug gesetzt, sind mehrere Instanzen dieser Struktur nÃ¶tig.
 /////////////////////////////////////////////////////////////////////////////
 class BackgammonMove
 {
@@ -156,11 +156,11 @@ class BackgammonMove
 
 /*< \label{BG::BackgammonTurn} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// \brief Klasse zur Angabe aller Züge in einer Runde in einem
+/// \brief Klasse zur Angabe aller ZÃ¼ge in einer Runde in einem
 /// Backgammon-Spiel
 ///
-/// Diese Klasse dient dazu alle Züge, die ein Spieler in einer Runde
-/// ausgeführt hat, zu speichern
+/// Diese Klasse dient dazu alle ZÃ¼ge, die ein Spieler in einer Runde
+/// ausgefÃ¼hrt hat, zu speichern
 /////////////////////////////////////////////////////////////////////////////
 class BackgammonTurn
 {
@@ -172,7 +172,7 @@ class BackgammonTurn
     inline void set_dice( short int d1, short int d2 )
         { m_dice[ 0 ] = d1; m_dice[ 1 ] = d2; }
     void add_move( BackgammonMove move, bool hit_checker );
-        ///< \brief Zug zur Runde hinzufügen.
+        ///< \brief Zug zur Runde hinzufÃ¼gen.
 
     inline Player get_player( void ) const { return m_player; }
     inline const short int * get_dice( void ) const { return m_dice; }
@@ -183,8 +183,8 @@ class BackgammonTurn
 
   private:
     Player m_player; ///< \brief Spieler, der gesetzt hat.
-    short int m_dice[ 2 ]; ///< \brief Würfelergebnis
-    std::vector< BackgammonMove > m_move_list; ///< \brief Ausgeführte Züge.
+    short int m_dice[ 2 ]; ///< \brief WÃ¼rfelergebnis
+    std::vector< BackgammonMove > m_move_list; ///< \brief AusgefÃ¼hrte ZÃ¼ge.
     std::vector< bool > m_hit_checker; ///< \brief Ob mit dem jeweiligen Zug
                                        ///< in \ref m_move_list ein
                                        ///< gegnerischer Stein geschlagen
@@ -196,8 +196,8 @@ class BackgammonTurn
 /// \brief Klasse zur Verwaltung eines Backgammon-Spiels.
 ///
 /// Diese Klasse verwaltet ein Backgammon-Spiel, indem sie den aktuellen
-/// Spielstand speichert und Funktionen bereitstellt, die prüfen, ob
-/// bestimmte Züge gültig sind.
+/// Spielstand speichert und Funktionen bereitstellt, die prÃ¼fen, ob
+/// bestimmte ZÃ¼ge gÃ¼ltig sind.
 ///
 /// Diese Klasse ist Thread-Safe.
 /////////////////////////////////////////////////////////////////////////////
@@ -211,28 +211,28 @@ class Backgammon : public QObject
     bool is_valid_move( const BackgammonMove &move,
                         IllegalMove *reason = NULL, bool *dice_used = NULL,
                         bool check_bar = true )
-        const; ///< \brief \a move gültiger Zug?
+        const; ///< \brief \a move gÃ¼ltiger Zug?
     bool are_valid_moves( const std::vector< BackgammonMove > &moves,
                           IllegalMove *reason = NULL,
                           bool **dice_used = NULL ) const;
-        ///< \brief Ist \a moves eine gültige Kombination von Zügen?
+        ///< \brief Ist \a moves eine gÃ¼ltige Kombination von ZÃ¼gen?
     bool is_valid_move_possible( BackgammonMove *move = NULL );
-        ///< \brief Ist es möglich einen gültigen Zug zu machen?
+        ///< \brief Ist es mÃ¶glich einen gÃ¼ltigen Zug zu machen?
 
-    bool move( void ); ///< \brief Zum nächsten Spieler wechseln, wenn der
-                       ///< aktulle zugunfähig ist.
+    bool move( void ); ///< \brief Zum nÃ¤chsten Spieler wechseln, wenn der
+                       ///< aktulle zugunfÃ¤hig ist.
     bool move( const BackgammonMove &move, IllegalMove *reason = NULL,
-               bool *dice_used = NULL); ///< \brief Zug ausführen.
+               bool *dice_used = NULL); ///< \brief Zug ausfÃ¼hren.
     bool move( const std::vector< BackgammonMove > &moves,
                IllegalMove *reason = NULL, bool *dice_used = NULL);
-        ///< \brief Züge ausführen.
+        ///< \brief ZÃ¼ge ausfÃ¼hren.
 
     inline void lock_arrays( void ) const { m_array_mutex.lock(); };
         ///< \brief Sperrt die Memberarrays.
         ///<
         ///< Sperrt die Memberarrays der Klasse. Muss vor einem Zugriff auf
         ///< diese aufgerufen werden, sofern es zu einem Zugriff von
-        ///< verschiedenen Threads kommen kann. Anschließend muss die
+        ///< verschiedenen Threads kommen kann. AnschlieÃŸend muss die
         ///< Sperrung mit unlock_arrays() aufgehoben werden.
     inline void unlock_arrays( void ) const { m_array_mutex.unlock(); };
         ///< \brief Entsperrt die Memberarrays.
@@ -284,7 +284,7 @@ class Backgammon : public QObject
         ///< \brief Setzt \ref m_is_auto_dice_roll_enabled.
 
   signals:
-    void next_player( short int player ); ///< \brief Nächster Spieler ist an
+    void next_player( short int player ); ///< \brief NÃ¤chster Spieler ist an
                                           ///< die Reihe gekommen.
     void game_ended( void ); ///< \brief Das Spiel ist zu Ende.
     void act_player_changed( int player );
@@ -297,20 +297,20 @@ class Backgammon : public QObject
 
   protected:
     void add_move_to_turn_list( BackgammonMove move );
-        ///< \brief Fügt einen Zug \ref m_turn_list hinzu.
+        ///< \brief FÃ¼gt einen Zug \ref m_turn_list hinzu.
     void apply_move( BackgammonMove move, bool dice_used[ 4 ] );
-        ///< \brief Einen Zug ausführen und zu \ref m_turn_list hinzufügen.
+        ///< \brief Einen Zug ausfÃ¼hren und zu \ref m_turn_list hinzufÃ¼gen.
     bool is_able_to_move( const BackgammonMove *move,
                           const BackgammonMove *before = NULL ) const;
-        ///< \brief Ist \a move ein gültiger Zug?
+        ///< \brief Ist \a move ein gÃ¼ltiger Zug?
 
-    WinHeight calc_win_height( void ); ///< \brief Berechnet die Gewinnhöhe.
+    WinHeight calc_win_height( void ); ///< \brief Berechnet die GewinnhÃ¶he.
 
   protected slots:
     void clear_dice_silent(); ///< \brief Setzt alle Elemente von \ref m_dice
                               ///< auf 0.
     void end_turn( void ); ///< \brief Beendet den aktuellen Zug und der
-                           ///< nächste Spieler kommt an die Reihe.
+                           ///< nÃ¤chste Spieler kommt an die Reihe.
     void refresh( void ); ///< \brief Aktualisiert alle Statusvariablen.
 
     void set_act_player( short int player ); ///< \brief Setzt den aktuellen
@@ -330,22 +330,22 @@ class Backgammon : public QObject
                                                      ///< \ref m_win_height.
 
   private:
-    mutable QMutex m_var_mutex; ///< \brief Mutex für alle Membervariablen,
+    mutable QMutex m_var_mutex; ///< \brief Mutex fÃ¼r alle Membervariablen,
                                 ///< die kein Array sind.
-    mutable QMutex m_array_mutex; ///< \brief Mutex für sämtliche
+    mutable QMutex m_array_mutex; ///< \brief Mutex fÃ¼r sÃ¤mtliche
                                   ///< Memberarrays.
 
     /*< \label{BG::Backgammon::m_points} >*/
     /// \brief Die Anzahl der Spielsteine auf den 24 points bzw. "Zungen".
     ///
     /// Die Anzahl der Spielsteine auf den 24 points bzw. "Zungen". Eine
-    /// positive Zahl steht für die Spielsteine des weißen Spielers. Dieser
+    /// positive Zahl steht fÃ¼r die Spielsteine des weiÃŸen Spielers. Dieser
     /// zieht von 0 zu 23. Negative Zahlen geben die Zahl der Spielsteine des
     /// schwarzen Spielers an, welcher folglich von 23 zu 0 zieht.
     short int m_points[ 24 ];
 
     /*< \label{BG::Backgammon::m_beared_off} >*/
-    short int m_beared_off[ 2 ]; ///< \brief Zahl der ausgewürfelten
+    short int m_beared_off[ 2 ]; ///< \brief Zahl der ausgewÃ¼rfelten
                                  ///< Spielsteine der Spieler.
     /*< \label{BG::Backgammon::m_on_bar} >*/
     short int m_on_bar[ 2 ]; ///< \brief Spielsteine der Spieler auf der Bar.
@@ -356,29 +356,29 @@ class Backgammon : public QObject
     Player m_act_player; ///< \brief Spieler, der gerade am Zug ist.
 
     /*< \label{BG::Backgammon::m_dice} >*/
-    /// \brief Würfelwurf
+    /// \brief WÃ¼rfelwurf
     ///
-    /// Würfelergebnis bzw. Augenzahlen die gesetzt werden müssen. -1 steht
-    /// für eine bereits gesezte Augenzahl. Es wird davon ausgegangen, dass
+    /// WÃ¼rfelergebnis bzw. Augenzahlen die gesetzt werden mÃ¼ssen. -1 steht
+    /// fÃ¼r eine bereits gesezte Augenzahl. Es wird davon ausgegangen, dass
     /// nach dem ersten Wert <= 0 keine weiteren zu setzenden Augenzahlen
-    /// mehr folgen. Die Array-Größe beträgt 4, da bei einem Pasch viermal
+    /// mehr folgen. Die Array-GrÃ¶ÃŸe betrÃ¤gt 4, da bei einem Pasch viermal
     /// gesetzt werden muss.
     short int m_dice[ 4 ];
 
     /*< \label{BG::Backgammon::m_dice_result_has_to_be_used} >*/
     bool m_dice_result_has_to_be_used[ 2 ];
-        ///< \brief Gibt an, ob welche der beiden gewürfelten Augenzahlen
+        ///< \brief Gibt an, ob welche der beiden gewÃ¼rfelten Augenzahlen
         ///< gesetzt werden muss (wegen Zugzwang). Dabei ist
-        ///< \ref m_dice_result_has_to_be_used[0] die höhere und entsprechend
+        ///< \ref m_dice_result_has_to_be_used[0] die hÃ¶here und entsprechend
         ///< \ref m_dice_result_has_to_be_used[1] die niedrigere.
         ///< Die Anordnung kann daher von der in \ref m_dice abweichen!
         ///< Bei einem Pasch sind beide Array-Elemente true oder, sofern nur
         ///< eine Augenzahl gesetzt werden kann, nur
         ///< \ref m_dice_result_has_to_be_used[0].
 
-    /// \brief Automtisches Würfeln aktivieren?
+    /// \brief Automtisches WÃ¼rfeln aktivieren?
     ///
-    /// Ob die Instanz der Klasse automatisch würfelt. Ansonsten muss
+    /// Ob die Instanz der Klasse automatisch wÃ¼rfelt. Ansonsten muss
     /// \ref m_dice manuell gesetzt werden.
     bool m_is_auto_dice_roll_enabled;
 
@@ -386,7 +386,7 @@ class Backgammon : public QObject
     /*< \label{BG::Backgammon::game_status} >*/
     GameStatus m_game_status; ///< \brief Status des Spiels.
     Player m_winner; ///< \brief Spieler, der das Spiel gewonnen hat.
-    WinHeight m_win_height; ///< \brief Gewinnhöhe des letzten Spiels.
+    WinHeight m_win_height; ///< \brief GewinnhÃ¶he des letzten Spiels.
 
     /*< \label{BG::Backgammon::m_turn_list} >*/
     std::vector< BackgammonTurn > m_turn_list; ///< \brief Zugliste

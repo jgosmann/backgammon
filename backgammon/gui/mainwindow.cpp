@@ -61,7 +61,7 @@
 #include "mainwindow.h"
 
 /////////////////////////////////////////////////////////////////////////////
-/// Konstruktor. Für die Argumente siehe die Qt4-Dokumentation (QMainWindow).
+/// Konstruktor. FÃ¼r die Argumente siehe die Qt4-Dokumentation (QMainWindow).
 /////////////////////////////////////////////////////////////////////////////
 MainWindow::MainWindow( QWidget *parent, Qt::WFlags flags )
     : QMainWindow( parent, flags ), m_game( &m_net_connection, BG::WHITE,
@@ -100,7 +100,7 @@ MainWindow::MainWindow( QWidget *parent, Qt::WFlags flags )
   menu_Ansicht->addSeparator();
 
   m_turn_list_model = new QStandardItemModel( 1, 2, turn_list_view );
-  m_turn_list_model->setHeaderData( 0, Qt::Horizontal, QVariant( "Weiß" ) );
+  m_turn_list_model->setHeaderData( 0, Qt::Horizontal, QVariant( "WeiÃŸ" ) );
   m_turn_list_model->setHeaderData( 1, Qt::Horizontal,
                                     QVariant( "Schwarz" ) );
   turn_list_view->setModel( m_turn_list_model );
@@ -268,7 +268,7 @@ void MainWindow::init_new_game( void )
 
 /*< \label{void:MainWindow::start_next_round(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Startet die nächste Runde (ein neues Backgammon-Spiel mit gleichen
+/// Startet die nÃ¤chste Runde (ein neues Backgammon-Spiel mit gleichen
 /// Einstellungen).
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::start_next_round( void )
@@ -296,7 +296,7 @@ void MainWindow::start_next_round( void )
   m_game_disp->setEnabled( false );
 
   statusbar->clearMessage();
-  m_player_disp->setText( tr(" Zum Beginnen auf die Würfel klicken. ") );
+  m_player_disp->setText( tr(" Zum Beginnen auf die WÃ¼rfel klicken. ") );
 
   m_game.start();
 }
@@ -307,13 +307,13 @@ void MainWindow::start_next_round( void )
 void MainWindow::update_stats( void )
 {
   n_rounds->setText( tr("Runde: ") + QString::number( m_round ) );
-  n_wins_white->setText( tr("Weiß: ") + QString::number( m_wins[ BG::WHITE ] ) );
+  n_wins_white->setText( tr("WeiÃŸ: ") + QString::number( m_wins[ BG::WHITE ] ) );
   n_wins_black->setText( tr("Schwarz: ")
                          + QString::number( m_wins[ BG::BLACK ] ) );
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Ädert die Farbe des weißen Spielers. Dazu wird ein Farbauswahldialog
+/// Ã„dert die Farbe des weiÃŸen Spielers. Dazu wird ein Farbauswahldialog
 /// angezeigt.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_color_white_triggered( void )
@@ -327,7 +327,7 @@ void MainWindow::on_action_color_white_triggered( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Ädert die Farbe des schwarzen Spielers. Dazu wird ein Farbauswahldialog
+/// Ã„dert die Farbe des schwarzen Spielers. Dazu wird ein Farbauswahldialog
 /// angezeigt.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_color_black_triggered( void )
@@ -341,7 +341,7 @@ void MainWindow::on_action_color_black_triggered( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Ädert die Umrandungsfarbe. Dazu wird ein Farbauswahldialog angezeigt.
+/// Ã„dert die Umrandungsfarbe. Dazu wird ein Farbauswahldialog angezeigt.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_color_pen_triggered( void )
 {
@@ -354,7 +354,7 @@ void MainWindow::on_action_color_pen_triggered( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Ädert die Farbe der Bar. Dazu wird ein Farbauswahldialog angezeigt.
+/// Ã„dert die Farbe der Bar. Dazu wird ein Farbauswahldialog angezeigt.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_color_bar_triggered( void )
 {
@@ -367,7 +367,7 @@ void MainWindow::on_action_color_bar_triggered( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Ädert die Hintergrundsfarbe. Dazu wird ein Farbauswahldialog angezeigt.
+/// Ã„dert die Hintergrundsfarbe. Dazu wird ein Farbauswahldialog angezeigt.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_color_bg_triggered( void )
 {
@@ -380,7 +380,7 @@ void MainWindow::on_action_color_bg_triggered( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Zeigt das Info-Fenster mit Informationen über das Programm an.
+/// Zeigt das Info-Fenster mit Informationen Ã¼ber das Programm an.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_action_show_info_triggered( void )
 {
@@ -419,7 +419,7 @@ void MainWindow::on_action_show_license_triggered( void )
 
 /*< \label{void:MainWindow::next_player(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Setzt alle Einstellungen für den Zug des nächsten Spielers.
+/// Setzt alle Einstellungen fÃ¼r den Zug des nÃ¤chsten Spielers.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::next_player( void )
 {
@@ -436,19 +436,19 @@ void MainWindow::next_player( void )
     {
       QTimer::singleShot( 0, this, SLOT( roll_dice() ) );
         // Diese Funktion darf nicht sofort aufgerufen werdne, da es sonst zu
-        // einem Deadlock kommen kann. Dies könnte passieren, wenn die KI
-        // zugunfähig ist, da dann AIThread::m_best_move_mutex gesperrt ist,
+        // einem Deadlock kommen kann. Dies kÃ¶nnte passieren, wenn die KI
+        // zugunfÃ¤hig ist, da dann AIThread::m_best_move_mutex gesperrt ist,
         // da gerade gezogen wurde und Backgammon::next_player() gesendet
         // wurde. MainWindow::next_player() ruft MainWindow::roll_dice() auf,
-        // welche bei Zugunfähigkeit wiederrum MainWindow::next_player()
-        // aufruft. Daher würde MainWindow::roll_dice() ein zweites mal
-        // aufgerufen und aktiviert unter Umständen die KI, wobei diese über
+        // welche bei ZugunfÃ¤higkeit wiederrum MainWindow::next_player()
+        // aufruft. Daher wÃ¼rde MainWindow::roll_dice() ein zweites mal
+        // aufgerufen und aktiviert unter UmstÃ¤nden die KI, wobei diese Ã¼ber
         // AIThread::m_best_move_mutex immer noch gesperrt ist.
     }
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Zeigt den aktuellen Würfelwurf mit \ref m_d1 und \ref m_d2 an.
+/// Zeigt den aktuellen WÃ¼rfelwurf mit \ref m_d1 und \ref m_d2 an.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::roll_dice( void )
 {
@@ -460,7 +460,7 @@ void MainWindow::roll_dice( void )
 
   statusbar->clearMessage();
 
-  /* Würfel werfen... */
+  /* WÃ¼rfel werfen... */
   m_game.lock_arrays();
   if( !m_net_connection.get_joined_game() )
     {
@@ -497,34 +497,34 @@ void MainWindow::roll_dice( void )
 
   /* Anzeigen welcher Spieler am Zug ist */
   if( m_game.get_act_player() == BG::WHITE )
-    m_player_disp->setText( tr(" Weiß ist am Zug. ") );
+    m_player_disp->setText( tr(" WeiÃŸ ist am Zug. ") );
   else
     m_player_disp->setText( tr(" Schwarz ist am Zug. ") );
 
-  /* Gegebenenfalls Zugunfähigkeit anzeigen */
+  /* Gegebenenfalls ZugunfÃ¤higkeit anzeigen */
   if( !m_game.is_valid_move_possible() )
     {
       m_game.lock_arrays();
       if( m_game.get_act_player() == BG::WHITE )
         {
           if( m_show_blocking_msgs[ BG::WHITE] )
-            QMessageBox::information( this, tr("Zugunfähig"),
-                                      tr("Weiß ist zugunfähig.") );
+            QMessageBox::information( this, tr("ZugunfÃ¤hig"),
+                                      tr("WeiÃŸ ist zugunfÃ¤hig.") );
           else
-            statusbar->showMessage( tr("Weiß ist zugunfähig.") );
+            statusbar->showMessage( tr("WeiÃŸ ist zugunfÃ¤hig.") );
         }
       else
         {
           if( m_show_blocking_msgs[ BG::BLACK ] )
-            QMessageBox::information( this, tr("Zugunfähig"),
-                                      tr("Schwarz ist zugunfähig.") );
+            QMessageBox::information( this, tr("ZugunfÃ¤hig"),
+                                      tr("Schwarz ist zugunfÃ¤hig.") );
           else
-            statusbar->showMessage( tr("Schwarz ist zugunfähig.") );
+            statusbar->showMessage( tr("Schwarz ist zugunfÃ¤hig.") );
         }
       m_game.unlock_arrays();
     }
 
-  /* Einstellungen gemäß des Spielertyps setzen */
+  /* Einstellungen gemÃ¤ÃŸ des Spielertyps setzen */
   switch( m_player_type[ m_game.get_act_player() ] )
     {
       case HUMAN_PLAYER:
@@ -536,7 +536,7 @@ void MainWindow::roll_dice( void )
       case AI_PLAYER:
         m_ai[ m_game.get_act_player() ]->move();
         m_player_disp->setText( m_player_disp->text()
-                                + tr("(KI überlegt...) ") );
+                                + tr("(KI Ã¼berlegt...) ") );
         break;
       case NETWORK_PLAYER:
         break;
@@ -551,15 +551,15 @@ void MainWindow::refresh_turn_list( void )
 {
   std::vector< BG::BackgammonTurn > turn_list = m_game.get_turn_list();
   std::vector< BG::BackgammonMove > move_list; // Liste mit den in jeweils
-                                               // einer Runde ausgeführten
-                                               // Zügen.
+                                               // einer Runde ausgefÃ¼hrten
+                                               // ZÃ¼gen.
   std::vector< bool > hit_checker; // Liste, die angibt, ob beim
                                    // entsprechenden Zug in move_list ein
                                    // Spielstein geschlagen wurde.
   std::vector< BG::BackgammonMove >::iterator move_list_iter[ 2 ];
   std::vector< bool >::iterator hit_checker_iter[ 2 ];
   short int end_position; // Endposition eines Zuges.
-  std::list< QString > moves; // Züge als String konvertiert.
+  std::list< QString > moves; // ZÃ¼ge als String konvertiert.
   std::list< QString >::iterator moves_iter[ 2 ];
   QString str; // Zum Zusammensetzen der Ausgabe.
   unsigned int i, j;
@@ -609,7 +609,7 @@ void MainWindow::refresh_turn_list( void )
       move_list = turn_list[ i ].get_move_list();
       hit_checker = turn_list[ i ].get_hit_checker();
 
-      /* Züge in der Runde durchgehen */
+      /* ZÃ¼ge in der Runde durchgehen */
       for( move_list_iter[ 0 ] = move_list.begin(),
            hit_checker_iter[ 0 ] = hit_checker.begin();
            move_list_iter[ 0 ] != move_list.end();
@@ -678,7 +678,7 @@ void MainWindow::refresh_turn_list( void )
         {
           j = 1;
 
-          /* Prüfen, ob der gleiche Zug mehrmals in einer Runde ausgeführt
+          /* PrÃ¼fen, ob der gleiche Zug mehrmals in einer Runde ausgefÃ¼hrt
            * wurde */
           for( moves_iter[ 1 ] = moves_iter[ 0 ];
                moves_iter[ 1 ] != moves.end();
@@ -732,8 +732,8 @@ void MainWindow::refresh_turn_list( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Setzt bei einem ungültigen Zug (wobei der Grund, warum er ungültig ist
-/// in \a reason übergeben wird) eine entsprechende Nachricht in die
+/// Setzt bei einem ungÃ¼ltigen Zug (wobei der Grund, warum er ungÃ¼ltig ist
+/// in \a reason Ã¼bergeben wird) eine entsprechende Nachricht in die
 /// Statuszeile.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::show_illegal_move_in_statusbar( int reason )
@@ -744,12 +744,12 @@ void MainWindow::show_illegal_move_in_statusbar( int reason )
         statusbar->showMessage( tr("Falsche Zugrichtung. ") );
         break;
       case BG::CHECKER_LEFT_ON_BAR:
-        statusbar->showMessage( tr("Es müssen noch Spielsteine zurück ins Spiel"
+        statusbar->showMessage( tr("Es mÃ¼ssen noch Spielsteine zurÃ¼ck ins Spiel"
                                    " gebracht werden. ") );
         break;
       case BG::NOT_ALL_IN_HOMEBOARD:
-        statusbar->showMessage( tr("Es müssen erst alle Spielsteine im "
-                                   "Homeboard sein, bevor mit dem Auswürfeln "
+        statusbar->showMessage( tr("Es mÃ¼ssen erst alle Spielsteine im "
+                                   "Homeboard sein, bevor mit dem AuswÃ¼rfeln "
                                    "begonnen werden kann.") );
         break;
       case BG::ANOTHER_CHECKER_HAS_TO_BE_MOVED:
@@ -760,11 +760,11 @@ void MainWindow::show_illegal_move_in_statusbar( int reason )
         break;
       case BG::DICE_VALUE:
         statusbar->showMessage( tr("Ein anderer Spielstein muss bewegt werden "
-                                   "oder das Feld ist mit dem Würfelergebnis "
+                                   "oder das Feld ist mit dem WÃ¼rfelergebnis "
                                    "nicht erreichbar.") );
         break;
       default:
-        statusbar->showMessage( tr("Dieser Zug ist nicht möglich.") );
+        statusbar->showMessage( tr("Dieser Zug ist nicht mÃ¶glich.") );
         break;
     }
 }
@@ -797,7 +797,7 @@ void MainWindow::show_winner( void )
   if( m_game.get_winner() == BG::WHITE )
     {
       m_wins[ BG::WHITE ] += m_game.get_win_height();
-      msg = tr("Weiß");
+      msg = tr("WeiÃŸ");
     }
   else
     {
@@ -841,9 +841,9 @@ void MainWindow::show_winner( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Wird aufgerufen, wenn sich das Würfelergebnis von \ref m_game ändert
-/// und aktualisiert die Würfelanzeige, wenn gerade ein Spiel über das
-/// Netzwerk gespielt wird und automatisches Würfeln aktiviert ist.
+/// Wird aufgerufen, wenn sich das WÃ¼rfelergebnis von \ref m_game Ã¤ndert
+/// und aktualisiert die WÃ¼rfelanzeige, wenn gerade ein Spiel Ã¼ber das
+/// Netzwerk gespielt wird und automatisches WÃ¼rfeln aktiviert ist.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::refresh_dice( void )
 {
@@ -855,7 +855,7 @@ void MainWindow::refresh_dice( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Verarbeitet die Nachrichten des Backgammon-Server, sofern sie für das
+/// Verarbeitet die Nachrichten des Backgammon-Server, sofern sie fÃ¼r das
 /// Hauptfenster interessant sind.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::net_msg_received( NetBackgammonMsg msg )
@@ -879,7 +879,7 @@ void MainWindow::net_msg_received( NetBackgammonMsg msg )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Macht den letzten Zug rückgängig.
+/// Macht den letzten Zug rÃ¼ckgÃ¤ngig.
 /////////////////////////////////////////////////////////////////////////////
 void MainWindow::on_actionUndo_triggered( void )
 {
@@ -889,7 +889,7 @@ void MainWindow::on_actionUndo_triggered( void )
 
   m_game.undo_last_turn();
 
-  /* Würfelanzeige aktualisieren */
+  /* WÃ¼rfelanzeige aktualisieren */
   m_game.lock_arrays();
   m_d1->set_value( m_game.get_dice()[ 0 ] );
   m_d2->set_value( m_game.get_dice()[ 1 ] );
@@ -938,34 +938,34 @@ void MainWindow::on_actionUndo_triggered( void )
 
   /* Anzeigen welcher Spieler am Zug ist */
   if( m_game.get_act_player() == BG::WHITE )
-    m_player_disp->setText( tr(" Weiß ist am Zug. ") );
+    m_player_disp->setText( tr(" WeiÃŸ ist am Zug. ") );
   else
     m_player_disp->setText( tr(" Schwarz ist am Zug. ") );
 
-  /* Gegebenenfalls Zugunfähigkeit anzeigen */
+  /* Gegebenenfalls ZugunfÃ¤higkeit anzeigen */
   if( !m_game.is_valid_move_possible() )
     {
       m_game.lock_arrays();
       if( m_game.get_act_player() == BG::WHITE )
         {
           if( m_show_blocking_msgs[ BG::WHITE] )
-            QMessageBox::information( this, tr("Zugunfähig"),
-                                      tr("Weiß ist zugunfähig.") );
+            QMessageBox::information( this, tr("ZugunfÃ¤hig"),
+                                      tr("WeiÃŸ ist zugunfÃ¤hig.") );
           else
-            statusbar->showMessage( tr("Weiß ist zugunfähig.") );
+            statusbar->showMessage( tr("WeiÃŸ ist zugunfÃ¤hig.") );
         }
       else
         {
           if( m_show_blocking_msgs[ BG::BLACK ] )
-            QMessageBox::information( this, tr("Zugunfähig"),
-                                      tr("Schwarz ist zugunfähig.") );
+            QMessageBox::information( this, tr("ZugunfÃ¤hig"),
+                                      tr("Schwarz ist zugunfÃ¤hig.") );
           else
-            statusbar->showMessage( tr("Schwarz ist zugunfähig.") );
+            statusbar->showMessage( tr("Schwarz ist zugunfÃ¤hig.") );
         }
       m_game.unlock_arrays();
     }
 
-  /* Einstellungen gemäß des Spielertyps setzen */
+  /* Einstellungen gemÃ¤ÃŸ des Spielertyps setzen */
   if(    m_player_type[ m_game.get_act_player() ] == HUMAN_PLAYER
       && m_game.is_valid_move_possible() )
     m_game_disp->setEnabled( true );
@@ -973,7 +973,7 @@ void MainWindow::on_actionUndo_triggered( void )
     {
       m_ai[ m_game.get_act_player() ]->move();
       m_player_disp->setText( m_player_disp->text()
-                              + tr("(KI überlegt...) ") );
+                              + tr("(KI Ã¼berlegt...) ") );
     }
   else
     on_actionUndo_triggered();
@@ -981,8 +981,8 @@ void MainWindow::on_actionUndo_triggered( void )
 
 /*< \label{QString:MainWindow::conv_pos(short:int,BG::Player)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Konvertiert \a pos in die tatsächliche Position auf dem Spielbrett für
-/// den in \a player übergebenen Spieler.
+/// Konvertiert \a pos in die tatsÃ¤chliche Position auf dem Spielbrett fÃ¼r
+/// den in \a player Ã¼bergebenen Spieler.
 /////////////////////////////////////////////////////////////////////////////
 QString MainWindow::conv_pos( short int pos, BG::Player player )
 {

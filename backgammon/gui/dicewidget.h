@@ -1,7 +1,7 @@
 /*!
  * \file dicewidget.h
  * \brief Deklaration der DiceWidget-Klasse, zur Darstellung eines 6-seitigen
- *        Würfels.
+ *        WÃ¼rfels.
  * \date Tu Nov 28 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -32,8 +32,8 @@
 #include <QWidget>
 
 /////////////////////////////////////////////////////////////////////////////
-/// Diese Klasse stellt ein Widget zur Darstellung eines Würfelergebnisses
-/// eines sechs-seitigen Würfels bereit.
+/// Diese Klasse stellt ein Widget zur Darstellung eines WÃ¼rfelergebnisses
+/// eines sechs-seitigen WÃ¼rfels bereit.
 /////////////////////////////////////////////////////////////////////////////
 class DiceWidget : public QWidget
 {

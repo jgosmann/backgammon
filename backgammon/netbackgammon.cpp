@@ -90,8 +90,8 @@ void NetBackgammonMsg::set_by_raw_data( QString msg )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt die Daten so zurück, wie sie an den Server gesendet würden. Am Ende
-/// der Rückgabe befindet sich allerdings keine Newline-Zeichen.
+/// Gibt die Daten so zurÃ¼ck, wie sie an den Server gesendet wÃ¼rden. Am Ende
+/// der RÃ¼ckgabe befindet sich allerdings keine Newline-Zeichen.
 /////////////////////////////////////////////////////////////////////////////
 QString NetBackgammonMsg::get_raw_data( void ) const
 {
@@ -182,7 +182,7 @@ void NetBackgammonConnection::chat( QString send_to, QString msg )
 /////////////////////////////////////////////////////////////////////////////
 /// Erstellt ein neues Spiel auf dem Server. Wenn \a password nicht leer
 /// ist wird dies als Passwort verwendet. Wenn \a timeout oder \a turns
-/// größer als 0 ist, wird dies als Timeout bzw. als Rundenbegrenzung
+/// grÃ¶ÃŸer als 0 ist, wird dies als Timeout bzw. als Rundenbegrenzung
 /// verwendet.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::create_game( QString password,
@@ -205,7 +205,7 @@ void NetBackgammonConnection::create_game( QString password,
 
 /////////////////////////////////////////////////////////////////////////////
 /// Tritt dem Spiel \a game_number auf dem Server bei. Falls dies ein
-/// passwortgeschütztes Spiel ist, muss in \a password das Passwort übergeben
+/// passwortgeschÃ¼tztes Spiel ist, muss in \a password das Passwort Ã¼bergeben
 /// werden.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::join_game( unsigned int game_number,
@@ -215,7 +215,7 @@ void NetBackgammonConnection::join_game( unsigned int game_number,
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Verlässt ein Spiel.
+/// VerlÃ¤sst ein Spiel.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::leave_game( void )
 {
@@ -234,7 +234,7 @@ void NetBackgammonConnection::start( void )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Informiert den Server über den Erhalt eines Befehls.
+/// Informiert den Server Ã¼ber den Erhalt eines Befehls.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::confirm( void )
 {
@@ -243,14 +243,14 @@ void NetBackgammonConnection::confirm( void )
 
 /*< \label{void:NetBackgammonConnection::turn(const:BG::BackgammonTurn&)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Überträgt den Zug \a turn an den Backgammon-Server.
+/// ÃœbertrÃ¤gt den Zug \a turn an den Backgammon-Server.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::turn( const BG::BackgammonTurn &turn )
 {
   const short int PLAYER_IND = ( turn.get_player() == BG::WHITE ) ? 1 : -1;
       // Um Berechnungen einfacher zu gestalten.
   short int start_position, end_position; // Start- und Endpositione eines
-                                          // Zuges für Berechnungszwecke.
+                                          // Zuges fÃ¼r Berechnungszwecke.
   QString msg = "TURN:";
   unsigned int i, j;
 
@@ -258,9 +258,9 @@ void NetBackgammonConnection::turn( const BG::BackgammonTurn &turn )
     {
       for( j = 0; j < turn.get_move_list().size(); j++ )
         {
-          /* Mit folgendem Code-Block wird Sichergestellt, dass die Züge so
-           * sortiert sind, dass sie vom Server akzeptiert werden (Züge von
-           * der Bar, normale Züge, Züge bei denen Spielsteine ausgewürfelt
+          /* Mit folgendem Code-Block wird Sichergestellt, dass die ZÃ¼ge so
+           * sortiert sind, dass sie vom Server akzeptiert werden (ZÃ¼ge von
+           * der Bar, normale ZÃ¼ge, ZÃ¼ge bei denen Spielsteine ausgewÃ¼rfelt
            * werden). */
           start_position = turn.get_move_list()[ j ].get_from();
           if( start_position == BG::BAR )
@@ -284,7 +284,7 @@ void NetBackgammonConnection::turn( const BG::BackgammonTurn &turn )
             continue;
 
           /* Jetzt wird der Zug in die Nachricht, die an den Server gesendet
-           * wird übersetzt. */
+           * wird Ã¼bersetzt. */
           msg += QString::number( turn.get_move_list()[ j ].get_distance() );
           msg += " ";
           if( turn.get_player() == BG::WHITE )
@@ -338,13 +338,13 @@ void NetBackgammonConnection::send( QString msg )
 {
   if( m_dbg )
     cerr << "< " << msg.toStdString() << std::flush;
-  write( msg.toAscii() );
+  write( msg.Ascii() );
 }
 
 /////////////////////////////////////////////////////////////////////////////
 /// Dieser Slot wird aufgerufen, wenn Daten zum Lesen am Socket bereit
 /// stehen. Diese werden dann verarbeitet, so fern sie das aktuelle Spiel
-/// betreffen und anschließend werden alle eingehende Daten mit dem Signal
+/// betreffen und anschlieÃŸend werden alle eingehende Daten mit dem Signal
 /// received_msg() weitergeleitet.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::on_readyRead( void )
@@ -425,7 +425,7 @@ void NetBackgammonConnection::on_readyRead( void )
 
 /////////////////////////////////////////////////////////////////////////////
 /// Setzt die Membervariablen der Klasse nach dem Trennen einer Verbindung
-/// wieder zurück.
+/// wieder zurÃ¼ck.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammonConnection::on_disconnected( void )
 {
@@ -439,7 +439,7 @@ void NetBackgammonConnection::on_disconnected( void )
 //===========================================================================
 /////////////////////////////////////////////////////////////////////////////
 /// Konstruktor. Mit \a connection muss ein Zeiger auf die Verbindung zum
-/// Backgammon-Server übergeben werden. \a net_player ist der über das
+/// Backgammon-Server Ã¼bergeben werden. \a net_player ist der Ã¼ber das
 /// Netzwerkgesteuerte Spieler, sofern eine Netzwerkverbindung aufgebaut
 /// wird/wurde. Die restlichen Argumente entsprechen denen des Konstruktors
 /// von \ref BG::Backgammon.
@@ -458,7 +458,7 @@ NetBackgammon::NetBackgammon( NetBackgammonConnection *connection,
            this, SLOT( transmit_last_turn( void ) ) );
   connect( this, SIGNAL( game_ended( void ) ),
            this, SLOT( transmit_last_turn( void ) ) );
-      // Auch der letzte Zug muss noch übermittelt werden.
+      // Auch der letzte Zug muss noch Ã¼bermittelt werden.
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -482,8 +482,8 @@ void NetBackgammon::set_net_player( short int player )
 
 /*< \label{void:NetBackgammon::transmit_last_turn(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Überträgt den gesamten letzten Zug an den Backgammon-Server, sofern
-/// dieser lokal ausgeführt worden ist.
+/// ÃœbertrÃ¤gt den gesamten letzten Zug an den Backgammon-Server, sofern
+/// dieser lokal ausgefÃ¼hrt worden ist.
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammon::transmit_last_turn( void )
 {
@@ -500,7 +500,7 @@ void NetBackgammon::transmit_last_turn( void )
 /*< \label{void:NetBackgammon::process_srv_msg(NetBackgammonMsg)} >*/
 /////////////////////////////////////////////////////////////////////////////
 /// Verarbeitet eine vom Backgammon-Server empfangene Nachricht, sofern
-/// sie für diese Klasse von Bedeutung ist (BOARD, DICE, INFO:DICE,
+/// sie fÃ¼r diese Klasse von Bedeutung ist (BOARD, DICE, INFO:DICE,
 /// INFO:TURN).
 /////////////////////////////////////////////////////////////////////////////
 void NetBackgammon::process_srv_msg( NetBackgammonMsg msg )

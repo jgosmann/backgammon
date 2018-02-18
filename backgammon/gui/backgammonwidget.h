@@ -1,7 +1,7 @@
 /*!
  * \file backgammonwidget.h
  * \brief Deklaration der BackgammonWidget-Klasse, welche zur Anzeige eines
- *        Backgammon-Spieles und der Eingabe von Zügen dient.
+ *        Backgammon-Spieles und der Eingabe von ZÃ¼gen dient.
  * \date Mi Nov 15 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -36,7 +36,7 @@
 
 /*< \label{BackgammonWidget} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Zeigt ein Backgammon-Spiel an und ermöglicht die Eingabe von Zügen.
+/// Zeigt ein Backgammon-Spiel an und ermÃ¶glicht die Eingabe von ZÃ¼gen.
 /////////////////////////////////////////////////////////////////////////////
 class BackgammonWidget : public QWidget
 {
@@ -66,7 +66,7 @@ class BackgammonWidget : public QWidget
 
   signals:
     void illegal_move( int reason );
-        ///< \brief Wird ein nicht möglicher Zug eingeben, wird dieses Signal
+        ///< \brief Wird ein nicht mÃ¶glicher Zug eingeben, wird dieses Signal
         ///< gesendet.
 
     void is_rotated_changed( bool value );
@@ -90,18 +90,18 @@ class BackgammonWidget : public QWidget
   private:
     BG::Backgammon *m_game; ///< \brief Das Backgammon-Spiel, dass
                             ///< dargestellt werden soll.
-    bool m_is_rotated; ///< \brief Gibt an, ob das Spielfeld um 180° gedreht
+    bool m_is_rotated; ///< \brief Gibt an, ob das Spielfeld um 180Â° gedreht
                        ///< dargestellt wird.
 
-    QPixmap *m_drag_icon; ///< \brief Grafik eines Spielsteines für
+    QPixmap *m_drag_icon; ///< \brief Grafik eines Spielsteines fÃ¼r
                           ///< Drag & Drop-Aktionen.
     BG::Position m_drag_start; ///< \brief Position, von der ein Spielstein
                                ///< gezogen wird.
 
-    QColor m_col_white; ///< \brief Farbe für weiße Spielsteine und Zacken.
-    QColor m_col_black; ///< \brief Farbe für scharze Spielsteine und Zacken.
+    QColor m_col_white; ///< \brief Farbe fÃ¼r weiÃŸe Spielsteine und Zacken.
+    QColor m_col_black; ///< \brief Farbe fÃ¼r scharze Spielsteine und Zacken.
     QColor m_col_pen; ///< \brief Standard Umrandungsfarbe.
-    QColor m_col_bar; ///< \brief Farbe für die Bar.
+    QColor m_col_bar; ///< \brief Farbe fÃ¼r die Bar.
     QColor m_col_bg; ///< \brief Hintergrundsfarbe.
 };
 

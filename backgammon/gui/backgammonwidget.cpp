@@ -1,7 +1,7 @@
 /*!
  * \file backgammonwidget.cpp
  * \brief Implementation der BackgammonWidget-Klasse, welche zur Anzeige
- *        eines Backgammon-Spieles und der Eingabe von Zügen dient.
+ *        eines Backgammon-Spieles und der Eingabe von ZÃ¼gen dient.
  * \date Mi Nov 15 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -41,7 +41,7 @@
 #include "backgammonwidget.h"
 
 /////////////////////////////////////////////////////////////////////////////
-/// Konstruktor, in \a game muss das darzustellende Spiel übergeben werden.
+/// Konstruktor, in \a game muss das darzustellende Spiel Ã¼bergeben werden.
 /////////////////////////////////////////////////////////////////////////////
 BackgammonWidget::BackgammonWidget( BG::Backgammon *game, QWidget *parent )
     : QWidget( parent ), m_game( game ), m_is_rotated( false ),
@@ -83,12 +83,12 @@ BackgammonWidget::~BackgammonWidget( void )
 /*< \label{BG::Position:BackgammonWidget::conv_mouse_pos(int,int)} >*/
 /////////////////////////////////////////////////////////////////////////////
 /// Konvertiert die Mausposition mit den Koordinaten \a x und \a y (relativ
-/// zum Widget) in eine Position des Backgammon Spieles, welche zurück
+/// zum Widget) in eine Position des Backgammon Spieles, welche zurÃ¼ck
 /// gegeben wird.
 /////////////////////////////////////////////////////////////////////////////
 BG::Position BackgammonWidget::conv_mouse_pos( int x, int y )
 {
-  short int position; // Position, die zurückgegeben wird.
+  short int position; // Position, die zurÃ¼ckgegeben wird.
 
   position = static_cast< short int >( floor( x / ( width() / 15.0 ) ) );
   if( position <= 0 || position >= 14 )
@@ -186,8 +186,8 @@ void BackgammonWidget::set_col_bg( QColor color )
 /*< \label{QPicture:BackgammonWidget::draw_checkers(unsigned:short:int,double,QColor,QColor,bool)} >*/
 /////////////////////////////////////////////////////////////////////////////
 /// Zeichnet \a n Spielsteine (von unten nach oben, wobei bei mehr als 6
-/// Steinen, diese sich überlappen). \a size gibt die Breite und Höhe eines
-/// Spielsteines an. \a fg gibt die Umrandungsfarbe und \a bg die Füllfarbe
+/// Steinen, diese sich Ã¼berlappen). \a size gibt die Breite und HÃ¶he eines
+/// Spielsteines an. \a fg gibt die Umrandungsfarbe und \a bg die FÃ¼llfarbe
 /// an. Wenn \a invert true ist wird nicht von oben nach unten, sonder von
 /// unten nach oben gezeichnet.
 /////////////////////////////////////////////////////////////////////////////
@@ -225,8 +225,8 @@ QPicture BackgammonWidget::draw_checkers( unsigned short int n, double size,
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// DragEnterEvent, sorgt dafür, dass nur Spielsteine "gedroppt" werden
-/// können.
+/// DragEnterEvent, sorgt dafÃ¼r, dass nur Spielsteine "gedroppt" werden
+/// kÃ¶nnen.
 /////////////////////////////////////////////////////////////////////////////
 void BackgammonWidget::dragEnterEvent( QDragEnterEvent *event )
 {
@@ -236,8 +236,8 @@ void BackgammonWidget::dragEnterEvent( QDragEnterEvent *event )
 
 /*< \label{void:BackgammonWidget::dropEvent(QDropEvent)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Übergibt den so eben eingegebenen Zug der Instanz der Backgammon-Klasse,
-/// um den Zug auszuführen.
+/// Ãœbergibt den so eben eingegebenen Zug der Instanz der Backgammon-Klasse,
+/// um den Zug auszufÃ¼hren.
 /////////////////////////////////////////////////////////////////////////////
 void BackgammonWidget::dropEvent( QDropEvent *event )
 {
@@ -247,7 +247,7 @@ void BackgammonWidget::dropEvent( QDropEvent *event )
                                                                     : 24);
   BG::Position end_position; // Position von zu der gezogen wird.
   short int distance; // Distanz, die gezogen wird.
-  BG::IllegalMove reason; // Grund, warum Zug nicht möglich (wenn zutreffend)
+  BG::IllegalMove reason; // Grund, warum Zug nicht mÃ¶glich (wenn zutreffend)
   unsigned int i;
 
   if( !event->mimeData()->hasFormat( "application/backgammon-move" ) )
@@ -299,9 +299,9 @@ void BackgammonWidget::dropEvent( QDropEvent *event )
             }
         }
 
-      /* Wenn die gewürfelten Augenzahlen nicht reichen den Spielstein
-       * auszuwürfeln, Distanz wieder zurücksetzen, damit angezeigt wird,
-       * dass der Zug ungültig ist */
+      /* Wenn die gewÃ¼rfelten Augenzahlen nicht reichen den Spielstein
+       * auszuwÃ¼rfeln, Distanz wieder zurÃ¼cksetzen, damit angezeigt wird,
+       * dass der Zug ungÃ¼ltig ist */
       if( distance < ( ( m_game->get_act_player() == BG::WHITE )
                          ? 24 - START_POSITION : 1 + START_POSITION ) )
         distance = ( m_game->get_act_player() == BG::WHITE )
@@ -326,7 +326,7 @@ void BackgammonWidget::dropEvent( QDropEvent *event )
 /////////////////////////////////////////////////////////////////////////////
 void BackgammonWidget::mousePressEvent( QMouseEvent *event )
 {
-  QPixmap alpha_channel( width() / 15, width() / 15 ); // Alpha-Channel für
+  QPixmap alpha_channel( width() / 15, width() / 15 ); // Alpha-Channel fÃ¼r
                                                        // das Drag-Icon.
   QPainter alpha_channel_painter( &alpha_channel );
 
@@ -338,7 +338,7 @@ void BackgammonWidget::mousePressEvent( QMouseEvent *event )
   if( m_drag_start == BG::OUT_OF_GAME )
     return;
 
-  /* Prüfen, ob vom der entsprechenden Position gezogen werden kann */
+  /* PrÃ¼fen, ob vom der entsprechenden Position gezogen werden kann */
   m_game->lock_arrays();
   if( m_drag_start == BG::BAR
       && m_game->get_on_bar()[ m_game->get_act_player() ] <= 0 )
@@ -406,12 +406,12 @@ void BackgammonWidget::paintEvent( QPaintEvent *event )
 {
   QPainter painter( this );
   const double point_width = width() / 15.0; // Breite einer "Zunge"
-  const double point_height = 5.0 * point_width; // Höhe einer "Zunge"
+  const double point_height = 5.0 * point_width; // HÃ¶he einer "Zunge"
   QPointF triangle_coords[ 3 ]; // Speicherung der "Zungen"-Koordinaten zum
                                 // Zeichnen.
   short int n_checkers_to_draw;
   BG::Player player;
-  QString str; // Nur für temporäre Speicherung.
+  QString str; // Nur fÃ¼r temporÃ¤re Speicherung.
   unsigned int i;
 
   /* Hintergrund */
@@ -428,7 +428,7 @@ void BackgammonWidget::paintEvent( QPaintEvent *event )
 
   painter.setRenderHint( QPainter::Antialiasing );
 
-  /* Bar und Ränder */
+  /* Bar und RÃ¤nder */
   painter.setRenderHint( QPainter::Antialiasing, false );
   painter.setPen( m_col_pen );
   painter.setBrush( m_col_bar );
@@ -463,7 +463,7 @@ void BackgammonWidget::paintEvent( QPaintEvent *event )
                          m_col_white, m_col_black ) );
   m_game->unlock_arrays();
 
-  /* Obere Hälfte */
+  /* Obere HÃ¤lfte */
   triangle_coords[ 0 ].setY( point_width / 2.0 );
   triangle_coords[ 1 ].setY( point_width / 2.0 );
   triangle_coords[ 2 ].setY( point_width / 2.0 + point_height );
@@ -504,7 +504,7 @@ void BackgammonWidget::paintEvent( QPaintEvent *event )
                                                  : m_col_black ) );
     }
 
-  /* Untere Hälfte */
+  /* Untere HÃ¤lfte */
   triangle_coords[ 0 ].setY( 2.0 * point_height + 1.5 * point_width );
   triangle_coords[ 1 ].setY( 2.0 * point_height + 1.5 * point_width );
   triangle_coords[ 2 ].setY( point_height + 1.5 * point_width );
@@ -621,8 +621,8 @@ void BackgammonWidget::paintEvent( QPaintEvent *event )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Sorgt dafür, dass das Widget bei einer Größenänderung das richtige
-/// Seitenverhältnis behält.
+/// Sorgt dafÃ¼r, dass das Widget bei einer GrÃ¶ÃŸenÃ¤nderung das richtige
+/// SeitenverhÃ¤ltnis behÃ¤lt.
 /////////////////////////////////////////////////////////////////////////////
 void BackgammonWidget::resizeEvent( QResizeEvent *event )
 {

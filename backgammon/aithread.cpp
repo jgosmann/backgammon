@@ -1,6 +1,6 @@
 /*!
  * \file aithread.cpp
- * \brief Implementation der Klasse für die KI.
+ * \brief Implementation der Klasse fÃ¼r die KI.
  * \date Sa Dec 23 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -39,7 +39,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 /// Konstruktor, wobei mit \a game ein Zeiger auf das Backgammon-Spiel
-/// übergeben werden muss, für das die KI Züge sucht.
+/// Ã¼bergeben werden muss, fÃ¼r das die KI ZÃ¼ge sucht.
 /////////////////////////////////////////////////////////////////////////////
 AIThread::AIThread( BG::Backgammon *game, QObject *parent )
     : QThread( parent ), m_game( game ), m_status( TERMINATED ),
@@ -54,7 +54,7 @@ AIThread::AIThread( BG::Backgammon *game, QObject *parent )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Startet die Ausführung der KI. Anschließend wird sie über spezielle
+/// Startet die AusfÃ¼hrung der KI. AnschlieÃŸend wird sie Ã¼ber spezielle
 /// Steuerungsfunktionen kontrolliert.
 /////////////////////////////////////////////////////////////////////////////
 void AIThread::run( void )
@@ -106,14 +106,14 @@ void AIThread::find_move( short int rec_depth )
 {
   const short int PLAYER_IND = ( m_game->get_act_player() == BG::WHITE )
                                  ? 1 : -1;
-      // Um if-Abfragen übersichtlicher zu gestalten.
-  bool mutex_locked = false; // Gibt an, ob das Mutex für die Arrays in
+      // Um if-Abfragen Ã¼bersichtlicher zu gestalten.
+  bool mutex_locked = false; // Gibt an, ob das Mutex fÃ¼r die Arrays in
                              // m_game gesperrt wurde, damit dieses nicht
                              // mehrmals entsperrt wird, was zu einem
-                             // undefinierten Verhalten führt.
+                             // undefinierten Verhalten fÃ¼hrt.
   /*< \label{void:AIThread::find_move(short:int*,short:int)::my_dice} >*/
-  bool all_dice_used; // Für alle Würfel gesetzt?
-  short int end_position; // Endposition eines Zuges für Berechnungszwecke.
+  bool all_dice_used; // FÃ¼r alle WÃ¼rfel gesetzt?
+  short int end_position; // Endposition eines Zuges fÃ¼r Berechnungszwecke.
   double rating; // Bewertung der Spielsituation
   unsigned short int i, j;
 
@@ -151,15 +151,15 @@ void AIThread::find_move( short int rec_depth )
         m_changes[ i ] = 0;
     }
 
-  /* Sicherstellen, dass auf jeden Fall eine mögliche Zugkombination
-   * zurückgegeben werden kann. */
+  /* Sicherstellen, dass auf jeden Fall eine mÃ¶gliche Zugkombination
+   * zurÃ¼ckgegeben werden kann. */
   if( rec_depth == 0 )
     {
       m_game_copy.copy_without_turn_list( *m_game );
 
       i = m_game_copy.get_turn_number(); // Zur Feststellung, wann so viele
-                                         // Züge in m_moves sind, dass keine
-                                         // weiteren gemacht werden können.
+                                         // ZÃ¼ge in m_moves sind, dass keine
+                                         // weiteren gemacht werden kÃ¶nnen.
       m_best_move_mutex.lock();
       m_best_move.clear();
       while( m_game_copy.get_turn_number() == i
@@ -179,7 +179,7 @@ void AIThread::find_move( short int rec_depth )
   if( get_request() != FIND_MOVE )
     return;
 
-  /* Tiefste Rekursionsstufe? / Für alle Würfel gesetzt? Dann muss geprüft
+  /* Tiefste Rekursionsstufe? / FÃ¼r alle WÃ¼rfel gesetzt? Dann muss geprÃ¼ft
    * werden, ob der aktuelle Zug in m_moves besser ist als der in
    * m_best_move. */
   all_dice_used = true;
@@ -197,8 +197,8 @@ void AIThread::find_move( short int rec_depth )
       m_game_copy.copy_without_turn_list( *m_game );
 
       i = m_game_copy.get_turn_number(); // Zur Feststellung, on so viele
-                                         // Züge in m_moves sind, dass keine
-                                         // weiteren gemacht werden können.
+                                         // ZÃ¼ge in m_moves sind, dass keine
+                                         // weiteren gemacht werden kÃ¶nnen.
 
        if( m_game_copy.move( m_moves )
            && ( m_game_copy.get_turn_number() != i
@@ -225,7 +225,7 @@ void AIThread::find_move( short int rec_depth )
   if( get_request() != FIND_MOVE )
     return;
 
-  /* Mögliche Züge systematisch u. rekursiv durchgehen */
+  /* MÃ¶gliche ZÃ¼ge systematisch u. rekursiv durchgehen */
   m_game->lock_arrays();
   for( i = 0; i < 25 && get_request() == FIND_MOVE; i++ )
     {
@@ -281,8 +281,8 @@ void AIThread::find_move( short int rec_depth )
 
 /*< \label{double:AIThread::rate_game_situation(const:BG::Backgammon*,BG::Player)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Bewertet die Spielsituation in \a game für Spieler \a player und gibt
-/// die Bewertung zurück.
+/// Bewertet die Spielsituation in \a game fÃ¼r Spieler \a player und gibt
+/// die Bewertung zurÃ¼ck.
 /////////////////////////////////////////////////////////////////////////////
 double AIThread::rate_game_situation( const BG::Backgammon *game,
                                       BG::Player player ) const
@@ -305,7 +305,7 @@ double AIThread::rate_game_situation( const BG::Backgammon *game,
                   * m_rating_factors[ PROB_CHECKER_IS_HIT ];
     }
 
-  /* Wahrscheinlichkeiten selber zugunfähig zu sein */
+  /* Wahrscheinlichkeiten selber zugunfÃ¤hig zu sein */
   for( i = 0; i < 24; i++ )
     {
       if( game->get_points()[ i ] * PLAYER_IND > 0 )
@@ -316,7 +316,7 @@ double AIThread::rate_game_situation( const BG::Backgammon *game,
                   * m_rating_factors[ PROB_CANNOT_MOVE ];
     }
 
-  /* Wahrscheinlichkeit, dass der Gegner zugunfähig ist */
+  /* Wahrscheinlichkeit, dass der Gegner zugunfÃ¤hig ist */
   for( i = 0; i < 24; i++ )
     {
       if( game->get_points()[ i ] * PLAYER_IND < 0 )
@@ -339,7 +339,7 @@ double AIThread::rate_game_situation( const BG::Backgammon *game,
   rating += n_points_with_checkers( game, player ) / 7.0
             * m_rating_factors[ N_POINTS_WITH_CHECKERS ];
 
-  /* Zahl der ausgewürfelten Spielsteine */
+  /* Zahl der ausgewÃ¼rfelten Spielsteine */
   game->lock_arrays();
   rating += game->get_beared_off()[ player ] / 15.0
             * m_rating_factors[ BEARED_OFF ];
@@ -353,7 +353,7 @@ double AIThread::rate_game_situation( const BG::Backgammon *game,
   rating += n_checkers_in_op_homeboard( game, player ) / 15.0
             * m_rating_factors[ CHECKERS_IN_OP_HOMEBOARD ];
 
-  /* Durchschnittliche Entfernung zum Auswürfeln beim Gegener */
+  /* Durchschnittliche Entfernung zum AuswÃ¼rfeln beim Gegener */
   rating += distance_from_off_game( game,
                                     ( player == BG::WHITE ) ? BG::BLACK
                                                             : BG:: WHITE )
@@ -364,7 +364,7 @@ double AIThread::rate_game_situation( const BG::Backgammon *game,
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt zurück, für wieviele Felder \a player beim Backgammon-Spiel \a game
+/// Gibt zurÃ¼ck, fÃ¼r wieviele Felder \a player beim Backgammon-Spiel \a game
 /// durchschnittlich ziehen muss, um einen Spielstein in das Homeboard zu
 /// bringen.
 /////////////////////////////////////////////////////////////////////////////
@@ -373,7 +373,7 @@ double AIThread::distance_from_homeboard( const BG::Backgammon *game,
 {
   const short int PLAYER_IND = ( player == BG::WHITE ) ? 1 : -1;
       // Zur Vereinfachung von if-Abragen etc.
-  unsigned int distance_sum = 0; // Summe der Entfernungen zum Auswürfeln
+  unsigned int distance_sum = 0; // Summe der Entfernungen zum AuswÃ¼rfeln
   unsigned int i;
 
   game->lock_arrays();
@@ -392,15 +392,15 @@ double AIThread::distance_from_homeboard( const BG::Backgammon *game,
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt zurück, für wieviele Felder \a player beim Backgammon-Spiel \a game
-/// durchschnittlich ziehen muss, um einen Spielstein auszuwürfeln.
+/// Gibt zurÃ¼ck, fÃ¼r wieviele Felder \a player beim Backgammon-Spiel \a game
+/// durchschnittlich ziehen muss, um einen Spielstein auszuwÃ¼rfeln.
 /////////////////////////////////////////////////////////////////////////////
 double AIThread::distance_from_off_game( const BG::Backgammon *game,
                                          BG::Player player ) const
 {
   const short int PLAYER_IND = ( player == BG::WHITE ) ? 1 : -1;
       // Zur Vereinfachung von if-Abragen etc.
-  unsigned int distance_sum = 0; // Summe der Entfernungen zum Auswürfeln
+  unsigned int distance_sum = 0; // Summe der Entfernungen zum AuswÃ¼rfeln
   unsigned int i;
 
   game->lock_arrays();
@@ -418,7 +418,7 @@ double AIThread::distance_from_off_game( const BG::Backgammon *game,
 
 /////////////////////////////////////////////////////////////////////////////
 /// Gibt die Anzahl an Spielsteinen von \a player im gegnerischen Homeboard
-/// und auf der Bar beim Backgammon-Spiel \a game zurück.
+/// und auf der Bar beim Backgammon-Spiel \a game zurÃ¼ck.
 /////////////////////////////////////////////////////////////////////////////
 unsigned short int AIThread::n_checkers_in_op_homeboard(
         const BG::Backgammon *game, BG::Player player ) const
@@ -443,7 +443,7 @@ unsigned short int AIThread::n_checkers_in_op_homeboard(
 
 /////////////////////////////////////////////////////////////////////////////
 /// Gibt die Zahl der "Zungen" beim Backgammon-Spiel \a game mit mindestens
-/// zwei Spielsteinen von \a player zurück.
+/// zwei Spielsteinen von \a player zurÃ¼ck.
 /////////////////////////////////////////////////////////////////////////////
 unsigned short int AIThread::n_points_with_checkers(
     const BG::Backgammon *game, BG::Player player ) const
@@ -464,9 +464,9 @@ unsigned short int AIThread::n_points_with_checkers(
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt die Wahrscheinlichkeit zurück, dass Spieler \a player im Spiel
-/// \a game einen Spielstein wieder einwürfeln kann. Dabei wird nicht
-/// berücksichtigt, ob sich überhaupt Steine auf der Bar befinden.
+/// Gibt die Wahrscheinlichkeit zurÃ¼ck, dass Spieler \a player im Spiel
+/// \a game einen Spielstein wieder einwÃ¼rfeln kann. Dabei wird nicht
+/// berÃ¼cksichtigt, ob sich Ã¼berhaupt Steine auf der Bar befinden.
 /////////////////////////////////////////////////////////////////////////////
 double AIThread::prob_get_checker_back_into_game( const BG::Backgammon *game,
                                                   BG::Player player ) const
@@ -487,14 +487,14 @@ double AIThread::prob_get_checker_back_into_game( const BG::Backgammon *game,
 
   return 1.0 - ( (1.0 - ret_val) * (1.0 - ret_val) );
       // Die Wahrscheinlichkeit muss hier umgerechnet werden, da mit zweien
-      // anstatt einem Würfel gewürfelt wird.
+      // anstatt einem WÃ¼rfel gewÃ¼rfelt wird.
 }
 
 /*< \label{double:AIThread::prob_player_cannot_move_at_pos(BG::Position,const:BG::Backgammon,BG::Player)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt die Wahrscheinlichkeit zurück, dass der Spieler \a player im
-/// nächsten Zug die Spielsteine auf \a pos nicht ziehen kann, wobei die
-/// aktuelle Spielsituation in \a game übergeben wird.
+/// Gibt die Wahrscheinlichkeit zurÃ¼ck, dass der Spieler \a player im
+/// nÃ¤chsten Zug die Spielsteine auf \a pos nicht ziehen kann, wobei die
+/// aktuelle Spielsituation in \a game Ã¼bergeben wird.
 /////////////////////////////////////////////////////////////////////////////
 double AIThread::prob_player_cannot_move_at_pos( BG::Position pos,
                                                  const BG::Backgammon *game,
@@ -566,9 +566,9 @@ double AIThread::prob_player_cannot_move_at_pos( BG::Position pos,
 
 /*< \label{double:AIThread::prob_position_is_reached(const:BG::Backgammon*,short:int,BG::Player)const} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt die Wahrscheinlichkeit zurück, dass der Spieler \a player die
-/// in \a position übergebene Position auf dem Spielfeld im nächsten Zug
-/// erreichen kann, wobei die aktuelle Spielsituation in \a game übergeben
+/// Gibt die Wahrscheinlichkeit zurÃ¼ck, dass der Spieler \a player die
+/// in \a position Ã¼bergebene Position auf dem Spielfeld im nÃ¤chsten Zug
+/// erreichen kann, wobei die aktuelle Spielsituation in \a game Ã¼bergeben
 /// wird.
 ///
 /// \attention \a position darf nicht BG::BAR oder BG::OUT_OF_GAME sein.
@@ -579,12 +579,12 @@ double AIThread::prob_position_is_reached( const BG::Backgammon *game,
 {
   const short int PLAYER_IND = ( player == BG::WHITE ) ? 1 : -1;
       // Zur Vereinfachung von if-Abragen etc.
-  bool possible_dice_combinations[ 6 ][ 6 ]; // Würfelkombinationen, bei
+  bool possible_dice_combinations[ 6 ][ 6 ]; // WÃ¼rfelkombinationen, bei
                                              // denen der Gegner schlagen
-                                             // könnte.
+                                             // kÃ¶nnte.
   double prob = 0.0; // Ermittelte Wahrscheinlichkeit
-  short int checking_position; // Speichert die Position für die gerade die
-                               // Wahrscheinlichkeit geprüft wird, dass sie
+  short int checking_position; // Speichert die Position fÃ¼r die gerade die
+                               // Wahrscheinlichkeit geprÃ¼ft wird, dass sie
                                // vom Gegener erreicht werden kann.
   int i, j;
 
@@ -598,7 +598,7 @@ double AIThread::prob_position_is_reached( const BG::Backgammon *game,
         possible_dice_combinations[ i ][ j ] = false;
     }
 
-  /* Möglichkeiten die Position nur mit der Augenzahl eines Würfels zu
+  /* MÃ¶glichkeiten die Position nur mit der Augenzahl eines WÃ¼rfels zu
    * erreichen */
   game->lock_arrays();
   for( i = 0; i < 6; i++ )
@@ -631,7 +631,7 @@ double AIThread::prob_position_is_reached( const BG::Backgammon *game,
       else if( game->get_points()[ checking_position ] * PLAYER_IND == -1
                || game->get_points()[ checking_position ] == 0 )
         {
-          /* Möglichkeiten die Position nur mit der Augenzahl beider Würfel
+          /* MÃ¶glichkeiten die Position nur mit der Augenzahl beider WÃ¼rfel
            * zu erreichen */
           for( j = 0; j < 6; j++ )
             {
@@ -661,7 +661,7 @@ double AIThread::prob_position_is_reached( const BG::Backgammon *game,
                        ||game->get_points()[ checking_position ] == 0
                        && i == j )
                 {
-                  /* Möglichkeiten die Position mit einem Pasch zu
+                  /* MÃ¶glichkeiten die Position mit einem Pasch zu
                    * erreichen */
                   checking_position = position - (3 * i + 3) * PLAYER_IND;
                   if( checking_position > 24 || checking_position < -1

@@ -1,7 +1,7 @@
 /*!
  * \file backgammon/main.cpp
- * \brief Enth‰lt die main-Funktion, welche das Programm und die grafische
- *        Benutzeroberfl‰che startet.
+ * \brief Enth√§lt die main-Funktion, welche das Programm und die grafische
+ *        Benutzeroberfl√§che startet.
  * \date Mi Nov 15 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -29,14 +29,14 @@
  * \mainpage backgammon Dokumentation
  *
  * Bei der Welfenlab Competition 2006 ging es um die Entwicklung einer
- * k¸nstlichen Intelligenz f¸r das Brettspiel Backgammon.
+ * k√ºnstlichen Intelligenz f√ºr das Brettspiel Backgammon.
  *
  * backgammon ist davon eine Weiterentwicklung (vor allem um ein eigenes
- * Serverprogramm erg‰nzt), um das Programm mehr Leuten zug‰nglich zu machen.
+ * Serverprogramm erg√§nzt), um das Programm mehr Leuten zug√§nglich zu machen.
  *
- * Diese Dokumentation ist haupts‰chlich als Referenz f¸r die Programmierung
+ * Diese Dokumentation ist haupts√§chlich als Referenz f√ºr die Programmierung
  * an diesem Programm gedacht. Informationen zur Bedienung und eine genauere
- * Erl‰uterung zu den Funktionsweisen der Algorithmen finden sich in der
+ * Erl√§uterung zu den Funktionsweisen der Algorithmen finden sich in der
  * eigentlichen Ausarbeitung zur Welfenlab Competition, die dem Archiv
  * beiliegen sollte.
  */

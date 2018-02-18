@@ -1,6 +1,6 @@
 /*!
  * \file ai.h
- * \brief Deklaration der KI-Klasse, für die Backgammon-KI
+ * \brief Deklaration der KI-Klasse, fÃ¼r die Backgammon-KI
  * \date Mi Dec 27 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -38,8 +38,8 @@
 
 /*< \label{AI} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Backgammon-KI, eigentlich eine Art Wrapper für AIThread. So werden die
-/// KI-Berechnung im Hintergrund ausgeführt.
+/// Backgammon-KI, eigentlich eine Art Wrapper fÃ¼r AIThread. So werden die
+/// KI-Berechnung im Hintergrund ausgefÃ¼hrt.
 /////////////////////////////////////////////////////////////////////////////
 class AI : public QObject
 {
@@ -64,15 +64,15 @@ class AI : public QObject
         ///< \brief Setzt \ref AIThread::m_rating_factors.
 
   protected slots:
-    void do_move( void ); ///< \brief Zug ausführen.
+    void do_move( void ); ///< \brief Zug ausfÃ¼hren.
 
   private:
-    unsigned int m_timeout; ///< \brief Timeout für die KI in Millisekunden.
+    unsigned int m_timeout; ///< \brief Timeout fÃ¼r die KI in Millisekunden.
     QTimer m_timer; ///< \brief Timer zur Realisierung des Timeouts.
     /*< \label{AI::m_ai_thread} >*/
     AIThread m_ai_thread; ///< \brief AI-Thread, der die Berechnungen
-                          ///< übernimmt.
-    BG::Backgammon *m_game; ///< \brief Backgammon-Spiel, für das die KI
+                          ///< Ã¼bernimmt.
+    BG::Backgammon *m_game; ///< \brief Backgammon-Spiel, fÃ¼r das die KI
                             ///< die Berechnungen vornimmt.
     QMutex m_not_moved; ///< \brief Wenn dieses Mutex nicht gesperrt ist,
                         ///< so hat die KI seit dem letzten Aufruf von move()

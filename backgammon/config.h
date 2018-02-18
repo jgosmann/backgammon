@@ -1,6 +1,6 @@
 /*!
  * \file config.h
- * \brief Enth�lt diverse Makros f�r Programmname etc.
+ * \brief Enthï¿½lt diverse Makros fï¿½r Programmname etc.
  * \date Mi Nov 15 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *

@@ -35,7 +35,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 /// Konstruktor, mit \a connection muss ein Zeiger auf die \ref NetBackgammon
-/// Klasse übergeben werden, welche die Netzwerkverbindung bereitstellt.
+/// Klasse Ã¼bergeben werden, welche die Netzwerkverbindung bereitstellt.
 /// Die Bedienelemente werden in \a parent dargestellt.
 /////////////////////////////////////////////////////////////////////////////
 ChatWidget::ChatWidget( NetBackgammonConnection *connection,
@@ -92,7 +92,7 @@ void ChatWidget::output_chat_msg( QString msg )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt den in \a state übergebenen Socket-Status im Chat-Fenster aus.
+/// Gibt den in \a state Ã¼bergebenen Socket-Status im Chat-Fenster aus.
 /// Zudem werden die Bedienelemente entsprechend aktiviert oder deaktiviert.
 /////////////////////////////////////////////////////////////////////////////
 void ChatWidget::output_net_connection_state(
@@ -126,7 +126,7 @@ void ChatWidget::output_net_connection_state(
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Gibt für \a error eine Fehlermeldung aus.
+/// Gibt fÃ¼r \a error eine Fehlermeldung aus.
 /////////////////////////////////////////////////////////////////////////////
 void ChatWidget::output_net_error( QAbstractSocket::SocketError error )
 {
@@ -148,22 +148,22 @@ void ChatWidget::output_net_error( QAbstractSocket::SocketError error )
                       "Verbindung." );
         break;
       case QAbstractSocket::SocketResourceError:
-        output += tr( "Nicht genügend Resourcen verfügbar. Eventuell sind "
-                      "bereits zu viele Netzwerkverbindungen geöffnet." );
+        output += tr( "Nicht genÃ¼gend Resourcen verfÃ¼gbar. Eventuell sind "
+                      "bereits zu viele Netzwerkverbindungen geÃ¶ffnet." );
         break;
       case QAbstractSocket::SocketTimeoutError:
-        output += tr( "Der Netzwerk-Timeout wurde überschritten." );
+        output += tr( "Der Netzwerk-Timeout wurde Ã¼berschritten." );
         break;
       case QAbstractSocket::DatagramTooLargeError:
-        output += tr( "Größe des Datagrams hat das Limit des Betriebssystems"
-                      " überschritten." );
+        output += tr( "GrÃ¶ÃŸe des Datagrams hat das Limit des Betriebssystems"
+                      " Ã¼berschritten." );
         break;
       case QAbstractSocket::NetworkError:
         output += tr( "Netzwerkfehler." );
         break;
       case QAbstractSocket::UnsupportedSocketOperationError:
-        output += tr( "Es wurde versucht eine nicht unterstützte "
-                      "Netzwerkoperation auszuführen." );
+        output += tr( "Es wurde versucht eine nicht unterstÃ¼tzte "
+                      "Netzwerkoperation auszufÃ¼hren." );
         break;
       default:
         output += tr ( "Es ist ein unbekannter Fehler aufgetreten." );

@@ -1,7 +1,7 @@
 /*!
  * \file dicewidget.cpp
  * \brief Implementation der DiceWidget-Klasse, zur Darstellung eines
- *        6-seitigen Würfels.
+ *        6-seitigen WÃ¼rfels.
  * \date Tu Nov 28 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -124,7 +124,7 @@ void DiceWidget::paintEvent( QPaintEvent *event )
 }
 
 /////////////////////////////////////////////////////////////////////////////
-/// Sorgt dafür, dass das Widget bei einer Größenänderung quadratisch bleibt.
+/// Sorgt dafÃ¼r, dass das Widget bei einer GrÃ¶ÃŸenÃ¤nderung quadratisch bleibt.
 /////////////////////////////////////////////////////////////////////////////
 void DiceWidget::resizeEvent( QResizeEvent *event )
 {

@@ -35,10 +35,10 @@
 
 /*< \label{NetBackgammonMsg} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// \brief Klasse für Server-Nachrichten.
+/// \brief Klasse fÃ¼r Server-Nachrichten.
 ///
-/// Diese Klasse enthält die Daten die in einer Nachricht an oder von dem
-/// Server übertragen werden.
+/// Diese Klasse enthÃ¤lt die Daten die in einer Nachricht an oder von dem
+/// Server Ã¼bertragen werden.
 /////////////////////////////////////////////////////////////////////////////
 class NetBackgammonMsg
 {
@@ -46,7 +46,7 @@ class NetBackgammonMsg
     NetBackgammonMsg( QString type = "", QString params = "",
                       QString in_reply_to = "" );
         ///< \brief Standard-Konstruktor
-    NetBackgammonMsg( QString msg ); ///< \brief Konstruktor für vom Server
+    NetBackgammonMsg( QString msg ); ///< \brief Konstruktor fÃ¼r vom Server
                                      ///< erhaltene Nachrichten.
 
     inline QString get_type( void ) const { return m_type; };
@@ -62,8 +62,8 @@ class NetBackgammonMsg
                                          ///< Setzen der Werte.
 
     QString get_raw_data( void ) const;
-        ///< \brief Gibt die Rohdaten der Nachricht zurück, so wie sie an den
-        ///< Server übertragen werden würden.
+        ///< \brief Gibt die Rohdaten der Nachricht zurÃ¼ck, so wie sie an den
+        ///< Server Ã¼bertragen werden wÃ¼rden.
 
   private:
     QString m_type; ///< \brief Typ der Nachricht.
@@ -111,10 +111,10 @@ class NetBackgammonConnection : public QTcpSocket
                                                 ///< Server.
     void join_game( unsigned int game_number, QString password = "" );
         ///< \brief Tritt einem Spiel auf dem Server bei.
-    void leave_game( void ); ///< \brief Verlässt ein Spiel.
+    void leave_game( void ); ///< \brief VerlÃ¤sst ein Spiel.
     void start( void ); ///< \brief Startet ein Spiel.
-    void confirm( void ); ///< \brief Bestätigt den Empfang eines Befehls.
-    void turn( const BG::BackgammonTurn &turn ); ///< \brief Überträgt einen
+    void confirm( void ); ///< \brief BestÃ¤tigt den Empfang eines Befehls.
+    void turn( const BG::BackgammonTurn &turn ); ///< \brief ÃœbertrÃ¤gt einen
                                                  ///< Zug an den Server.
 
     void set_dbg( bool val ); ///< \brief Setzt \ref m_dbg.
@@ -143,10 +143,10 @@ class NetBackgammonConnection : public QTcpSocket
     bool m_logged_in; ///< \brief Hat sich der Benutzer bereits auf dem
                       ///< Server eingeloggt?
     bool m_joined_game; ///< \brief Ist der Benutzer einem Spiel beigetreten?
-    bool m_game_running; ///< \brief Läuft gerade ein Backgammon-Spiel?
+    bool m_game_running; ///< \brief LÃ¤uft gerade ein Backgammon-Spiel?
     QString m_username; ///< \brief Benutzername unter dem der User
                         ///< eingeloggt ist.
-    unsigned int m_max_game_number; ///< \brief Höchste an ein Netzwerkspiel
+    unsigned int m_max_game_number; ///< \brief HÃ¶chste an ein Netzwerkspiel
                                     ///< zugewiesene Nummer.
     unsigned int m_game_number; ///< \brief Nummer des Spiels, dem der
                                 ///< Spieler beigetreten ist.
@@ -155,11 +155,11 @@ class NetBackgammonConnection : public QTcpSocket
 /*< \label{NetBackgammon} >*/
 /////////////////////////////////////////////////////////////////////////////
 /// \brief Klasse zur Verwaltung eines Backgammon-Spiels, welche auch Spiele
-/// über einen Netzwerk-Server zulässt.
+/// Ã¼ber einen Netzwerk-Server zulÃ¤sst.
 ///
 /// Diese Klasse dient zur Verwaltung eines Backgammon-Spiels, bei dem ein
-/// Spieler über einen Backgammon-Server gesteuert wird. Es ist allerdings
-/// auch weiterhin ein Spiel möglich, bei dem beide Spieler lokal gesteuert
+/// Spieler Ã¼ber einen Backgammon-Server gesteuert wird. Es ist allerdings
+/// auch weiterhin ein Spiel mÃ¶glich, bei dem beide Spieler lokal gesteuert
 /// werden.
 /////////////////////////////////////////////////////////////////////////////
 class NetBackgammon : public BG::Backgammon
@@ -181,7 +181,7 @@ class NetBackgammon : public BG::Backgammon
                                              ///< \ref m_net_player.
 
   protected slots:
-    void transmit_last_turn( void ); ///< \brief Überträgt den letzten Zug.
+    void transmit_last_turn( void ); ///< \brief ÃœbertrÃ¤gt den letzten Zug.
     void process_srv_msg( NetBackgammonMsg msg );
         ///< \brief Server-Nachricht verarbeiten.
 
@@ -189,9 +189,9 @@ class NetBackgammon : public BG::Backgammon
     NetBackgammonConnection *m_connection; ///< \brief Verbindung zum
                                            ///< Backgammon-Server
     /*< \label{NetBackgammon::m_net_player} >*/
-    BG::Player m_net_player; ///< \brief Der über das Netzwerk gesteuerte
+    BG::Player m_net_player; ///< \brief Der Ã¼ber das Netzwerk gesteuerte
                              ///< Spieler.
-    bool m_dice_received; ///< \brief Wurde der Würfelwurf vom Server bereits
+    bool m_dice_received; ///< \brief Wurde der WÃ¼rfelwurf vom Server bereits
                           ///< empfangen?
 };
 

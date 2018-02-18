@@ -1,6 +1,6 @@
 /*!
  * \file ai.cpp
- * \brief Implementation der KI-Klasse, für die Backgammon-KI
+ * \brief Implementation der KI-Klasse, fÃ¼r die Backgammon-KI
  * \date Mi Dec 27 2006
  * \author Jan Gosmann (jan@hyper-world.de)
  *
@@ -74,7 +74,7 @@ AI::~AI( void )
 
 /*< \label{void:AI::move(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Startet die KI-Berechnung und führt spätestens nach \ref m_timeout
+/// Startet die KI-Berechnung und fÃ¼hrt spÃ¤testens nach \ref m_timeout
 /// Millisekunden den bis dahin besten gefundenen Zug aus. Diese Funktion
 /// ist nicht blockierend.
 /////////////////////////////////////////////////////////////////////////////
@@ -82,13 +82,13 @@ void AI::move( void )
 {
   m_timer.start( m_timeout );
 
-  /* Sicherstellen, dass die KI schläft und durch keine queued Signals
-   * versucht wird einen Zug durchzuführen, der bereits nicht mehr gesetzt
+  /* Sicherstellen, dass die KI schlÃ¤ft und durch keine queued Signals
+   * versucht wird einen Zug durchzufÃ¼hren, der bereits nicht mehr gesetzt
    * werden kann. */
   wait();
   QCoreApplication::processEvents(); // Sicherstellen, dass keine
                                      // Queued-Signals mehr vorliegen (in
-                                     // diesem Fall könnte das höchstes
+                                     // diesem Fall kÃ¶nnte das hÃ¶chstes
                                      // AIThread::best_move_found() sein).
 
   m_ai_thread.set_moves_set( false );
@@ -97,7 +97,7 @@ void AI::move( void )
   m_ai_thread.request( AIThread::FIND_MOVE );
 
   if( !m_timer.isActive() ) // Wenn der Timer bereits abgelaufen ist, wurde
-    do_move();              // die do_move()-Funktion nicht ausgeführt, da
+    do_move();              // die do_move()-Funktion nicht ausgefÃ¼hrt, da
                             // m_not_moved noch gesperrt war.
 }
 
@@ -112,7 +112,7 @@ void AI::wait( void )
 
 /*< \label{void:AI::do_move(void)} >*/
 /////////////////////////////////////////////////////////////////////////////
-/// Wenn die "Bedenkzeit" der KI abgelaufen ist, führt diese Funktion den
+/// Wenn die "Bedenkzeit" der KI abgelaufen ist, fÃ¼hrt diese Funktion den
 /// bis jetzt besten gefundenen Zug aus.
 /////////////////////////////////////////////////////////////////////////////
 void AI::do_move( void )
@@ -123,7 +123,7 @@ void AI::do_move( void )
   m_timer.stop();
 
   /* Sicherstellen, dass bereits m_ai_thread.get_best_move() einen Zug
-   * zurückgibt. */
+   * zurÃ¼ckgibt. */
   while( !m_ai_thread.get_moves_set() )
     QCoreApplication::processEvents();
 
