@@ -3,6 +3,7 @@
 .externalToolBuilders
 .*.swp
 .project
+.qmake.stash
 .settings
 *.backup
 *.aux
