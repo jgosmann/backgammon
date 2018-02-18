@@ -95,7 +95,7 @@ void ServerOptions::on_load_clicked( void )
     QString
             file =
                     QFileDialog::getOpenFileName( this,
-                                                  tr("Konfigurationsdatei wÃ¤hlen"),
+                                                  tr("Konfigurationsdatei wählen"),
                                                   "",
                                                   tr("Konfigurationsdateien (*.conf);;Alle Dateien (*)") );
 

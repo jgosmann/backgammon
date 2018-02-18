@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en">
+<TS version="2.1" language="en">
 <context>
     <name>AISettingsDialog</name>
     <message>
@@ -19,7 +19,7 @@
         <source>KI-Parameter</source>
         <translation>AI-Parameters</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Zahl der ausgewürfelten Spielsteine.</source>
         <translation>Weighting of the beared of stones.</translation>
     </message>
@@ -27,11 +27,11 @@
         <source>BEARED_OFF: </source>
         <translation>BEARED_OFF:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Wahrscheinlichkeit, dass die KI im nächsten Zug zugunfähig ist.</source>
         <translation>Weighting of the probability that the AI cannot move in it&apos;s next turn.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der durschnittlichen Entfernung der Spielsteine des Gegners bis diese ausgewürfelt sind.</source>
         <translation>Weighting of the average distance of the stones of the opponent from the finish.</translation>
     </message>
@@ -39,7 +39,7 @@
         <source>OP_DISTANCE_FROM_OFF_GAME: </source>
         <translation>OP_DISTANCE_FROM_OFF_GAME:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Wahrscheinlichkeit, dass der Gegner im nächsten Zug zugunfähig ist.</source>
         <translation>Weighting of the probability that the opponent cannot move in his next turn.</translation>
     </message>
@@ -51,11 +51,11 @@
         <source>PROB_CANNOT_MOVE: </source>
         <translation>PROB_CANNOT_MOVE:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Anzahl der eigenen Spielsteine im gegnerischen Homeboard und auf der Bar.</source>
         <translation>Weighting of the number of stones in the opponent&apos;s homeboard and on the bar.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der durchschnittlichen Entfernung vom Homeboard.</source>
         <translation>Weighting of the average distance from the homeboard.</translation>
     </message>
@@ -67,7 +67,7 @@
         <source>CHECKERS_IN_OP_HOMEBOARD: </source>
         <translation>CHECKERS_IN_OP_HOMEBOARD:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Wahrscheinlichkeit, dass ein eigener Spielstein geschlagen wird.</source>
         <translation>Weighting of the probability that an own checker is hit.</translation>
     </message>
@@ -75,7 +75,7 @@
         <source>PROB_CHECKTER_IS_HIT: </source>
         <translation>PROB_CHECKER_IS_HIT:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Zahl der &quot;Zungen&quot; mit mindestens zwei eigenen Spielsteinen.</source>
         <translation>Weighting of the number of points with two ore more own checkers.</translation>
     </message>
@@ -83,7 +83,7 @@
         <source>N_POINTS_WITH_CHECKERS: </source>
         <translation>N_POINTS_WITH_CHECKERS:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Einflussstärke der Wahrscheinlichkeit, dass der gegnerische Spieler zugunfähig ist, weil er noch Steine auf der Bar hat.</source>
         <translation>Weighting of the probability that the opponent cannont move, becaus he has checkers left on the bar.</translation>
     </message>
@@ -246,7 +246,7 @@
         <source>Senden &amp;an:</source>
         <translation>Send &amp;to:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Hier kann der Empfänger der Chat-Nachricht ausgewählt werden.</source>
         <translation>You can select the receiver of the chat message here.</translation>
     </message>
@@ -261,11 +261,11 @@
 </context>
 <context>
     <name>InfoDialog</name>
-    <message utf8="true">
+    <message>
         <source>Über PACKAGE</source>
         <translation>About PACKAGE</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;PACKAGE_STRING&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (C) 2006 - 2007 Jan Gosmann&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://HOMEPAGE&quot;&gt;http://HOMEPAGE&lt;/a&gt;&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dieses Programm wurde für die Welfenlab Competition 2006 (www.gdv.uni-hannover.de) geschrieben.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Bugs bitte an &lt;a href=&quot;mailto:PACKAGE_BUGREPORT&quot;&gt;PACKAGE_BUGREPORT&lt;/a&gt; melden.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dies ist freie Software; die Kopierbedingungen können über das Menü Info / Lizenz abgerufen werden. Es gibt keine Garantie; auch nicht für VERKAUFBARKEIT oder FÜR SPEZIELLE ZWECKE.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="obsolete">&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;PACKAGE_STRING&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (C) 2006 - 2008 Jan Gosmann&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://HOMEPAGE&quot;&gt;http://HOMEPAGE&lt;/a&gt;&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dieses Programm wurde für die Welfenlab Competition 2006 (www.gdv.uni-hannover.de) geschrieben.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Bugs bitte an &lt;a href=&quot;mailto:PACKAGE_BUGREPORT&quot;&gt;PACKAGE_BUGREPORT&lt;/a&gt; melden.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dies ist freie Software; die Kopierbedingungen können über das Menü Info / Lizenz abgerufen werden. Es gibt keine Garantie; auch nicht für VERKAUFBARKEIT oder FÜR SPEZIELLE ZWECKE.&lt;/p&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -273,7 +273,7 @@
         <source>OK</source>
         <translation>OK</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -303,7 +303,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This is free software, and you are welcome to redistribute it under certain conditions. This can be found in the menu Information / License. This program is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1739,11 +1739,11 @@ p, li { white-space: pre-wrap; }
         <source>Toolbar</source>
         <translation>Toolbar</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Zeigt den letzten Würfelwurf an.</source>
         <translation>Shows the last dice roll.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Würfel</source>
         <translation>Dice</translation>
     </message>
@@ -1767,7 +1767,7 @@ p, li { white-space: pre-wrap; }
         <source>Punkte:</source>
         <translation>Points:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Weiß:</source>
         <translation>White:</translation>
     </message>
@@ -1803,7 +1803,7 @@ p, li { white-space: pre-wrap; }
         <source>Spielbrett d&amp;rehen</source>
         <translation>&amp;Rotate the board</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Dreht das Spielbrett um 180°.</source>
         <translation>Rotates the board for 180 degrees.</translation>
     </message>
@@ -1811,15 +1811,15 @@ p, li { white-space: pre-wrap; }
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Spielerfarbe &lt;&amp;weiß&gt;...</source>
         <translation>Player color &lt;&amp;white&gt;...</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Spielerfarbe &lt;weiß&gt;...</source>
         <translation>Player color &lt;white&gt;...</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Setzt die Farbe für den weißen Spieler.</source>
         <translation>Sets the color for the white player.</translation>
     </message>
@@ -1831,7 +1831,7 @@ p, li { white-space: pre-wrap; }
         <source>Spielerfarbe &lt;schwarz&gt;...</source>
         <translation>Player color &lt;black&gt;...</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Setzt die Farbe für den schwarzen Spieler.</source>
         <translation>Sets the color for the black player.</translation>
     </message>
@@ -1843,7 +1843,7 @@ p, li { white-space: pre-wrap; }
         <source>Setzt die Hintergrundsfarbe des Spielbretts.</source>
         <translation>Sets the backgound color for the board.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Farbe für die &amp;Bar...</source>
         <translation>Color for the &amp;bar...</translation>
     </message>
@@ -1855,7 +1855,7 @@ p, li { white-space: pre-wrap; }
         <source>&amp;Umrandungsfarbe...</source>
         <translation>&amp;Border color...</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Setzt die Umrandungsfarbe für die &quot;Zacken&quot;.</source>
         <translation>Sets the border color.</translation>
     </message>
@@ -1867,11 +1867,11 @@ p, li { white-space: pre-wrap; }
         <source>&amp;Info</source>
         <translation>&amp;Information</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&amp;Würfeln</source>
         <translation>Roll &amp;dice</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Hier klicken zum Würfeln.</source>
         <translation>Click here to roll dice.</translation>
     </message>
@@ -1879,11 +1879,11 @@ p, li { white-space: pre-wrap; }
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Nächste &amp;Runde starten</source>
         <translation>Start next &amp;round</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Startet die nächste Runde.</source>
         <translation>Starts the next round.</translation>
     </message>
@@ -1915,7 +1915,7 @@ p, li { white-space: pre-wrap; }
         <source>Backgammon</source>
         <translation>Backgammon</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Rückgängig</source>
         <translation>Undo</translation>
     </message>
@@ -1925,7 +1925,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Neues Spiel...</source>
-        <translation>New Game</translation>
+        <translation>New Game...</translation>
     </message>
     <message>
         <source>Sind Sie sicher, dass Sie das laufende Netzwerk-Spiel verlassen wollen?</source>
@@ -2050,7 +2050,7 @@ p, li { white-space: pre-wrap; }
         <source>&amp;Spieler</source>
         <translation>&amp;Player</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Weiß</source>
         <translation>White</translation>
     </message>
@@ -2062,11 +2062,11 @@ p, li { white-space: pre-wrap; }
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Blockierende Meldung anzeigen, wenn Spieler zugunfähig ist.</source>
         <translation>Show blocking message if a player cannot move.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Automatisch würfeln.</source>
         <translation>Roll dice automatically.</translation>
     </message>
@@ -2074,7 +2074,7 @@ p, li { white-space: pre-wrap; }
         <source>Schwarz</source>
         <translation>Black</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Automatisch Würfeln.</source>
         <translation>Roll dice automatically.</translation>
     </message>
@@ -2186,11 +2186,11 @@ p, li { white-space: pre-wrap; }
         <source>Nein</source>
         <translation>No</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&amp;Server starten …</source>
         <translation>Start &amp;Server ...</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>(Für ein Netzwerkspiel muss auf einem Rechner der Server laufen.)</source>
         <translation>(The server must be running at one computer for a network game.)</translation>
     </message>
@@ -2205,7 +2205,7 @@ p, li { white-space: pre-wrap; }
         <source>&amp;Passwort:</source>
         <translation>&amp;Password:</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>&amp;Bestätigung:</source>
         <translation>&amp;Confirmation:</translation>
     </message>
