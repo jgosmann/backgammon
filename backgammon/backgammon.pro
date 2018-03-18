@@ -15,7 +15,7 @@ CONFIG += release \
           warn_on \
           qt \
           thread \
-          stl
+          stl widgets
 TEMPLATE = app 
 FORMS += gui/mainwindow.ui \
          gui/newgamedialog.ui \
